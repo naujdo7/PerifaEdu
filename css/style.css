@@ -3,6 +3,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+
 }
 
 
@@ -14,6 +15,7 @@
     font-family: "Montserrat";
     height: 3vw;
     width: 100vw;
+    z-index: 100;
 }
 
 
@@ -23,7 +25,7 @@
     gap: 25px;
     justify-content: end;
     box-sizing: border-box;
-    margin-right: 10px ;
+    margin-right: 25px;
     padding-top: 15px;
 }
 
@@ -33,10 +35,10 @@
     position: fixed;
     justify-items: center;
     padding-top: 5px;
-    
- 
+
+
 }
- 
+
 .h1 {
     color: white;
     font-size: 20px;
@@ -45,11 +47,89 @@
     font-weight: weight;
     font-style: bold;
     padding-top: 10px;
- 
- 
+
+
 }
- 
+
 span {
     color: #188EF8;
 }
 
+
+.S_educacao {
+    display: flex;
+    align-items: center;
+    background-color: #012E71;
+    height: 60vw;
+}
+
+
+
+.p_educacao {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 60px;
+    position: relative;
+    z-index: 1;
+    bottom: 300px;
+    left: 100px;
+}
+
+
+
+
+#p-aprenda {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 30px;
+    position: relative;
+    z-index: 1;
+    right: 570px;
+    bottom: 80px;
+
+}
+
+
+
+#Kaell {
+    position: relative;
+    width: 40%;
+    height: 50%;
+    right: 50px;
+    bottom: 100px;
+}
+
+
+
+.btn-baixar{
+    position: relative;
+    top: 100px;
+    right: 950px;
+    background-color: #188EF8;
+    border: none;
+    border-radius: 17px;
+    width: 25%;
+    height: 3%;
+    color: white;
+}
+
+
+.btn-baixar:hover{
+    background-color: #578bd8;
+}
+
+
+.orion{
+    display: flex;
+    justify-content: space-around;
+    background-color: #8097B8;
+}
+
+#orion_img{
+    width: 30%;
+    height: 40%;
+}
+
+.p_sobre{
+    font-family: "Montserrat";
+}
