@@ -7,6 +7,11 @@
 }
 
 
+body {
+    overflow-x: hidden;
+}
+
+
 
 .header {
     position: fixed;
@@ -14,7 +19,7 @@
     color: white;
     font-family: "Montserrat";
     height: 3vw;
-    width: 100vw;
+    width: 100%;
     z-index: 100;
 }
 
@@ -60,7 +65,7 @@ span {
     display: flex;
     align-items: center;
     background-color: #012E71;
-    height: 60vw;
+    height: 50vw;
 }
 
 
@@ -101,7 +106,7 @@ span {
 
 
 
-.btn-baixar{
+.btn-baixar {
     position: relative;
     top: 100px;
     right: 950px;
@@ -114,22 +119,104 @@ span {
 }
 
 
-.btn-baixar:hover{
+.btn-baixar:hover {
     background-color: #578bd8;
 }
 
 
-.orion{
+.orion {
     display: flex;
     justify-content: space-around;
     background-color: #8097B8;
 }
 
-#orion_img{
+#orion_img {
     width: 30%;
     height: 40%;
 }
 
-.p_sobre{
+.p_sobre {
     font-family: "Montserrat";
+    display: flex;
+    flex-direction: column;
+    font-size: 50px;
+    flex-wrap: wrap;
+    width: 30%;
+    justify-content: center;
+    font-weight: bold;
+    position: relative;
+    right: 120px;
+    bottom: 50px;
+}
+
+
+
+#cell {
+    width: 330px;
+    height: 540px;
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+
+#p_cell {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    left: 300px;
+    bottom: 450px;
+    font-family: "Montserrat";
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+#sub_cell {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    left:  1000px;
+    bottom: 400px;
+    text-align: justify;
+    font-family: "Montserrat";
+    font-size: 20px;
+    font-weight: bold;
+    width: 40%;
+    flex-wrap: wrap;
+
+}
+
+#como_funciona{
+
+}
+
+#iconeYT{
+    width: 100px;
+    height: 100px;
+}
+
+#iconeLivro{
+    width: 100px;
+    height: 100px;
+}
+
+#iconeCaderno{
+    width: 100px;
+    height: 100px;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+
+.grid-item {
+   
 }
