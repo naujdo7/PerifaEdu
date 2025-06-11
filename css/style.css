@@ -6,14 +6,16 @@
 
 }
 
-
+/* body {
+    width: 100vw;
+} */
 
 .header {
     position: fixed;
     background-color: #012E71;
     color: white;
     font-family: "Montserrat";
-    height: 3vw;
+    height: 5vh;
     width: 100vw;
     z-index: 100;
 }
@@ -35,7 +37,6 @@
     position: fixed;
     justify-items: center;
     padding-top: 5px;
-
 
 }
 
@@ -60,7 +61,7 @@ span {
     display: flex;
     align-items: center;
     background-color: #012E71;
-    height: 60vw;
+    height: 50vw;
 }
 
 
@@ -68,11 +69,13 @@ span {
 .p_educacao {
     color: white;
     font-family: "Montserrat";
-    font-size: 60px;
+    font-size: 50px;
     position: relative;
     z-index: 1;
-    bottom: 300px;
+    bottom: 250px;
     left: 100px;
+    font-weight: bold;
+
 }
 
 
@@ -101,35 +104,115 @@ span {
 
 
 
-.btn-baixar{
+.btn-baixar {
     position: relative;
     top: 100px;
     right: 950px;
     background-color: #188EF8;
     border: none;
     border-radius: 17px;
-    width: 25%;
-    height: 3%;
+    width: 35%;
+    height: 4%;
     color: white;
+    box-shadow: 0px 2px gray ;
 }
 
 
-.btn-baixar:hover{
-    background-color: #578bd8;
+.btn-baixar:hover {
+    background-color: #567fbd;
 }
 
 
-.orion{
+.orion {
+    height: auto;
     display: flex;
     justify-content: space-around;
     background-color: #8097B8;
 }
 
-#orion_img{
+#orion_img {
     width: 30%;
     height: 40%;
 }
 
-.p_sobre{
+.p_sobre {
     font-family: "Montserrat";
+    font-size: 45px;
+    flex-wrap: wrap;
+    width: 45%;
+    position: relative;
+    top: 80px;
+    height: 20px;
+}
+
+.sobre {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.cell {
+    width: 25%;
+    /* Ajuste conforme necessário */
+}
+
+.text {
+    padding-left: 30%;
+    text-justify: auto;
+}
+
+.sobre_T {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: "Montserrat";
+    font-weight: bold ;
+}
+
+.text p {
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: "Montserrat";
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    /* Adiciona espaço entre os itens */
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+.item img {
+    width: 60px;
+    /* Ajuste o tamanho dos ícones conforme necessário */
+}
+
+.item p {
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: "Montserrat";
+    
+}
+
+#como_h2 {
+    text-align: center;
+    font-weight: bold;
+    font-family: "Montserrat";
+    font-size: 30px;
+}
+
+
+
+
+
+@media screen (max-width 1656px){
+    
 }
