@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f9fc;
+  color: #111;
+  width: 100vw; /* Adicionado */
+}
+header {
+    position: fixed;
+    top: 0;      /* Garante que fique no topo */
+    left: 0;     /* Garante que comece do lado esquerdo */
+    background-color: #012E71;
+    color: white;
+    font-family: "Montserrat";
+    height: 50px;
+    width: 100vw;
+    z-index: 100;
+}
+.titulo_Perifaedu {
+    color: white;
+    font-size: 20px;
+    font-family: "Montserrat";
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: bold;
+    padding-top: 10px;
+ 
+}
+span {
+    color: #188EF8;
+}
+ 
+ 
+#links {
+    display: flex;
+    gap: 25px;
+    justify-content: end;
+    box-sizing: border-box;
+    margin-right: 25px;
+    padding-top: 15px;
+    list-style: none;
+}
+
+ 
+ 
+.title_ {
+    display: flex;
+    position: fixed;
+    justify-items: center;
+    padding-top: 5px;
+}
+
+
+.conteudo_cursos_tecnicos h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.pesquisa-container {
+  margin-top: 50px; /* Aumentado */
+  padding: 25px 40px 19px 40px; /* Mais espaço e alinhamento à esquerda */
+  background-color: #e6f3fb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha filhos à esquerda */
+  justify-content: center;
+}
+
+.pesquisa-container h1 {
+  margin-bottom: 2px;
+  font-size: 32px; /* Aumentado */
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #3077AB; /* Cor do título */
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.377);
+}
+
+.search-container input {
+  width: 300px;
+  max-width: 500px;
+  padding: 16px;
+  border-radius: 30px;
+  border: 1.5px solid #ccc;
+  margin-bottom: 18px;
+  font-size: 18px; /* Aumentado */
+}
+
+.conteudo__cursos{
+  padding: 20px;
+
+}
+.conteudo__cursos h2 {
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.377);
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #012E71; /* Cor do título */
+}
+
+
+.tags {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tags button {
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.tags .active {
+  background-color: #007BFF;
+  color: white;
+  border-color: #007BFF;
+}
+
+.banner {
+  position: absolute;
+  right: 20px;
+  text-align: right;
+}
+
+.banner img {
+  width: 300px;
+  height: 150px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  width: 250px;  
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 7px 2px rgba(0, 0, 0, 0.486);
+  text-align: center;
+}
+
+.course-card img {
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.course-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.course-card p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.course-card span {
+  font-size: 13px;
+  color: #666;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.course-card button {
+  width: 200px;
+  height: 50px;
+  margin-bottom: 12px;  
+  background-color: #ffffff;
+  color: #012E71;
+  font-family: "Alexandria";
+  font-size: 17px;
+  border: 2px solid #012E71;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: #999;
+}
