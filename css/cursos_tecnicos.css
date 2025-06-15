@@ -10,148 +10,180 @@
 body {
   background: #f4f9fc;
   color: #111;
-  width: 100vw; /* Adicionado */
+  width: 100vw;
 }
+
 header {
-    position: fixed;
-    top: 0;      /* Garante que fique no topo */
-    left: 0;     /* Garante que comece do lado esquerdo */
-    background-color: #012E71;
-    color: white;
-    font-family: "Montserrat";
-    height: 50px;
-    width: 100vw;
-    z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #012E71;
+  color: white;
+  font-family: "Montserrat";
+  height: 50px;
+  width: 100vw;
+  z-index: 100;
 }
+
 .titulo_Perifaedu {
-    color: white;
-    font-size: 20px;
-    font-family: "Montserrat";
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: bold;
-    padding-top: 10px;
- 
+  color: white;
+  font-size: 20px;
+  font-family: "Montserrat";
+  padding-top: 10px;
 }
-span {
-    color: #188EF8;
-}
- 
- 
+
 #links {
-    display: flex;
-    gap: 25px;
-    justify-content: end;
-    box-sizing: border-box;
-    margin-right: 25px;
-    padding-top: 15px;
-    list-style: none;
+  display: flex;
+  gap: 25px;
+  justify-content: end;
+  margin-right: 25px;
+  padding-top: 15px;
+  list-style: none;
 }
 
- 
- 
 .title_ {
-    display: flex;
-    position: fixed;
-    justify-items: center;
-    padding-top: 5px;
+  display: flex;
+  position: fixed;
+  justify-items: center;
+  padding-top: 5px;
 }
-
 
 .conteudo_cursos_tecnicos h2 {
   margin-bottom: 20px;
   font-size: 20px;
 }
 
+
 .pesquisa-container {
-  margin-top: 50px; /* Aumentado */
-  padding: 25px 40px 19px 40px; /* Mais espaço e alinhamento à esquerda */
-  background-color: #e6f3fb;
   position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+  padding: 25px 40px 19px 40px;
+  background: linear-gradient(135deg, #e6f3fb, #ffffff);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinha filhos à esquerda */
-  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .pesquisa-container h1 {
-  margin-bottom: 2px;
-  font-size: 32px; /* Aumentado */
-  font-family: "Montserrat";
-  font-weight: bold;
-  color: #3077AB; /* Cor do título */
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.377);
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  color: #012E71;
+  margin-bottom: 15px;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+  width: 100%;
+  max-width: 500px;
 }
 
 .search-container input {
-  width: 300px;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 17px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+.search-container input:focus {
+  border-color: #012E71;
+  box-shadow: 0 0 0 3px rgba(1, 46, 113, 0.1);
+}
+
+
+.search-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.search-container input {
+  margin-left: 30px;
+  width: 100%;
   max-width: 500px;
   padding: 16px;
   border-radius: 30px;
   border: 1.5px solid #ccc;
   margin-bottom: 18px;
-  font-size: 18px; /* Aumentado */
+  font-size: 18px;
+  box-sizing: border-box;
 }
 
-.conteudo__cursos{
+.conteudo__cursos {
   padding: 20px;
-
 }
+
 .conteudo__cursos h2 {
   font-family: "Montserrat";
   font-weight: bold;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.377);
   font-size: 24px;
   margin-bottom: 20px;
-  color: #012E71; /* Cor do título */
+  color: #012E71;
 }
-
 
 .tags {
-  margin-top: 10px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
-.tags button {
+.tags .tag-button {
   background: #fff;
   border: 1px solid #bbb;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.tags .active {
-  background-color: #007BFF;
+.tags .tag-button:hover {
+  background-color: #dceeff;
+  border-color: #1180ff;
+  color: #012E71;
+}
+
+.tags .tag-button.active {
+  background-color: #1180fffd;
   color: white;
   border-color: #007BFF;
 }
 
+
 .banner {
+  margin: 0%;
+  width: 500px;
   position: absolute;
-  right: 20px;
-  text-align: right;
+  top: 30px;
+  right: 10px;
+  background: #ffffff00; /* fundo igual ao da pesquisa-container */
+  border-radius: 12px; /* opcional, para combinar com a imagem */
 }
 
 .banner img {
-  width: 300px;
-  height: 150px;
+  width: 600px;
+  bottom: 50px;
+  height: auto;
+  border-radius: 12px;
 }
 
 .courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-
-.course-card {
-  width: 250px;  
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 7px 2px rgba(0, 0, 0, 0.486);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: left;
+  align-items: stretch;
+  margin-top: 20px;
 }
 
 .course-card img {
@@ -162,28 +194,63 @@ span {
   margin-bottom: 10px;
 }
 
+.course-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 280px;
+  height: 320px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 7px 2px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-bottom: 0;
+}
+
 .course-card h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 19px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.course-card h3::after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px auto;
 }
 
 .course-card p {
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: #555;
+  font-size: 16px;
+  font-family: "Montserrat";
+  color: #000000;
+  margin-bottom: 20px;
+  width: 90%;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .course-card span {
-  font-size: 13px;
-  color: #666;
-  display: block;
-  margin-bottom: 10px;
+  text-align: left;
+  width: 90%;
+  margin-left: 10px;
+  font-family: "Montserrat";
+  font-size: 14px;
+  color: #000000;
 }
 
 .course-card button {
-  width: 200px;
-  height: 50px;
-  margin-bottom: 12px;  
+  margin-top: auto;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 45px;
   background-color: #ffffff;
   color: #012E71;
   font-family: "Alexandria";
@@ -191,6 +258,13 @@ span {
   border: 2px solid #012E71;
   border-radius: 15px;
   cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: block;
+}
+
+.course-card button:hover {
+  background-color: #012E71;
+  color: #fff;
 }
 
 .footer {
@@ -198,4 +272,23 @@ span {
   padding: 15px;
   font-size: 14px;
   color: #999;
+}
+
+/* Responsividade da pesquisa */
+@media (max-width: 600px) {
+  .pesquisa-container {
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pesquisa-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .search-container input {
+    font-size: 16px;
+    padding: 14px;
+    max-width: 100%;
+  }
 }
