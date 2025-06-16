@@ -10,19 +10,6 @@
 body {
   background: #f4f9fc;
   color: #111;
-  width: 100vw;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #012E71;
-  color: white;
-  font-family: "Montserrat";
-  height: 50px;
-  width: 100vw;
-  z-index: 100;
 }
 
 .titulo_Perifaedu {
@@ -57,7 +44,6 @@ header {
 .pesquisa-container {
   position: relative;
   overflow: hidden;
-  margin-top: 50px;
   padding: 25px 40px 19px 40px;
   background: linear-gradient(135deg, #e6f3fb, #ffffff);
   border-radius: 15px;
@@ -69,6 +55,7 @@ header {
 }
 
 .pesquisa-container h1 {
+  margin-left: 10px;
   font-size: 2rem;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
@@ -84,7 +71,7 @@ header {
 
 .search-container input {
   width: 100%;
-  padding: 14px 20px;
+  padding: 16px 20px;
   font-size: 17px;
   border: 2px solid #ccc;
   border-radius: 30px;
@@ -104,10 +91,8 @@ header {
 }
 
 .search-container input {
-  margin-left: 30px;
   width: 100%;
   max-width: 500px;
-  padding: 16px;
   border-radius: 30px;
   border: 1.5px solid #ccc;
   margin-bottom: 18px;
@@ -275,9 +260,10 @@ header {
 }
 
 /* Responsividade da pesquisa */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .pesquisa-container {
     padding: 20px;
+    justify-content: center;
     align-items: center;
     text-align: center;
   }
@@ -290,5 +276,8 @@ header {
     font-size: 16px;
     padding: 14px;
     max-width: 100%;
+  }
+  .course_grid{
+    justify-content: center;
   }
 }
