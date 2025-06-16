@@ -6,40 +6,6 @@
 
 }
 
-/* body {
-    width: 100vw;
-} */
-
-.header {
-    position: fixed;
-    background-color: #012E71;
-    color: white;
-    font-family: "Montserrat";
-    height: 5vh;
-    width: 100vw;
-    z-index: 100;
-}
-
-
-
-#links {
-    display: flex;
-    gap: 25px;
-    justify-content: end;
-    box-sizing: border-box;
-    margin-right: 25px;
-    padding-top: 15px;
-}
-
-
-.title_ {
-    display: flex;
-    position: fixed;
-    justify-items: center;
-    padding-top: 5px;
-
-}
-
 .h1 {
     color: white;
     font-size: 20px;
@@ -60,8 +26,9 @@ span {
 .S_educacao {
     display: flex;
     align-items: center;
-    background-color: #012E71;
+    background-color:#041C3F;
     height: 50vw;
+    
 }
 
 
@@ -209,10 +176,255 @@ span {
     font-size: 30px;
 }
 
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .S_educacao {
+   
+  }
 
+  .p_educacao {
+    font-size: 40px;
+    position: static;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
 
+  #p-aprenda {
+    font-size: 24px;
+    position: static;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
 
+  #Kaell {
+    width: 35%;
+    height: auto;
+    position: static;
+    margin-bottom: 20px;
+  }
 
-@media screen (max-width 1565){
-    
+  .btn-baixar {
+    width: 30%;
+    height: auto;
+    padding: 12px 20px;
+    font-size: 18px;
+    position: static;
+    margin-bottom: 30px;
+  }
+
+  .orion {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px;
+  }
+
+  .p_sobre {
+    font-size: 35px;
+    width: 50%;
+    top: 0;
+  }
+
+  #orion_img {
+    width: 40%;
+    height: auto;
+  }
+
+  .sobre {
+    flex-direction: row;
+    padding: 40px;
+  }
+
+  .cell {
+    width: 35%;
+  }
+
+  .text {
+    padding-left: 5%;
+    text-align: left;
+  }
+
+  .container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 20px;
+  }
+
+  .item {
+    width: 180px;
+  }
+
+  .item img {
+    width: 50px;
+  }
+
+  .item p {
+    font-size: 16px;
+  }
 }
+
+
+@media (max-width: 1024px) {
+  .S_educacao {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .p_educacao {
+    font-size: 30px;
+    position: static;
+    padding: 20px 0;
+  }
+
+  #p-aprenda {
+    font-size: 18px;
+    position: static;
+    padding: 10px 20px;
+  }
+
+  #Kaell {
+    position: static;
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .btn-baixar {
+    position: static;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .orion {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .p_sobre {
+    font-size: 28px;
+    width: 100%;
+    top: 0;
+  }
+
+  #orion_img {
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .sobre {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .cell {
+    width: 80%;
+  }
+
+  .text {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .S_educacao {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .p_educacao {
+    font-size: 30px;
+    position: static;
+    padding: 20px 0;
+  }
+
+  #p-aprenda {
+    font-size: 18px;
+    position: static;
+    padding: 10px 20px;
+  }
+
+  #Kaell {
+    position: static;
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .btn-baixar {
+    position: static;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .orion {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .p_sobre {
+    font-size: 28px;
+    width: 100%;
+    top: 0;
+  }
+
+  #orion_img {
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .sobre {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .cell {
+    width: 80%;
+  }
+
+  .text {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+

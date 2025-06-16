@@ -1,0 +1,257 @@
+
+
+@keyframes expandir1 {
+  0% { font-size: 15px; }
+  100% { font-size: 16px; }
+}
+ 
+
+/* ===== HEADER & NAVEGAÇÃO ===== */
+header {
+  background-color: #023982;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 64px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 61px;
+  width: 61px;
+  object-fit: contain;
+}
+
+.logo span {
+  color: white;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.logo span span {
+  color: #188EF8;
+}
+
+/* Desktop Menu */
+.desktop-menu {
+  display: flex;
+}
+
+.desktop-menu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 30px;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.desktop-menu a:hover {
+  text-decoration: none;
+  bottom: -5px;
+  left: 50%;
+  font-weight: 550;
+  transition: 0.5 ease;
+  animation-name: expandir1;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger-icon {
+  color: white;
+  font-size: 24px;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: '';
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before {
+  top: -8px;
+}
+
+.hamburger:after {
+  bottom: -8px;
+}
+
+/* ATIVO PARA MENU MOBILE */
+.menu-toggle.active .hamburger {
+  background-color: transparent;
+}
+
+.menu-toggle.active .hamburger:before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle.active .hamburger:after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablet: 768px a 1024px */
+@media (max-width: 1024px) {
+  /* Header - Tablet */
+  header {
+    padding: 0 15px;
+    position: relative;
+  }
+  
+  .logo span {
+    font-size: clamp(16px, 3vw, 22px);
+  }
+  
+  .desktop-menu {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .menu-toggle.active {
+    transform: rotate(90deg);
+  }
+  
+  .mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #023982;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
+    pointer-events: none;
+  }
+  
+  .mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .mobile-menu a {
+    margin: 12px 0;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu.active a {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  /* Animação em cascata para os links */
+  .mobile-menu.active a:nth-child(1) { transition-delay: 0.1s; }
+  .mobile-menu.active a:nth-child(2) { transition-delay: 0.2s; }
+  .mobile-menu.active a:nth-child(3) { transition-delay: 0.3s; }
+  .mobile-menu.active a:nth-child(4) { transition-delay: 0.4s; }
+  .mobile-menu.active a:nth-child(5) { transition-delay: 0.5s; }
+  }
+
+  /* Mobile: até 768px */
+@media (max-width: 768px) {
+  /* Header - Mobile */
+  header {
+    height: 60px;
+  }
+  
+  .logo img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Para o desktop não quebrar antes do tablet */
+@media (min-width: 1025px) {
+  .desktop-menu a {
+    white-space: nowrap;
+    margin-left: clamp(15px, 1.5vw, 30px);
+  }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #012E71;
+  color: white;
+  font-size: 13px;
+  height: 92px;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#texto-footer {
+  text-align: center;
+}
+
+#texto-footer p {
+  margin: 4px 0;
+}
+
+footer a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
