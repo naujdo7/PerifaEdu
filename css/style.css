@@ -14,9 +14,12 @@
     font-weight: weight;
     font-style: bold;
     padding-top: 10px;
+  
 
 
 }
+
+
 
 span {
     color: #188EF8;
@@ -24,70 +27,63 @@ span {
 
 
 .S_educacao {
-    display: flex;
-    align-items: center;
-    background-color:#041C3F;
-    height: 50vw;
-    
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #041C3F;
+  padding: 80px 100px;
+  flex-wrap: wrap;
+  
 }
 
-
+#text_ED {
+  flex: 1;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
 
 .p_educacao {
-    color: white;
-    font-family: "Montserrat";
-    font-size: 50px;
-    position: relative;
-    z-index: 1;
-    bottom: 250px;
-    left: 100px;
-    font-weight: bold;
-
+  color: white;
+  font-family: "Montserrat" ;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.2;
 }
-
-
-
 
 #p-aprenda {
-    color: white;
-    font-family: "Montserrat";
-    font-size: 30px;
-    position: relative;
-    z-index: 1;
-    right: 570px;
-    bottom: 80px;
-
+  color: white;
+  font-family: "Montserrat";
+  font-size: 22px;
+  font-weight: 400;
 }
-
-
-
-#Kaell {
-    position: relative;
-    width: 40%;
-    height: 50%;
-    right: 50px;
-    bottom: 100px;
-}
-
-
 
 .btn-baixar {
-    position: relative;
-    top: 100px;
-    right: 950px;
-    background-color: #188EF8;
-    border: none;
-    border-radius: 17px;
-    width: 35%;
-    height: 4%;
-    color: white;
-    box-shadow: 0px 2px gray ;
+  background-color: #188EF8;
+  color: white;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-
 
 .btn-baixar:hover {
-    background-color: #567fbd;
+  background-color: #0f6ec2;
 }
+
+#Kaell {
+  flex: 1;
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+}
+
 
 
 .orion {
@@ -126,6 +122,7 @@ span {
 .text {
     padding-left: 30%;
     text-justify: auto;
+    padding-right: 10%;
 }
 
 .sobre_T {
@@ -177,9 +174,7 @@ span {
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
-  .S_educacao {
-   
-  }
+  
 
   .p_educacao {
     font-size: 40px;
@@ -198,14 +193,14 @@ span {
   }
 
   #Kaell {
-    width: 35%;
+    width: 50%;
     height: auto;
     position: static;
     margin-bottom: 20px;
   }
 
   .btn-baixar {
-    width: 30%;
+    width: 55%;
     height: auto;
     padding: 12px 20px;
     font-size: 18px;
@@ -267,10 +262,11 @@ span {
 
 @media (max-width: 1024px) {
   .S_educacao {
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
     padding: 20px;
     text-align: center;
+    align-items: center;  
   }
 
   .p_educacao {
@@ -286,25 +282,26 @@ span {
   }
 
   #Kaell {
+    width: 40%;
     position: static;
-    width: 80%;
-    height: auto;
     margin-top: 20px;
   }
 
   .btn-baixar {
     position: static;
-    width: 80%;
+    width: 50%;
     height: auto;
     padding: 10px;
     font-size: 16px;
     margin-top: 20px;
+  
   }
 
   .orion {
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
+    
   }
 
   .p_sobre {
@@ -314,18 +311,18 @@ span {
   }
 
   #orion_img {
-    width: 80%;
-    height: auto;
+    width: 30%;
+    height: 40%;
     margin-top: 20px;
   }
 
   .sobre {
-    flex-direction: column;
+    flex-direction: row;
     padding: 20px;
   }
 
   .cell {
-    width: 80%;
+    width: 35%;
   }
 
   .text {
@@ -334,7 +331,7 @@ span {
   }
 
   .container {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding: 20px;
   }
@@ -349,14 +346,14 @@ span {
 
 @media (max-width: 768px) {
   .S_educacao {
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
     padding: 20px;
     text-align: center;
   }
 
   .p_educacao {
-    font-size: 30px;
+    font-size: 20px;
     position: static;
     padding: 20px 0;
   }
@@ -369,14 +366,14 @@ span {
 
   #Kaell {
     position: static;
-    width: 80%;
+    width: 40%;
     height: auto;
     margin-top: 20px;
   }
 
   .btn-baixar {
     position: static;
-    width: 80%;
+    width: 70%;
     height: auto;
     padding: 10px;
     font-size: 16px;
@@ -384,7 +381,7 @@ span {
   }
 
   .orion {
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     padding: 20px;
   }
@@ -396,27 +393,26 @@ span {
   }
 
   #orion_img {
-    width: 80%;
+    width: 40%;
     height: auto;
     margin-top: 20px;
   }
 
   .sobre {
-    flex-direction: column;
+    flex-direction: row;
     padding: 20px;
   }
 
   .cell {
-    width: 80%;
+    width: 40%;
   }
 
   .text {
-    padding-left: 0;
     text-align: center;
   }
 
   .container {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding: 20px;
   }
@@ -428,3 +424,41 @@ span {
 }
 
 
+@media (min-width: 1441px) and (max-width: 1621px) {
+  .p_educacao {
+    font-size: 45px;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  #p-aprenda {
+    font-size: 26px;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  #Kaell {
+    width: 35%;
+    height: auto;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .btn-baixar {
+    width: 40%;
+    height: auto;
+    padding: 12px 20px;
+    font-size: 18px;
+    position: static;
+    margin-bottom: 30px;
+  }
+
+  .text {
+    padding-left: 10%;
+  }
+}
+#text_ED{
+  display: flex;
+  flex-direction: column;
+padding-left: 25px;
+}
