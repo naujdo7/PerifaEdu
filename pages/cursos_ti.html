@@ -6,32 +6,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cursos Técnicos</title>
   <link rel="stylesheet" href="../css/cursos_tecnicos.css">
-  <link rel="stylesheet" href="header">
+  <link rel="stylesheet" href="../css/header_footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="../js/header_footer.js" defer></script>
 
 </head>
 
 <body>
   <header>
-    <div class="title_">
-      <img src="../img/logo_perifaEdu.png" width="40px" alt="logo perifa edu.">
-      <h1 class="titulo_Perifaedu">PERIFA<span>EDU</span></h1>
+    <div class="logo">
+      <img src="../img/logo_perifaEdu.png" alt="Logo PerifaEdu" />
+      <span>PERIFA<span>EDU</span></span>
     </div>
-    <nav id="header-nav">
-      <ul id="links">
-        <li>INÍCIO</li>
-        <li>LIVROS DIDÁTICOS</li>
-        <li>COMPETÊNCIAS EDUCACIONAIS</li>
-        <li>COMO FUNCIONA</li>
-        <li>SOBRE</li>
-      </ul>
+
+    <!-- Botão do menu hambúrguer -->
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <i class="fas fa-bars hamburger-icon"></i>
+    </button>
+
+    <!-- Menu Desktop -->
+    <nav class="desktop-menu">
+      <a href="#">INÍCIO</a>
+      <a href="#">CURSOS</a>
+      <a href="#">COMPETÊNCIAS EDUCACIONAIS</a>
+      <a href="#">COMO FUNCIONA</a>
+      <a href="#">SOBRE</a>
+    </nav>
+
+    <!-- Menu mobile -->
+    <nav class="mobile-menu">
+      <a href="#">INÍCIO</a>
+      <a href="#">CURSOS</a>
+      <a href="#">COMPETÊNCIAS EDUCACIONAIS</a>
+      <a href="#">COMO FUNCIONA</a>
+      <a href="#">SOBRE</a>
     </nav>
   </header>
   <main class="conteudo_cursos_tecnicos">
     <div class="pesquisa-container">
+      <video autoplay muted loop playsinline class="video-bg">
+        <source src="../video/background_pesquisa.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo em HTML5.
+      </video>
       <h1>Cursos Técnicos</h1>
       <div class="search-container">
-        <input type="text" placeholder="Pesquise pelo seu curso técnico">
+        <input id="search-input" type="text" placeholder="Pesquise pelo seu curso técnico">
       </div>
+    </div>
+    <div class="tags-container">
       <h1>Encontre seu curso ideal</h1>
       <div class="tags">
         <a href="./cursos_ti.html" class="tag-button active">TI</a>
@@ -58,6 +82,13 @@
       </div>
     </div>
   </main>
+  <footer>
+    <div id="texto-footer">
+      <p>&copy; 2025 PerifaEdu. Todos os direitos reservados.</p>
+      <p><a href="./pages/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> | <a
+          href="./pages/termos.html" target="_blank">Termos de Uso</a></p>
+    </div>
+  </footer>
 </body>
 
 </html>

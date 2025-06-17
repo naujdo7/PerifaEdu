@@ -8,48 +8,54 @@
   <link rel="stylesheet" href="../css/cursos_tecnicos.css">
   <link rel="stylesheet" href="../css/header_footer.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="../js/header_footer.js" defer></script>
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="../js/header_footer.js" defer></script>
 
 </head>
 
 <body>
   <header>
-        <div class="logo">
-            <img src="../img/logo_perifaEdu.png" alt="Logo PerifaEdu" />
-            <span>PERIFA<span>EDU</span></span>
-        </div>
- 
-        <!-- Botão do menu hambúrguer -->
-        <button class="menu-toggle" aria-label="Abrir menu">
-            <i class="fas fa-bars hamburger-icon"></i>
-        </button>
- 
-        <!-- Menu Desktop -->
-        <nav class="desktop-menu">
-            <a href="#">INÍCIO</a>
-            <a href="#">LIVROS DIDÁTICOS</a>
-            <a href="#">COMPETÊNCIAS EDUCACIONAIS</a>
-            <a href="#">COMO FUNCIONA</a>
-            <a href="#">SOBRE</a>
-        </nav>
- 
-        <!-- Menu mobile -->
-        <nav class="mobile-menu">
-            <a href="#">INÍCIO</a>
-            <a href="#">LIVROS DIDÁTICOS</a>
-            <a href="#">COMPETÊNCIAS EDUCACIONAIS</a>
-            <a href="#">COMO FUNCIONA</a>
-            <a href="#">SOBRE</a>
-        </nav>
-    </header>
+    <div class="logo">
+      <img src="../img/logo_perifaEdu.png" alt="Logo PerifaEdu" />
+      <span>PERIFA<span>EDU</span></span>
+    </div>
+
+    <!-- Botão do menu hambúrguer -->
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <i class="fas fa-bars hamburger-icon"></i>
+    </button>
+
+    <!-- Menu Desktop -->
+    <nav class="desktop-menu">
+      <a href="#">INÍCIO</a>
+      <a href="#">CURSOS</a>
+      <a href="#">COMPETÊNCIAS EDUCACIONAIS</a>
+      <a href="#">COMO FUNCIONA</a>
+      <a href="#">SOBRE</a>
+    </nav>
+
+    <!-- Menu mobile -->
+    <nav class="mobile-menu">
+      <a href="#">INÍCIO</a>
+      <a href="#">CURSOS</a>
+      <a href="#">COMPETÊNCIAS EDUCACIONAIS</a>
+      <a href="#">COMO FUNCIONA</a>
+      <a href="#">SOBRE</a>
+    </nav>
+  </header>
   <main class="conteudo_cursos_tecnicos">
     <div class="pesquisa-container">
+      <video autoplay muted loop playsinline class="video-bg">
+        <source src="../video/background_pesquisa.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo em HTML5.
+      </video>
       <h1>Cursos Técnicos</h1>
       <div class="search-container">
         <input id="search-input" type="text" placeholder="Pesquise pelo seu curso técnico">
       </div>
+    </div>
+    <div class="tags-container">
       <h1>Encontre seu curso ideal</h1>
       <div class="tags">
         <a href="./cursos_ti.html" class="tag-button">TI</a>
@@ -59,11 +65,7 @@
         <a href="./cursos_sustentabilidade.html" class="tag-button">Sustentabilidade</a>
         <a href="./cursos_tecnicos.html" class="tag-button active">Todos</a>
       </div>
-      <div class="banner">
-        <img src="../img/cursos 100% online.png" alt="">
-      </div>
     </div>
-
     <div class="conteudo__cursos">
 
       <h2>📚 Cursos mais populares</h2>
@@ -123,19 +125,28 @@
           <span>Duração | 1,5 anos</span>
           <button>Saiba mais</button>
         </div>
+        
+        <div class="course-card">
+          <img src="..//img/curso_psicologia.jpg" alt="Imagem de curso de TI">
+          <h3>Psicologia</h3>
+          <p>comportamento humano e processos mentais</p>
+          <span>Duração | 2,5 anos</span>
+          <button>Saiba mais</button>
+        </div>
 
       </div>
     </div>
   </main>
   <footer>
-        <div id="texto-footer">
-            <p>&copy; 2025 PerifaEdu. Todos os direitos reservados.</p>
-            <p><a href="./pages/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> | <a
-                    href="./pages/termos.html" target="_blank">Termos de Uso</a></p>
-        </div>
-    </footer>
+    <div id="texto-footer">
+      <p>&copy; 2025 PerifaEdu. Todos os direitos reservados.</p>
+      <p><a href="./pages/politica-de-privacidade.html" target="_blank">Política de Privacidade</a> | <a
+          href="./pages/termos.html" target="_blank">Termos de Uso</a></p>
+    </div>
+  </footer>
 
 </body>
+
 <script src="../js/pesquisa_cursos.js"></script>
 
 </html>

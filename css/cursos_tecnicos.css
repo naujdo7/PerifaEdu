@@ -36,7 +36,10 @@ body {
 }
 
 .conteudo_cursos_tecnicos h2 {
+  font-family: "Alexandria", sans-serif;
+  color: #012E71;
   margin-bottom: 20px;
+  margin-left: 20px;
   font-size: 20px;
 }
 
@@ -44,79 +47,92 @@ body {
 .pesquisa-container {
   position: relative;
   overflow: hidden;
+  height: 250px;
   padding: 25px 40px 19px 40px;
-  background: linear-gradient(135deg, #e6f3fb, #ffffff);
-  border-radius: 15px;
+  /* Remova o background-image */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pesquisa-container .video-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.35; /* ajuste a opacidade conforme desejar */
+  pointer-events: none;
 }
 
 .pesquisa-container h1 {
-  margin-left: 10px;
+  margin-left: 0;
   font-size: 2rem;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   color: #012E71;
   margin-bottom: 15px;
   text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .search-container {
   width: 100%;
   max-width: 500px;
-}
-
-.search-container input {
-  width: 100%;
-  padding: 16px 20px;
-  font-size: 17px;
-  border: 2px solid #ccc;
-  border-radius: 30px;
-  outline: none;
-  transition: border 0.3s ease-in-out;
-}
-
-.search-container input:focus {
-  border-color: #012E71;
-  box-shadow: 0 0 0 3px rgba(1, 46, 113, 0.1);
-}
-
-
-.search-container {
-  width: 100%;
-  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .search-container input {
   width: 100%;
   max-width: 500px;
   border-radius: 30px;
-  border: 1.5px solid #ccc;
+  border: 2.5px solid #012E71;
+  background-color: #ffffff00;
   margin-bottom: 18px;
   font-size: 18px;
   box-sizing: border-box;
+  padding: 16px 20px;
+  text-align: center;
 }
-
-.conteudo__cursos {
-  padding: 20px;
-}
-
-.conteudo__cursos h2 {
-  font-family: "Montserrat";
-  font-weight: bold;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.377);
-  font-size: 24px;
-  margin-bottom: 20px;
+.search-container input::placeholder {
   color: #012E71;
+  font-family: "Montserrat", sans-serif;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e6f3fb, #ffffff);
+  padding: 18px 10px 18px 10px;
+  height: 140px;
+  min-width: 290px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tags-container h1 {
+  color: #012E71;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
+  width: 100%;
 }
 
 .tags .tag-button {
@@ -163,17 +179,19 @@ body {
 }
 
 .courses-grid {
+  padding: 20px 40px 40px 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-  justify-content: left;
-  align-items: stretch;
+  justify-content: center;
   margin-top: 20px;
+  /* Evita "tremedeira" ao animar os cards */
+  align-items: flex-start;
 }
 
 .course-card img {
   width: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 10px 10px 0 0;
   height: 120px;
   object-fit: cover;
   margin-bottom: 10px;
@@ -187,10 +205,60 @@ body {
   width: 280px;
   height: 320px;
   background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 7px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   text-align: center;
   margin-bottom: 0;
+  position: relative;
+  transition: transform 0.22s cubic-bezier(.4,2,.6,1);
+  will-change: transform;
+}
+
+@keyframes card-pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 7px 2px rgba(0, 0, 0, 0.15);
+  }
+  60% {
+    transform: scale(1.06) rotate(-1deg);
+    box-shadow: 0 16px 24px rgba(1, 46, 113, 0.12);
+  }
+  100% {
+    transform: scale(1.03) rotate(0.5deg);
+    box-shadow: 0 12px 20px rgba(1, 46, 113, 0.13);
+  }
+}
+
+@keyframes card-scale-up {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.04);
+  }
+}
+
+.course-card:hover {
+  animation: card-scale-up 0.22s forwards;
+  z-index: 2;
+  /* Não altera borda, sombra ou margin para evitar tremedeira */
+}
+
+.course-card:hover h3 {
+  color: #1180ff;
+  transition: color 0.2s;
+}
+
+.course-card:hover span {
+  color: #1180ff;
+  transition: color 0.2s;
+}
+
+.course-card:hover button {
+  background-color: #1180ff;
+  color: #fff;
+  border-color: #1180ff;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
 .course-card h3 {
@@ -223,12 +291,18 @@ body {
 }
 
 .course-card span {
-  text-align: left;
+  position: absolute;
+  left: 5%;
+  bottom: 65px; /* Fica logo acima do botão */
   width: 90%;
-  margin-left: 10px;
   font-family: "Montserrat";
   font-size: 14px;
   color: #000000;
+  text-align: left;
+  margin: 0;
+  pointer-events: none; /* Não interfere na interação do botão */
+  background: transparent;
+  z-index: 2;
 }
 
 .course-card button {
@@ -245,6 +319,8 @@ body {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .course-card button:hover {
@@ -262,22 +338,30 @@ body {
 /* Responsividade da pesquisa */
 @media (max-width: 768px) {
   .pesquisa-container {
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    padding: 16px 4vw;
+    max-width: 100%;
   }
-
   .pesquisa-container h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
-
+  .search-container {
+    max-width: 100%;
+  }
   .search-container input {
     font-size: 16px;
     padding: 14px;
     max-width: 100%;
   }
-  .course_grid{
-    justify-content: center;
+  .tags-container {
+    padding: 14px 4px;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+  .tags-container h1 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .tags {
+    gap: 8px;
   }
 }
