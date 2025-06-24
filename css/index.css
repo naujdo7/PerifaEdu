@@ -144,7 +144,7 @@ span {
     align-items: center;
     text-align: center;
     gap: 20px;
-    /* Adiciona espaço entre os itens */
+    padding-bottom: 20px;
 }
 
 .item {
@@ -171,6 +171,7 @@ span {
     font-weight: bold;
     font-family: "Montserrat";
     font-size: 30px;
+    padding-bottom: 15px;
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {

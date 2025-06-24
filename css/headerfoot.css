@@ -44,6 +44,7 @@ header {
 /* Desktop Menu */
 .desktop-menu {
   display: flex;
+  
 }
 
 .desktop-menu a {
