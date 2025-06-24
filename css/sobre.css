@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #041C3F;
+  min-width: 320px;
+}
+
+/* ANIMAÇÕES */
+@keyframes expandir2 {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.02); }
+}
+
+.animacao1:hover, .animacao2:hover, .animacao3:hover, .animacao4:hover {
+  animation-name: expandir2;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+
+/* ===== SOBRE SEÇÃO ===== */
+#sobre {
+  background-color: #041C3F;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+#titulo1 {
+  font-size: 85px;
+  color: white;
+  font-weight: bold;
+  max-width: 547px;
+}
+
+#imagem-lateral {
+  max-width: 517px;
+  display: flex;
+  align-items: flex-end;
+}
+
+
+/* MISSÃO // VISÃO // VALORES // HISTÓRIA */
+#caixas-de-texto {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+}
+
+/* PRIMEIRA E TERCEIRA CAIXA */
+.missao-e-valores {
+  background-color: #023982;
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+.titulo-missao-e-valores {
+  font-size: 30px;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.subtitulo-missao-e-valores {
+  font-size: 20px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.texto-missao-valores {
+  display: flex;
+  flex-direction: column;
+  padding: 43px 0px 43px 33px;
+  max-width: 540px;
+}
+
+#img-ideia {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+
+/* SEGUNDA E QUARTA CAIXA */
+.visao-historia {
+  background-color: #DBD7D8;
+  display: flex;
+  flex-direction: row;
+}
+
+.titulo-visao-historia {
+  font-size: 30px;
+  margin: 0;
+  color: #023982;
+}
+
+.subtitulo-visao-historia {
+  font-size: 20px;
+  margin: 0;
+  color: black;
+  padding-left: 49px;
+
+}
+
+#img-visao {
+  display: flex;
+  width: 100%;
+  padding: 13px 0px 0px 33px;
+}
+
+.texto-visao-historia {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 45px 84px 45px 0px;
+}
+
+#img-valores {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  padding-left: 100px;
+}
+
+#img-historia {
+  display: flex;
+  justify-content: flex-end;
+  padding: 56px 0px 0px 33px;
+}
+
+/* TITULO DEPOIMENTOS */
+#depoimento {
+  font-weight: bold;
+  color: white;
+  padding: 92px 0px 92px 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#avaliacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    padding-left: 50px;
+}
+
+
+#titulo-depoimento {
+  font-size: 85px;
+  margin: 0;
+}
+
+#subtitulo-depoimento {
+  font-size: 22px;
+  margin: 0;
+}
+
+#comentario {
+  background-color: #DBD7D8;
+  display: flex;
+  flex-direction: row;
+  font-family: "ADLaM Display", system-ui;
+}
+
+#img-usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 108px;
+}
+
+#fala-autor {
+  font-size: 32px;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+ul#autor {
+  font-size: 22px;
+  margin: 0;
+}
+
+/* ========== TABLET (768px - 1024px) ========== */
+@media (max-width: 1024px) {
+/* SEÇÃO SOBRE */
+  #titulo1 {
+    font-size: clamp(60px, 5vw, 22px); 
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  
+  #sobre {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  #imagem-lateral {
+    display: none;
+  }
+  
+#caixas-de-texto {
+  display: flex;
+  align-items: center;
+}
+
+
+  .missao-e-valores, .visao-historia {
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+  }
+  
+
+  .texto-missao-valores, .texto-visao-historia {
+    padding: 43px 0px 43px 33px;
+    max-width: 100%;
+    width: 100%;
+    order: 1; 
+  }
+  
+ 
+  #img-ideia, #img-valores, #img-visao, #img-historia {
+    width: 100%;
+    justify-content: center;
+    order: 2; 
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .texto-visao-historia {
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .subtitulo-visao-historia {
+    padding-left: 0;
+  }
+  
+
+  #depoimento {
+    padding: 40px 20px;
+  }
+  
+  #titulo-depoimento {
+    font-size: clamp(60px, 10vw, 22px);
+
+  }
+  
+
+  #comentario {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  #img-usuario {
+    padding: 20px 0 0 0;
+  }
+  
+  #avaliacao {
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
+ 
+  #caixas-de-texto {
+    gap: 0;
+  }
+}
+
+/* ========== CELULAR (até 768px) ========== */
+@media (max-width: 768px) {
+  #imagem-lateral {
+    display: none;
+  }
+
+  .missao-e-valores, 
+  .visao-historia {
+    width: 90%;
+    padding: 5%;
+  }
+
+ 
+  #titulo1{
+    font-size: clamp(30px, 5vw, 22px); 
+  }
+
+  #img-ideia, 
+  #img-valores, 
+  #img-visao, 
+  #img-historia {
+    display: none !important;
+  }
+  .texto-missao-valores, 
+  .texto-visao-historia {
+    width: 100%;
+    padding: 0;
+  }
+
+  #titulo-depoimento {
+    padding-bottom: 5px;
+  }
+
+#subtitulo-depoimento {
+    font-size: clamp(12px, 6vw, 10px);
+}
+}
+
+/* CORREÇÃO PARA O TITULO EM TELAS MENORES */
+@media (max-width: 768px) {
+  #titulo-depoimento {
+    font-size: clamp(45px, 10vw, 22px);
+  }
+}

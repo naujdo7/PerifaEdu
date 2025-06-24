@@ -1,0 +1,465 @@
+/* ===== RESET & BASE STYLES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 320px;
+}
+
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes expandir {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.07); }
+}
+
+@keyframes expandir2 {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.02); }
+}
+
+/* ===== COMO FUNCIONA SEÇÃO ===== */
+#como-funciona {
+  background-color: #041C3F;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#como-funciona-text {
+  color: white;
+  padding-left: 48px;
+  width: 65%;
+  font-weight: bold;
+  padding-top: 67px;
+}
+
+#titulo1 {
+  font-size: 5.37vw;
+  margin-bottom: 0px;
+}
+
+#subtitulo {
+  font-size: 1.2vw;
+  padding-bottom: 2.37vw;
+}
+
+#baixar-app {
+  background-color: #188EF8;
+  border-radius: 17px;
+  border: none;
+  box-shadow: 4px 8px 30px #1c82dbc9;
+  padding: 9px;
+}
+
+#baixar-app:hover {
+  animation-name: expandir;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+#baixar-app-texto {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 37px;
+  color: white;
+  text-decoration: none;
+}
+
+#imagem-principal {
+  width: 30%;
+  display: flex;
+}
+
+#imagem-raiz {
+  width: 100%;
+  align-items: flex-end;
+}
+
+/* ===== RECURSOS SEÇÃO ===== */
+#recursos-app {
+  background-color: #f2f2f2;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#mockup-recursos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+#mockup-texto {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+.mockup-img {
+  display: flex;
+  width: 27%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mockup-img img {
+  width: 50%;
+  height: 100%;
+}
+
+.mockup-texto {
+  max-width: 65%;
+}
+
+#textoIntrodutorio-mobile {
+  display: none;
+}
+
+.mockup-texto p {
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+}
+
+#recursos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 33px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.item img {
+  width: 61px;
+  height: 61px;
+  object-fit: contain;
+}
+
+.item:hover {
+  animation-name: expandir2;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+}
+
+.texto1 {
+  max-width: 296px;
+}
+
+.titulo-explicacoes {
+  font-weight: bold;
+  font-size: 20px;
+  display: block;
+}
+
+.explicacoes {
+  max-width: 279px;
+  font-size: 18px;
+  color: #3A4353;
+}
+
+/* ===== TOUR SEÇÃO ===== */
+#tour-visual {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  background-color: #023982;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.caixa-de-texto {
+  max-width: 912px;
+  margin-top: 65px;
+}
+
+#titulo2 {
+  font-size: 85px;
+  padding: 0 5px 5px 5px;
+}
+
+#subtitulo2 {
+  font-size: 22px;
+}
+
+#mockups-e-textos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 40px;
+  max-width: 1535px;
+}
+
+.tela {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.tela img {
+  width: 230px;
+  height: 345px;
+}
+
+.tela .texto {
+  max-width: 540px;
+  text-align: left;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.titulo-mockups {
+  display: block;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.mockups-text {
+  font-size: 23px;
+  margin: 0;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablet: 768px a 1024px */
+@media (max-width: 1024px) {
+  /* Seção Como Funciona - Tablet */
+  #como-funciona {
+    flex-direction: row;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  
+  #como-funciona-text {
+    width: 55%;
+    padding: 0 20px 0 0;
+  }
+  
+  #titulo1 {
+    padding-top: 20px;
+  }
+  
+  #subtitulo {
+    font-size: clamp(14px, 1.8vw, 18px);
+  }
+  
+  #imagem-principal {
+    width: 45%;
+    align-items: center;
+  }
+  
+  /* Seção Tour Visual - Tablet */
+  #mockups-e-textos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 0 20px;
+    max-width: 100%;
+  }
+  
+  .tela {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .tela img {
+    width: 180px;
+    height: auto;
+  }
+  
+  .titulo-mockups {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  .mockups-text {
+    font-size: 16px;
+  }
+}
+
+/* Mobile: até 767px */
+@media (max-width: 767px) {
+  /* Seção Como Funciona - Mobile */
+  #como-funciona {
+    flex-direction: column;
+    padding-top: 25px;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+  }
+  
+  #como-funciona-text {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  #titulo1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #subtitulo {
+    font-size: 15px;
+    padding-bottom: 20px;
+  }
+  
+  #baixar-app { 
+    border-radius: 10px;
+  }
+
+  #baixar-app-texto {
+    font-size: 20px;
+  }
+  
+  #imagem-principal {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Seção Recursos - Mobile */
+  #mockup-texto {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .mockup-img {
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #textoIntrodutorio {
+    display: none;
+  }
+
+  #textoIntrodutorio-mobile {
+    display: block;
+  }
+
+  .mockup-texto {
+    width: 90%;
+    padding-top: 25px;
+  }
+
+  #recursos {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 0 15px;
+  }
+  
+  .item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  /* Seção Tour Visual - Mobile */
+  #tour-visual {
+    padding: 30px 15px;
+  }
+  
+  .caixa-de-texto {
+    margin-top: 30px;
+  }
+  
+  #titulo2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+  
+  #subtitulo2 {
+    font-size: 15px;
+  }
+  
+  #mockups-e-textos {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px 0;
+  }
+  
+  .tela {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+  }
+  
+  .tela img {
+    width: 60%;
+    max-width: 220px;
+  }
+  
+  .titulo-mockups {
+    display: flex;
+    font-size: 22px;
+    justify-content: center;
+    font-size: 22px;
+  }
+  
+  .mockups-text {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
+/* Ajuste especial para telas estreitas (768px-900px) */
+@media (max-width: 900px) and (min-width: 768px) {
+  .tela {
+    flex-direction: column;
+  }
+  
+  .tela .texto {
+    padding-top: 15px;
+  }
+  
+  .mockups-text {
+    font-size: 15px;
+  }
+  
+  #como-funciona-text {
+    padding-right: 10px;
+  }
+}
+
+/* Para o desktop não quebrar antes do tablet */
+@media (min-width: 1025px) {
+  .desktop-menu a {
+    white-space: nowrap;
+    margin-left: clamp(15px, 1.5vw, 30px);
+  }
+}
