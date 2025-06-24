@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f9fc;
+  color: #111;
+}
+
+.titulo_Perifaedu {
+  color: white;
+  font-size: 20px;
+  font-family: "Montserrat";
+  padding-top: 10px;
+}
+
+#links {
+  display: flex;
+  gap: 25px;
+  justify-content: end;
+  margin-right: 25px;
+  padding-top: 15px;
+  list-style: none;
+}
+
+.title_ {
+  display: flex;
+  position: fixed;
+  justify-items: center;
+  padding-top: 5px;
+}
+
+.conteudo_cursos_tecnicos h2 {
+  font-family: "Alexandria", sans-serif;
+  color: #012E71;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+
+.pesquisa-container {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  padding: 25px 40px 19px 40px;
+  background: #ffffff;
+  background: linear-gradient(359deg,rgba(255, 255, 255, 1) 0%, rgba(163, 214, 255, 1) 41%, rgba(74, 156, 232, 0.85) 100%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pesquisa-container h1 {
+  margin-left: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  color: #012E71;
+  margin-bottom: 15px;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 15px;
+  border: 2.5px solid #012E71;
+  background-color: #ffffff00;
+  margin-bottom: 18px;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.search-container input::placeholder {
+  color: #012E71;
+  font-family: "Montserrat", sans-serif;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e6f3fb, #ffffff);
+  padding: 18px 10px 0px 10px;
+  height: 140px;
+  min-width: 290px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tags-container h1 {
+  color: #012E71;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.tags {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.tags .tag-button {
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.tags .tag-button:hover {
+  background-color: #dceeff;
+  border-color: #1180ff;
+  color: #012E71;
+}
+
+.tags .tag-button.active {
+  background-color: #1180fffd;
+  color: white;
+  border-color: #007BFF;
+}
+
+
+.banner {
+  margin: 0%;
+  width: 500px;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background: #ffffff00;
+  /* fundo igual ao da pesquisa-container */
+  border-radius: 12px;
+  /* opcional, para combinar com a imagem */
+}
+
+.banner img {
+  width: 600px;
+  bottom: 50px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.courses-grid {
+  padding: 20px 40px 40px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 20px;
+  /* Evita "tremedeira" ao animar os cards */
+  align-items: flex-start;
+}
+
+.course-card img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 280px;
+  height: 320px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+  transition: transform 0.22s cubic-bezier(.4, 2, .6, 1);
+  will-change: transform;
+}
+
+@keyframes card-pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 7px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  60% {
+    transform: scale(1.06) rotate(-1deg);
+    box-shadow: 0 16px 24px rgba(1, 46, 113, 0.12);
+  }
+
+  100% {
+    transform: scale(1.03) rotate(0.5deg);
+    box-shadow: 0 12px 20px rgba(1, 46, 113, 0.13);
+  }
+}
+
+@keyframes card-scale-up {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+.course-card:hover {
+  animation: card-scale-up 0.22s forwards;
+  z-index: 2;
+  /* Não altera borda, sombra ou margin para evitar tremedeira */
+}
+
+.course-card:hover h3 {
+  color: #1180ff;
+  transition: color 0.2s;
+}
+
+.course-card:hover span {
+  color: #1180ff;
+  transition: color 0.2s;
+}
+
+.course-card:hover button {
+  background-color: #1180ff;
+  color: #fff;
+  border-color: #1180ff;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.course-card h3 {
+  font-size: 19px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.course-card h3::after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px auto;
+}
+
+.course-card p {
+  font-size: 16px;
+  font-family: "Montserrat";
+  color: #000000;
+  margin-bottom: 20px;
+  width: 90%;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.course-card span {
+  position: absolute;
+  left: 5%;
+  bottom: 65px;
+  /* Fica logo acima do botão */
+  width: 90%;
+  font-family: "Montserrat";
+  font-size: 14px;
+  color: #000000;
+  text-align: left;
+  margin: 0;
+  pointer-events: none;
+  /* Não interfere na interação do botão */
+  background: transparent;
+  z-index: 2;
+}
+
+.course-card button {
+  margin-top: auto;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 45px;
+  background-color: #ffffff;
+  color: #012E71;
+  font-family: "Alexandria";
+  font-size: 17px;
+  /* font-weight: 600; */
+  border: 2px solid #012E71;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.course-card button:hover {
+  background-color: #012E71;
+  color: #fff;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: #999;
+}
+
+/* Responsividade da pesquisa */
+@media (max-width: 768px) {
+  .pesquisa-container {
+    padding: 16px 4vw;
+    max-width: 100%;
+  }
+
+  .pesquisa-container h1 {
+    font-size: 1.3rem;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  .search-container input {
+    font-size: 16px;
+    padding: 14px;
+    max-width: 100%;
+  }
+
+  .tags-container {
+    padding: 14px 4px;
+    max-width: 100%;
+  }
+
+  .tags-container h1 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .tags {
+    gap: 8px;
+  }
+}
