@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.h1 {
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    padding-top: 10%;
+}
+
+span {
+    color: #188EF8;
+}
+
+/* MAIN */
+
+.container-one {
+    display: flex;
+    background: linear-gradient(135deg, #0D2447, #021e90);
+    height: 25vw;
+}
+
+
+.p_container-one {
+    padding-top: 20%;
+    color: rgb(254, 249, 249);
+    display: flex;
+    padding: 60px;
+    font-weight: bold;
+    font-size: 7vw;
+    width: 90%;
+
+}
+
+
+/* Conteúdos Didáticos */
+
+#conteudos_didaticos {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    padding-left: 20px;
+    background-color: #ffffff;
+}
+
+.h2_conteudos-didaticos {
+    color: #012E71;
+    margin-top: 40px;
+    display: flex;
+    font-size: 50px;
+}
+ 
+.h3_cursos-livres{
+  color: #012E71;
+    margin-top: 40px;
+    display: flex;
+    font-size: 50px;
+}
+
+
+/* Caixa geral */
+.caixas {
+    display: flex;
+    justify-content: center;
+    gap: 10vw;
+    padding: 4%;
+    text-align: center;
+    
+}
+
+/* Título da caixa */
+.p_caixas {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Caixas individuais */
+.caixa_um,
+.caixa_dois,
+.caixa_tres {
+    background-color: #0D2447;
+    width: 20vw;
+    border-radius: 20px;
+    box-shadow: 1px 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 4% 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.caixa_dois {
+    height: 550px;
+    margin-top: 90px;
+}
+
+.caixa_tres {
+    height: 430px;
+    margin-top: 130px;
+}
+
+.caixa_cursos-Livres {
+    background-color: #0D2447;
+    width: 20vw;
+    border-radius: 20px;
+    box-shadow: 1px 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 4% 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.link-redirecionados:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 132, 255, 0.4);
+}
+
+/* Links dentro das caixas */
+.link-redirecionados {
+    display: block;
+    text-align: center;
+    margin: 8% auto;
+    padding: 10px 15px;
+    background-color: rgb(7, 82, 194);
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    width: 70%;
+    transition: background 0.3s ease;
+}
+
+
+
+
+/* Cursos Livres */
+#cursos-livres {
+    font-weight: bold;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #8097B8;
+    text-align: center;
+}
+
+
+.p_cursos-livres {
+    color: white;
+    font-size: 40px;
+}
+
+
+.caixas_CRL {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10vw;
+    padding: 5%;
+    text-align: center;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+
+/* Celular */
+@media (min-width: 320px) and (max-width: 600px) {
+    .p_cursos-livres {
+        font-size: 20px;
+    }
+
+    .container-one {
+        height: 30vw;
+    }
+
+    .p_container-one {
+        margin-top: -30px;
+        font-size: 40px;
+    }
+
+    .mini_container {
+        margin-right: 10%;
+        width: 53vw;
+        height: 25vw;
+    }
+
+    .h2_conteudos-didaticos {
+        font-size: 150%;
+    }
+
+    .caixas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .caixa_um,
+    .caixa_dois,
+    .caixa_tres {
+        width: 65vw;
+        padding: 10%;
+    }
+
+    .p_caixas {
+        font-size: 150%;
+    }
+
+    .link-redirecionados {
+        font-size: 70%;
+    }
+
+
+    .caixa_cursos-Livres {
+        justify-self: center;
+        margin-top: 10%;
+        width: 65vw;
+        padding: 10%;
+        margin-bottom: 10%;
+    }
+
+
+
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .p_container-one {
+        margin-top: -3%;
+    }
+
+    .caixas {
+        flex-direction: column;
+        padding: 10%;
+        align-items: center;
+    }
+
+    .caixa_um,
+    .caixa_dois,
+    .caixa_tres {
+        width: 50vw;
+        padding: 5%;
+    }
+}
