@@ -49,9 +49,9 @@ body {
   overflow: hidden;
   height: 250px;
   padding: 25px 40px 19px 40px;
-  background: linear-gradient(270deg, #a3d6ff, #4a9ce8, #ffffff, #a3d6ff);
+  background: linear-gradient(270deg, #a3d6ff, #a0cdf6, #ffffff, #a3d6ff);
   background-size: 600% 600%;
-  animation: gradientMove 8s ease-in-out infinite;
+  animation: gradientMove 12s ease-in-out infinite;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
