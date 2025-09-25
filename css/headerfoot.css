@@ -44,13 +44,14 @@ header {
 /* Desktop Menu */
 .desktop-menu {
   display: flex;
+  align-items: center;
+  gap: 26px;
   
 }
 
 .desktop-menu a {
   color: white;
   text-decoration: none;
-  margin-left: 30px;
   font-style: italic;
   font-size: 15px;
 }
@@ -130,7 +131,7 @@ header {
 /* ========== MEDIA QUERIES ========== */
 
 /* Tablet: 768px a 1024px */
-@media (max-width: 1024px) {
+@media (max-width: 1120px) {
   /* Header - Tablet */
   header {
     padding: 0 15px;
@@ -224,7 +225,6 @@ header {
 @media (min-width: 1025px) {
   .desktop-menu a {
     white-space: nowrap;
-    margin-left: clamp(15px, 1.5vw, 30px);
   }
 }
 
