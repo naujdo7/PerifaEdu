@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/headerfoot.css">
+    <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="./js/headerfoot.js" defer></script>
+    <script src="./js/popup-login.js" defer></script>
     <title>PerifaEdu</title>
 </head>
 
@@ -29,13 +31,14 @@
 
         <!-- Menu Desktop -->
         <nav class="desktop-menu">
-            <a href="../index.html">INÍCIO</a>
+            <a href="./index.html">INÍCIO</a>
             <a href="">APOSTILAS</a>
-            <a href="./cursos_tecnicos.html">CURSOS</a>
-            <a href="./competencias.html">COMPETÊNCIAS EDUCACIONAIS</a>
-            <a href="./como-funciona.html">COMO FUNCIONA</a>
-            <a href="./sobre.html">SOBRE</a>
+            <a href="./pages/cursos_tecnicos.html">CURSOS</a>
+            <a href="./pages/competencias.html">COMPETÊNCIAS EDUCACIONAIS</a>
+            <a href="./pages/como-funciona.html">COMO FUNCIONA</a>
+            <a href="./pages/sobre.html">SOBRE</a>
             <img class="perfil" src="./img/perfil.png" alt="Logo do perfil de usuário">
+
           </nav>
       
           <!-- Menu mobile -->
@@ -116,7 +119,48 @@
         </div>
     </footer>
 
-
+<!-- POPUP DE LOGIN -->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <div class="header-login">
+            <span class="close">&times;</span>
+            <div class="logo">
+            <img src="./img/PerifaEdu 2.png" alt="Logo PerifaEdu" /></a>
+            <span>PERIFA<span>EDU</span></span>
+            </div>
+        </div>
+        <h1>LOGIN</h1>
+        
+        <form id="loginForm">
+        
+            <div class="form-group">
+                <label for="email" class="required">E-mail / Nome de usuário:</label>
+                <input type="text" id="email" placeholder="Insira seu e-mail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="required">Senha:</label>
+                <input type="password" id="password" placeholder="Insira sua senha" required>
+                <div class="forgot-password">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </div>
+            <button type="submit" class="btn-login">ENTRAR</button>
+        </form>
+        
+        <div class="social-login">
+            <p>Fazer login com:</p>
+            <div class="social-icons">
+                <div class="social-icon"> <img src="./img/apple.svg" alt=""></div>
+                <div class="social-icon"> <img src="./img/google.svg" alt=""></div>
+                <div class="social-icon"> <img src="./img/Microsoft.svg" alt=""></div>
+            </div>
+        </div>
+        
+        <div class="register-link">
+            <p>Não tem login? <a href="#">Clique aqui para cadastrar-se!</a></p>
+        </div>
+  </div>
 </body>
 
 </html>

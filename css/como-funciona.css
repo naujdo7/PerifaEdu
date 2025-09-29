@@ -460,6 +460,5 @@ body {
 @media (min-width: 1025px) {
   .desktop-menu a {
     white-space: nowrap;
-    margin-left: clamp(15px, 1.5vw, 30px);
   }
 }
