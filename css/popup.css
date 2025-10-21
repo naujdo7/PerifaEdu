@@ -9,7 +9,20 @@
     background: rgba(0,0,0,0.5);
     font-family: 'Montserrat', sans-serif;
   }
-  
+.modal-cadastro {
+  display: none;
+  position: fixed;
+  align-content: center;
+  z-index: 1000;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: 'Montserrat', sans-serif;
+}
+
+
   .modal-content {
     background: white;
     margin: 10% auto;
@@ -19,6 +32,15 @@
     text-align: center;
   }
   
+  .modal-content-cadastro {
+    background: white;
+    margin: auto auto;
+    width: 600px;
+    height: auto;
+    border-radius: 8px;
+    text-align: center;
+  }
+
   .close {
     float: right;
     font-size: 40px;
@@ -60,7 +82,9 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"], 
+input[type="date"] {
     width: 80%;
     padding: 14px;
     background-color: #012E71;
@@ -71,7 +95,9 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
     border-color: #188EF8;
     outline: none;
 }
@@ -113,6 +139,23 @@ input::placeholder {
 }
 
 .btn-login:hover {
+    background-color: #1a68e3;
+}
+
+.btn-cadastro {
+    width: 30%;
+    background-color: #012E71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-cadastro:hover {
     background-color: #1a68e3;
 }
 

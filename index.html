@@ -14,6 +14,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="./js/headerfoot.js" defer></script>
     <script src="./js/popup-login.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
     <title>PerifaEdu</title>
 </head>
 
@@ -38,7 +40,6 @@
             <a href="./pages/como-funciona.html">COMO FUNCIONA</a>
             <a href="./pages/sobre.html">SOBRE</a>
             <img class="perfil" src="./img/perfil.png" alt="Logo do perfil de usuário">
-
           </nav>
       
           <!-- Menu mobile -->
@@ -118,29 +119,28 @@
                     href="./pages/termos.html" target="_blank">Termos de Uso</a></p>
         </div>
     </footer>
-
-<!-- POPUP DE LOGIN -->
+    
+  <!-- POPUP DE LOGIN -->
 <div id="login-modal" class="modal">
     <div class="modal-content">
         <div class="header-login">
             <span class="close">&times;</span>
             <div class="logo">
-            <img src="./img/PerifaEdu 2.png" alt="Logo PerifaEdu" /></a>
-            <span>PERIFA<span>EDU</span></span>
+                <img src="./img/PerifaEdu 2.png" alt="Logo PerifaEdu" />
+                <span>PERIFA<span>EDU</span></span>
             </div>
         </div>
         <h1>LOGIN</h1>
         
         <form id="loginForm">
-        
             <div class="form-group">
-                <label for="email" class="required">E-mail / Nome de usuário:</label>
-                <input type="text" id="email" placeholder="Insira seu e-mail" required>
+                <label for="login-email" class="required">E-mail / Nome de usuário:</label>
+                <input type="text" id="login-email" placeholder="Insira seu e-mail" required>
             </div>
             
             <div class="form-group">
-                <label for="password" class="required">Senha:</label>
-                <input type="password" id="password" placeholder="Insira sua senha" required>
+                <label for="login-password" class="required">Senha:</label>
+                <input type="password" id="login-password" placeholder="Insira sua senha" required>
                 <div class="forgot-password">
                     <a href="#">Esqueceu a senha?</a>
                 </div>
@@ -158,9 +158,168 @@
         </div>
         
         <div class="register-link">
-            <p>Não tem login? <a href="#">Clique aqui para cadastrar-se!</a></p>
+            <p>Não tem login? <a href="#" id="open-cadastro">Clique aqui para cadastrar-se!</a></p>
         </div>
-  </div>
+    </div>
+</div>
+
+<!-- POPUP DE CADASTRO -->
+<div id="cadastro-modal" class="modal-cadastro">
+    <div class="modal-content-cadastro">
+        <div class="header-login">
+            <span class="close">&times;</span>
+            <div class="logo">
+                <img src="./img/PerifaEdu 2.png" alt="Logo PerifaEdu" />
+                <span>PERIFA<span>EDU</span></span>
+            </div>
+        </div>
+        <h1>CADASTRO</h1>
+        
+        <form id="cadastroForm">
+            <div class="form-group">
+                <label for="name" class="required">NOME COMPLETO:</label>
+                <input type="text" id="name" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cpf" class="required">CPF:</label>
+                <input type="text" id="cpf" placeholder="Ex: 123.456.789-10" required>
+                <script>
+                    document.getElementById('cpf').addEventListener('input', function(e) {
+                        let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
+                        value = value.substring(0, 11); // Limita a 11 números
+                        
+                        // Aplica a formatação
+                        if (value.length <= 11) {
+                            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                        }
+                        
+                        e.target.value = value;
+                    });
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label for="dataNascimento" class="required">DATA DE NASCIMENTO:</label>
+                <input type="text" id="dataNascimento" placeholder="DD/MM/AAAA" required>
+                <script>
+                    new Pikaday({
+                        field: document.getElementById('dataNascimento'),
+                        format: 'DD/MM/YYYY',
+                        i18n: {
+                            months: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                            weekdays: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                            weekdaysShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']
+                        }
+                    });
+                </script>
+                <style>
+                  /* Tema Pikaday - Azul Marinho #012E71 */
+.pika-single {
+    background: #ffffff !important;
+    border: 1px solid #012E71 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 25px rgba(1, 46, 113, 0.15) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+
+
+.pika-label {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+/* Botões de navegação */
+
+
+/* Dias da semana */
+.pika-table th {
+    color: #012E71 !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    padding: 10px 0 !important;
+}
+
+/* Dias do mês */
+.pika-button {
+    background: transparent !important;
+    color: #2c3e50 !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    font-size: 14px !important;
+    margin: 2px !important;
+}
+
+.pika-button:hover {
+    background: #012E71 !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(1, 46, 113, 0.3) !important;
+}
+
+/* Dia de hoje */
+.is-today .pika-button {
+    color: #012E71 !important;
+    font-weight: bold !important;
+    border: 2px solid #012E71 !important;
+    background: rgba(1, 46, 113, 0.1) !important;
+}
+
+/* Dia selecionado */
+.is-selected .pika-button {
+    background: #012E71 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(1, 46, 113, 0.4) !important;
+    font-weight: 600 !important;
+    transform: scale(1.05) !important;
+}
+
+/* Dias de outros meses */
+.is-disabled .pika-button {
+    color: #bdc3c7 !important;
+    background: #f8f9fa !important;
+}
+
+/* Footer (se houver) */
+.pika-footer {
+    border-top: 1px solid #ecf0f1 !important;
+    padding: 10px !important;
+    background: #f8f9fa !important;
+    border-radius: 0 0 10px 10px !important;
+}
+                </style>
+            </div>
+
+            <div class="form-group">
+                <label for="user" class="required">NOME DE USUÁRIO:</label>
+                <input type="text" id="user" placeholder="Insira seu nome de usuário" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cadastro-email" class="required">EMAIL:</label>
+                <input type="email" id="cadastro-email" placeholder="Insira seu e-mail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cadastro-password" class="required">SENHA:</label>
+                <input type="password" id="cadastro-password" placeholder="Insira sua senha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password" class="required">REPETIR SENHA:</label>
+                <input type="password" id="confirm-password" placeholder="Repita sua senha" required>
+            </div>
+            <button type="submit" class="btn-cadastro">CADASTRAR-SE</button>
+        </form>
+
+        <div class="register-link">
+            <p>Já tem uma conta? <a href="#" id="open-login">Clique aqui para entrar!</a></p>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

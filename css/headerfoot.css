@@ -72,6 +72,8 @@ header {
 .perfil:hover {
   transform: scale(1.1);
 }
+
+
 /* Mobile Menu */
 .mobile-menu {
   display: none;
