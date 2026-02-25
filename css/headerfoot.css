@@ -51,28 +51,38 @@ header {
 }
 
 .desktop-menu a {
+  position: relative;
+  display: inline-block;
+  padding: 5px 0;
   color: white;
   text-decoration: none;
-  font-style: italic;
-  font-size: 15px;
 }
 
-.desktop-menu a:hover {
-  text-decoration: none;
-  bottom: -5px;
-  left: 50%;
-  font-weight: 550;
-  transition: 0.5 ease;
-  animation-name: expandir1;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
+/* Linha animada */
+.desktop-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #188EF8;
+  transition: width 0.3s ease;
+}
+
+/* Hover */
+.desktop-menu a:hover::after {
+  width: 100%;
+}
+
+/* Página ativa */
+.desktop-menu a.active::after {
+  width: 100%;
 }
 
 .perfil:hover {
   transform: scale(1.1);
 }
-
 
 /* Mobile Menu */
 .mobile-menu {

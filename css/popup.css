@@ -34,7 +34,7 @@
   
   .modal-content-cadastro {
     background: white;
-    margin: auto auto;
+    margin: 0 auto 0 auto;
     width: 600px;
     height: auto;
     border-radius: 8px;
