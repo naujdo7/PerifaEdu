@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerifaEdu</title>
+</head>
+<body>
 <div id="recuperacao-modal" class="modal" style="display: none;">
         <div class="modal-content-senha">
             <div class="header-login">
@@ -131,3 +139,153 @@
     text-decoration: underline;
 }
     </style>
+
+<script>
+
+let email_recuperacao = "";
+
+
+/* ENVIAR EMAIL */
+
+document.getElementById("btn-enviar-email").onclick = function(){
+
+let email = document.getElementById("recuperacao-email").value;
+
+email_recuperacao = email;
+
+fetch("recuperar/enviar_codigo.php",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:"email="+email
+
+})
+.then(res=>res.text())
+.then(res=>{
+
+if(res=="ok"){
+
+alert("Código enviado");
+
+document.getElementById("step-email").style.display="none";
+document.getElementById("step-codigo").style.display="block";
+
+}else{
+
+alert(res);
+
+}
+
+});
+
+};
+
+
+
+/* AUTO PULAR INPUTS */
+
+let inputs = document.querySelectorAll(".codigo-input");
+
+inputs.forEach((input,index)=>{
+
+input.addEventListener("input",function(){
+
+if(this.value.length==1 && index<5){
+
+inputs[index+1].focus();
+
+}
+
+});
+
+});
+
+
+
+/* VERIFICAR CODIGO */
+
+document.getElementById("btn-enviar-codigo").onclick=function(){
+
+let codigo="";
+
+document.querySelectorAll(".codigo-input").forEach(input=>{
+
+codigo += input.value;
+
+});
+
+fetch("recuperar/verificar_codigo.php",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:"codigo="+codigo+"&email="+email_recuperacao
+
+})
+.then(res=>res.text())
+.then(res=>{
+
+if(res=="ok"){
+
+document.getElementById("step-codigo").style.display="none";
+document.getElementById("step-nova-senha").style.display="block";
+
+}else{
+
+alert("Código inválido ou expirado");
+
+}
+
+});
+
+};
+
+
+
+/* ATUALIZAR SENHA */
+
+document.getElementById("btn-confirmar-senha").onclick=function(){
+
+let senha = document.getElementById("nova-senha").value;
+let confirmar = document.getElementById("confirmar-senha").value;
+
+if(senha != confirmar){
+
+alert("Senhas não coincidem");
+return;
+
+}
+
+fetch("recuperar/atualizar_senha.php",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:"senha="+senha+"&confirmar="+confirmar+"&email="+email_recuperacao
+
+})
+.then(res=>res.text())
+.then(res=>{
+
+if(res=="ok"){
+
+alert("Senha alterada com sucesso!");
+location.reload();
+
+}else{
+
+alert(res);
+
+}
+
+});
+
+};
+</script>

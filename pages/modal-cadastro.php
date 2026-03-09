@@ -19,36 +19,105 @@
                 </div>
             </div>
 
-            <form id="cadastroForm">
+            <form id="cadastroForm" method="POST" action="./cadastrar.php">
                 <h1>CADASTRO</h1>
                 <div class="form-group">
                     <label for="name" class="required">NOME COMPLETO:</label>
-                    <input type="text" class="caixa-texto" id="name" placeholder="Digite seu nome completo" required>
+                    <input type="text" class="caixa-texto" id="name" name="nome" placeholder="Digite seu nome completo" required>
                 </div>
 
                 <div class="form-group">
                     <label for="cpf" class="required">CPF:</label>
-                    <input type="text" class="caixa-texto" id="cpf" placeholder="Ex: 123.456.789-10" required>
+                    <input type="text" class="caixa-texto" id="cpf" name="cpf" placeholder="Ex: 123.456.789-10" required>
+                    <small id="cpf-status"></small>
+                    
                     <script>
-                        document.getElementById('cpf').addEventListener('input', function (e) {
-                            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
-                            value = value.substring(0, 11); // Limita a 11 números
+                    const cpfInput = document.getElementById("cpf");
+                    const cpfStatus = document.getElementById("cpf-status");
 
-                            // Aplica a formatação
-                            if (value.length <= 11) {
-                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
-                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
-                                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-                            }
+                    cpfInput.addEventListener("input", function(e){
 
-                            e.target.value = value;
-                        });
+                    let value = e.target.value.replace(/\D/g,"");
+                    value = value.substring(0,11);
+
+                    /* mascara */
+
+                    if(value.length > 9){
+                    value = value.replace(/(\d{3})(\d)/,"$1.$2");
+                    value = value.replace(/(\d{3})(\d)/,"$1.$2");
+                    value = value.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+                    }
+                    else if(value.length > 6){
+                    value = value.replace(/(\d{3})(\d)/,"$1.$2");
+                    value = value.replace(/(\d{3})(\d)/,"$1.$2");
+                    }
+                    else if(value.length > 3){
+                    value = value.replace(/(\d{3})(\d)/,"$1.$2");
+                    }
+
+                    e.target.value = value;
+
+                    /* validar cpf */
+
+                    let cpf = value.replace(/\D/g,"");
+
+                    if(cpf.length === 11){
+
+                    if(validarCPF(cpf)){
+                    cpfStatus.innerText = "CPF válido";
+                    cpfStatus.style.color = "green";
+                    }else{
+                    cpfStatus.innerText = "CPF inválido";
+                    cpfStatus.style.color = "red";
+                    }
+
+                    }else{
+
+                    cpfStatus.innerText = "";
+
+                    }
+
+                    });
+
+
+                    function validarCPF(cpf){
+
+                    if(/^(\d)\1+$/.test(cpf)) return false;
+
+                    let soma = 0;
+                    let resto;
+
+                    for(let i=1;i<=9;i++){
+                    soma += parseInt(cpf.substring(i-1,i))*(11-i);
+                    }
+
+                    resto = (soma*10)%11;
+
+                    if(resto==10 || resto==11) resto=0;
+
+                    if(resto != parseInt(cpf.substring(9,10))) return false;
+
+                    soma = 0;
+
+                    for(let i=1;i<=10;i++){
+                    soma += parseInt(cpf.substring(i-1,i))*(12-i);
+                    }
+
+                    resto = (soma*10)%11;
+
+                    if(resto==10 || resto==11) resto=0;
+
+                    if(resto != parseInt(cpf.substring(10,11))) return false;
+
+                    return true;
+
+                    }
                     </script>
                 </div>
 
                 <div class="form-group">
                     <label for="dataNascimento" class="required">DATA DE NASCIMENTO:</label>
-                    <input type="text" class="caixa-texto" id="dataNascimento" placeholder="DD/MM/AAAA" required>
+                    <input type="text" class="caixa-texto" id="dataNascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
                     <script>
                         flatpickr("#dataNascimento", {
                             dateFormat: "d/m/Y",
@@ -67,6 +136,30 @@
                                 value = value.replace(/(\d{2})(\d{1,2})/, "$1/$2");
                             }
                             this.value = value;
+                        });
+
+                        document.getElementById("cadastroForm").addEventListener("submit", function(e){
+
+                        e.preventDefault(); // impede recarregar página
+
+                        let formData = new FormData(this);
+
+                        fetch("pages/cadastrar.php",{
+                        method:"POST",
+                        body:formData
+                        })
+                        .then(res=>res.text())
+                        .then(res=>{
+
+                        if(res=="ok"){
+                        alert("Cadastro realizado com sucesso!");
+                        location.reload();
+                        }else{
+                        alert(res);
+                        }
+
+                        });
+
                         });
                     </script>
                     <style>
@@ -148,17 +241,17 @@
 
                 <div class="form-group">
                     <label for="user" class="required">NOME DE USUÁRIO:</label>
-                    <input type="text" class="caixa-texto" id="user" placeholder="Insira seu nome de usuário" required>
+                    <input type="text" class="caixa-texto" id="user" name="usuario" placeholder="Insira seu nome de usuário" required>
                 </div>
 
                 <div class="form-group">
                     <label for="cadastro-email" class="required">EMAIL:</label>
-                    <input type="email" class="caixa-texto" id="cadastro-email" placeholder="Insira seu e-mail" required>
+                    <input type="email" class="caixa-texto" id="cadastro-email" name="email" placeholder="Insira seu e-mail" required>
                 </div>
 
                 <div class="form-group">
                     <label for="cadastro-password" class="required">SENHA:</label>
-                    <input type="password" class="caixa-texto" id="cadastro-password" placeholder="Insira sua senha" required>
+                    <input type="password" class="caixa-texto" id="cadastro-password" name="senha" placeholder="Insira sua senha" required>
                     <i class="fa-solid fa-eye toggle-password" data-target="senha"></i>
                     <div class="password-rules">
                         <p id="rule-length">❌ Mínimo 8 caracteres</p>
@@ -215,7 +308,7 @@
 
                 <div class="form-group">
                     <label for="confirm-password" class="required">REPETIR SENHA:</label>
-                    <input type="password" class="caixa-texto" id="confirm-password" placeholder="Repita sua senha" required>
+                    <input type="password" class="caixa-texto" id="confirm-password" name="confirmar_senha" placeholder="Repita sua senha" required>
                     <i class="fa-solid fa-eye toggle-password" data-target="senha"></i>
                 </div>
                 <button type="submit" class="btn-cadastro">CADASTRAR-SE</button>
