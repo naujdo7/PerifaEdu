@@ -1,0 +1,583 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f9fc;
+  color: #111;
+}
+
+/* ===== BANNER ===== */
+.banner-apostilas {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  padding: 40px 40px;
+  background: linear-gradient(270deg, #a3d6ff, #a0cdf6, #ffffff, #a3d6ff);
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease-in-out infinite;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.banner-apostilas h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #012e71;
+  margin-bottom: 10px;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.banner-apostilas p {
+  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #035aa8;
+  font-weight: 500;
+}
+
+/* ===== NÍVEIS SECTION ===== */
+.niveis-section {
+  padding: 50px 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #e6f3fb, #ffffff);
+}
+
+.niveis-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #012e71;
+  margin-bottom: 35px;
+}
+
+.niveis-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nivel-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 25px 35px;
+  background: white;
+  border: 2px solid #bbb;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #012e71;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nivel-icon {
+  font-size: 2.5rem;
+  display: block;
+}
+
+.nivel-btn:hover {
+  background-color: #dceeff;
+  border-color: #1180ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(17, 128, 255, 0.2);
+}
+
+.nivel-btn.active {
+  background-color: #1180ff;
+  color: white;
+  border-color: #1180ff;
+  box-shadow: 0 8px 16px rgba(17, 128, 255, 0.3);
+}
+
+/* ===== ANOS SECTION ===== */
+.anos-section {
+  padding: 50px 40px;
+  background: white;
+  text-align: center;
+}
+
+.anos-section h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #012e71;
+  margin-bottom: 35px;
+}
+
+.anos-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ano-btn {
+  padding: 12px 24px;
+  background: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #012e71;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.ano-btn:hover {
+  background-color: #dceeff;
+  border-color: #1180ff;
+  transform: scale(1.05);
+}
+
+.ano-btn.active {
+  background-color: #1180ff;
+  color: white;
+  border-color: #1180ff;
+}
+
+/* ===== DISCIPLINAS SECTION ===== */
+.disciplinas-section {
+  padding: 50px 40px;
+  background: linear-gradient(135deg, #e6f3fb, #ffffff);
+}
+
+.disciplinas-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #012e71;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.disciplinas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== CARD DE DISCIPLINA ===== */
+.disciplina-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.disciplina-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(17, 128, 255, 0.15);
+}
+
+.disciplina-header {
+  background: linear-gradient(135deg, #1180ff, #188EF8);
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.disciplina-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.disciplina-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.disciplina-body {
+  padding: 20px;
+}
+
+.apostila-list {
+  list-style: none;
+}
+
+.apostila-item {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #f9f9f9;
+  border-left: 4px solid #1180ff;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.apostila-item:hover {
+  background: #f0f6ff;
+  border-left-color: #188EF8;
+}
+
+.apostila-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: #012e71;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apostila-title::before {
+  content: '📄';
+  font-size: 1.1rem;
+}
+
+.apostila-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.apostila-btn {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  flex: 1;
+  justify-content: center;
+}
+
+.btn-visualizar {
+  background-color: #1180ff;
+  color: white;
+  border: 1px solid #1180ff;
+}
+
+.btn-visualizar:hover {
+  background-color: #0d5fc4;
+  box-shadow: 0 4px 8px rgba(17, 128, 255, 0.3);
+}
+
+.btn-download {
+  background-color: white;
+  color: #1180ff;
+  border: 1px solid #1180ff;
+}
+
+.btn-download:hover {
+  background-color: #e6f3fb;
+  transform: scale(1.02);
+}
+
+/* ===== MODAL PDF ===== */
+.modal-pdf {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-pdf-content {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #1180ff;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.modal-close:hover {
+  background: #0d5fc4;
+  transform: scale(1.1);
+}
+
+#pdf-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablet: 769px a 1024px */
+@media (max-width: 1024px) {
+  .banner-apostilas {
+    height: 200px;
+    padding: 30px 20px;
+  }
+
+  .banner-apostilas h1 {
+    font-size: 2rem;
+  }
+
+  .banner-apostilas p {
+    font-size: 1rem;
+  }
+
+  .niveis-section,
+  .anos-section,
+  .disciplinas-section {
+    padding: 40px 20px;
+  }
+
+  .niveis-section h2,
+  .anos-section h2,
+  .disciplinas-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .niveis-container {
+    gap: 15px;
+  }
+
+  .nivel-btn {
+    min-width: 160px;
+    padding: 20px 25px;
+  }
+
+  .disciplinas-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .modal-pdf-content {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+/* Mobile: até 768px */
+@media (max-width: 768px) {
+  .banner-apostilas {
+    height: 160px;
+    padding: 20px 15px;
+  }
+
+  .banner-apostilas h1 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .banner-apostilas p {
+    font-size: 0.9rem;
+  }
+
+  .niveis-section,
+  .anos-section,
+  .disciplinas-section {
+    padding: 30px 15px;
+  }
+
+  .niveis-section h2,
+  .anos-section h2,
+  .disciplinas-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .niveis-container {
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .nivel-btn {
+    width: 100%;
+    min-width: unset;
+    flex-direction: row;
+    justify-content: center;
+    padding: 15px 20px;
+  }
+
+  .nivel-icon {
+    font-size: 1.8rem;
+  }
+
+  .anos-container {
+    gap: 12px;
+  }
+
+  .ano-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .disciplinas-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .disciplina-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .disciplina-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .apostila-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .apostila-btn {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .modal-pdf-content {
+    width: 98%;
+    height: 98%;
+    border-radius: 8px;
+  }
+
+  .modal-close {
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* Small Mobile: até 480px */
+@media (max-width: 480px) {
+  .banner-apostilas {
+    height: 140px;
+    padding: 15px 10px;
+  }
+
+  .banner-apostilas h1 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }
+
+  .banner-apostilas p {
+    font-size: 0.8rem;
+  }
+
+  .niveis-section,
+  .anos-section,
+  .disciplinas-section {
+    padding: 20px 10px;
+  }
+
+  .niveis-section h2,
+  .anos-section h2,
+  .disciplinas-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .nivel-btn {
+    padding: 12px 15px;
+    min-width: unset;
+    font-size: 14px;
+  }
+
+  .nivel-icon {
+    font-size: 1.5rem;
+  }
+
+  .ano-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+
+  .disciplina-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .apostila-item {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .apostila-title {
+    font-size: 0.9rem;
+  }
+
+  .apostila-btn {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+}

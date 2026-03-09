@@ -8,47 +8,21 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sobre.css">
     <link rel="stylesheet" href="../css/headerfoot.css">
+    <link rel="stylesheet" href="../css/popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../js/headerfoot.js" defer></script>
+    <script src="../js/popup-login.js" defer></script>
+
     <title>PerifaEdu</title>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="../index.html"><img src="../img/PerifaEdu 2.png" alt="Logo PerifaEdu" /></a>
-            <span>PERIFA<span>EDU</span></span>
-        </div>
 
-        <!-- Botão do menu hambúrguer -->
-        <button class="menu-toggle" aria-label="Abrir menu">
-            <i class="fas fa-bars hamburger-icon"></i>
-        </button>
-
-        <!-- Menu Desktop -->
-        <nav class="desktop-menu">
-            <a href="../index.html">INÍCIO</a>
-            <a href="">APOSTILAS</a>
-            <a href="./cursos_tecnicos.html">CURSOS</a>
-            <a href="./competencias.html">COMPETÊNCIAS EDUCACIONAIS</a>
-            <a href="./como-funciona.html">COMO FUNCIONA</a>
-            <a href="./sobre.html" class="active">SOBRE</a>
-            <img class="perfil" src="../img/perfil.png" alt="Logo do perfil de usuário">
-          </nav>
-      
-          <!-- Menu mobile -->
-          <nav class="mobile-menu">
-            <a href="../index.html">INÍCIO</a>
-            <a href="">APOSTILAS</a>
-            <a href="./cursos_tecnicos.html">CURSOS</a>
-            <a href="./competencias.html">COMPETÊNCIAS EDUCACIONAIS</a>
-            <a href="./como-funciona.html">COMO FUNCIONA</a>
-            <a href="./sobre.html">SOBRE</a>
-            <img class="perfil" src="../img/perfil.png" alt="Logo do perfil de usuário">
-        </nav>
-    </header>
+    <?php
+    require("./header.php");
+    ?>
 
     <main>
         <section id="sobre">
@@ -131,13 +105,9 @@
         </section>
     </main>
     <!-- Footer -->
-    <footer>
-        <div id="texto-footer">
-            <p>&copy; 2025 PerifaEdu. Todos os direitos reservados.</p>
-            <p><a href="./politica-de-privacidade.html" target="_blank">Política de Privacidade</a> | <a
-                    href="./termos.html" target="_blank">Termos de Uso</a></p>
-        </div>
-    </footer>
+    <?php
+    require("./footer.php");
+    ?>
 </body>
 
 </html>

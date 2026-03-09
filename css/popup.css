@@ -41,6 +41,11 @@
     text-align: center;
   }
 
+  #cadastroForm {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
   .close {
     float: right;
     font-size: 40px;
@@ -81,10 +86,7 @@ label {
     color: #000000;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"], 
-input[type="date"] {
+.caixa-texto {
     width: 80%;
     padding: 14px;
     background-color: #012E71;
