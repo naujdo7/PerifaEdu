@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModals();
         }
     });
-
+});
 // Funções globais para usar em outros lugares (Se precisar chamar direto no HTML)
 function openLogin() {
     const loginModal = document.getElementById('login-modal');
@@ -307,4 +307,3 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.reload(); 
         });
     }
-});
