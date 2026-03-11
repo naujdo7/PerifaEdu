@@ -10,15 +10,15 @@
             </div>
             <h1>LOGIN</h1>
 
-            <form id="loginForm">
+            <form id="loginForm" method="POST">
                 <div class="form-group">
-                    <label for="login-email" class="required">E-mail / Nome de usuário:</label>
-                    <input type="text" class="caixa-texto" id="login-email" placeholder="Insira seu e-mail" required>
+                    <label for="login-email" class="required">E-mail:</label>
+                    <input type="text" class="caixa-texto" name="email" id="login-email" placeholder="Insira seu e-mail" required>
                 </div>
 
                 <div class="form-group">
                     <label for="login-password" class="required">Senha:</label>
-                    <input type="password" class="caixa-texto" id="login-password" placeholder="Insira sua senha" required>
+                    <input type="password" class="caixa-texto" name="senha" id="login-password" placeholder="Insira sua senha" required>
                     <div class="forgot-password">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
@@ -40,3 +40,41 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let formData = new FormData(this);
+
+fetch("/perifaedu/PerifaEdu/pages/login.php",{
+method:"POST",
+body:formData
+})
+.then(res => res.text())
+.then(res => {
+
+console.log("Resposta:", res);
+
+if(res.trim() === "ok"){
+
+// salva que o usuário está logado
+localStorage.setItem("perifaEduLogado", "true");
+
+alert("Login realizado!");
+location.reload();
+
+}else{
+
+alert(res);
+
+}
+
+})
+.catch(err => console.error(err));
+
+});
+
+</script>

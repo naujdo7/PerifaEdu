@@ -1,29 +1,46 @@
 <?php
+
 session_start();
+require "../conexao.php";
 
-// Simulação de "banco de dados" (array em memória)
-if (!isset($_SESSION['usuarios'])) {
-    $_SESSION['usuarios'] = [];
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
+
+if(empty($email) || empty($senha)){
+echo "Preencha email e senha";
+exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $acao = $_POST['acao'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+/* procurar usuario */
 
-    if ($acao === 'cadastro') {
-        // Salva usuário em "sessão"
-        $_SESSION['usuarios'][$email] = $senha;
-        echo "<p>Cadastro realizado com sucesso!</p>";
-        echo "<a href='../index.php'>Voltar</a>";
+$stmt = $conn->prepare("
+SELECT id, nome_completo, senha
+FROM usuarios
+WHERE email = ?
+");
 
-    } elseif ($acao === 'login') {
-        if (isset($_SESSION['usuarios'][$email]) && $_SESSION['usuarios'][$email] === $senha) {
-            echo "<p>Login realizado com sucesso!</p>";
-            echo "<a href='../index.php'>Voltar</a>";
-        } else {
-            echo "<p>Email ou senha incorretos!</p>";
-            echo "<a href='../index.php'>Tentar novamente</a>";
-        }
-    }
+$stmt->bind_param("s",$email);
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+if($result->num_rows == 0){
+echo "Email não encontrado";
+exit;
 }
+
+$user = $result->fetch_assoc();
+
+/* verificar senha */
+
+if(!password_verify($senha,$user['senha'])){
+echo "Senha incorreta";
+exit;
+}
+
+/* criar sessão */
+
+$_SESSION['usuario_id'] = $user['id'];
+$_SESSION['usuario_nome'] = $user['nome_completo'];
+
+echo "ok";

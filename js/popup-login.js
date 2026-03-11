@@ -110,30 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModals();
         }
     });
-    
-    // =========================================================
-    // LÓGICA: Formulário de Login (Simulação de Entrada)
-    // =========================================================
-    if (document.getElementById('loginForm')) {
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Salva no navegador que o usuário está logado
-            localStorage.setItem('perifaEduLogado', 'true');
-            
-            // Recarrega a página atual para os menus aparecerem
-            window.location.reload(); 
-        });
-    }
-    
-    if (document.getElementById('cadastroForm')) {
-        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Aqui você adicionaria a lógica de cadastro real no futuro
-            console.log('Tentativa de cadastro');
-        });
-    }
-});
 
 // Funções globais para usar em outros lugares (Se precisar chamar direto no HTML)
 function openLogin() {
@@ -331,3 +307,4 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.reload(); 
         });
     }
+});
