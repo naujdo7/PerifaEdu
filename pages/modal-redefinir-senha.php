@@ -23,9 +23,9 @@
                     <label for="recuperacao-email" class="required">E-MAIL:</label>
                     <input type="email" class="caixa-texto" id="recuperacao-email" placeholder="Insira seu e-mail" required>
                 </div>
-                <button class="btn-login" id="btn-enviar-email">ENVIAR</button>
+                <button type="button" class="btn-login" id="btn-enviar-email">ENVIAR</button>
             </div>
-    
+
             <div id="step-codigo" class="recuperacao-step" style="display: none;">
                 <h2>CONFIRMAÇÃO DE E-MAIL</h2>
                 <p class="subtitle">Enviamos um código de 6 dígitos para confirmar seu e-mail.<br>Verifique sua caixa de entrada ou spam.</p>
@@ -41,9 +41,9 @@
                 <a href="#" class="reenviar-link" id="reenviar-codigo">Não recebeu o código? Clique aqui para reenviar!</a>
                 <p id="contador-reenvio" style="font-size:13px;color:gray;"></p>
 
-                <button class="btn-login" id="btn-enviar-codigo">ENVIAR</button>
+                <button type="button" class="btn-login" id="btn-enviar-codigo">ENVIAR</button>
             </div>
-    
+
             <div id="step-nova-senha" class="recuperacao-step" style="display: none;">
                 <h2 id="titulo-redefinir-senha">REDEFINIÇÃO DE SENHA</h2>
                 <div class="form-group">
@@ -62,7 +62,7 @@
                     <label for="confirmar-senha" class="required">CONFIRMAR SENHA:</label>
                     <input type="password" class="caixa-texto" id="confirmar-senha" placeholder="Digite sua senha igual a anterior" required>
                 </div>
-                <button class="btn-login" id="btn-confirmar-senha">CONFIRMAR</button>
+                <button type="button" class="btn-login" id="btn-confirmar-senha">CONFIRMAR</button>
             </div>
     
         </div>
@@ -203,9 +203,10 @@ body:"email="+email
 
 })
 .then(res=>res.text())
+.then(res=>res.trim())
 .then(res=>{
 
-if(res=="ok"){
+if(res === "ok"){
 
 alert("Código enviado");
 
@@ -243,8 +244,6 @@ inputs[index+1].focus();
 });
 
 });
-
-
 
 /* VERIFICAR CODIGO */
 
