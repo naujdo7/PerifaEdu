@@ -38,7 +38,9 @@
                     <input type="text" maxlength="1" class="codigo-input">
                     <input type="text" maxlength="1" class="codigo-input">
                 </div>
-                <a href="#" class="reenviar-link">Não recebeu o código? Clique aqui para reenviar!</a>
+                <a href="#" class="reenviar-link" id="reenviar-codigo">Não recebeu o código? Clique aqui para reenviar!</a>
+                <p id="contador-reenvio" style="font-size:13px;color:gray;"></p>
+
                 <button class="btn-login" id="btn-enviar-codigo">ENVIAR</button>
             </div>
     
@@ -144,6 +146,43 @@
 
 let email_recuperacao = "";
 
+/* CONTADOR DE REENVIO */
+
+let tempoRestante = 30;
+let intervaloContador;
+
+function iniciarContagem(){
+
+const contador = document.getElementById("contador-reenvio");
+const botao = document.getElementById("reenviar-codigo");
+
+tempoRestante = 30;
+
+botao.style.pointerEvents = "none";
+botao.style.opacity = "0.5";
+
+contador.innerText = "Reenviar código em " + tempoRestante + "s";
+
+intervaloContador = setInterval(()=>{
+
+tempoRestante--;
+
+contador.innerText = "Reenviar código em " + tempoRestante + "s";
+
+if(tempoRestante <= 0){
+
+clearInterval(intervaloContador);
+
+contador.innerText = "";
+
+botao.style.pointerEvents = "auto";
+botao.style.opacity = "1";
+
+}
+
+},1000);
+
+}
 
 /* ENVIAR EMAIL */
 
@@ -172,6 +211,8 @@ alert("Código enviado");
 
 document.getElementById("step-email").style.display="none";
 document.getElementById("step-codigo").style.display="block";
+
+iniciarContagem();
 
 }else{
 
@@ -245,7 +286,45 @@ alert("Código inválido ou expirado");
 
 };
 
+/* REENVIAR CODIGO */
 
+document.getElementById("reenviar-codigo").onclick = function(e){
+
+e.preventDefault();
+
+if(email_recuperacao == ""){
+alert("Digite o email primeiro");
+return;
+}
+
+fetch("recuperar/enviar_codigo.php",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:"email="+email_recuperacao
+
+})
+.then(res=>res.text())
+.then(res=>{
+
+if(res=="ok"){
+
+alert("Novo código enviado para seu email");
+
+iniciarContagem();
+
+}else{
+
+alert(res);
+
+}
+
+});
+
+};
 
 /* ATUALIZAR SENHA */
 

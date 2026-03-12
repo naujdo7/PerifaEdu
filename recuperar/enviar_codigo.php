@@ -2,6 +2,8 @@
 
 require '../conexao.php';
 
+require '../config_env.php';
+
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
@@ -39,8 +41,8 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'davichicarellisenac@gmail.com';
-$mail->Password = 'rsgn ckiq wkkm xurw';
+$mail->Username = EMAIL_USER;
+$mail->Password = EMAIL_PASS;
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
@@ -51,8 +53,6 @@ $mail->isHTML(true);
 $mail->Subject = 'PerifaEdu - Recupere sua senha';
 
 $mail->Body = "
-<h2>Recuperação de senha</h2>
-
 <p>Olá!</p>
 
 <p>Recebemos uma solicitação para redefinir sua senha no <strong>PerifaEdu</strong>.</p>

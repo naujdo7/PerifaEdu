@@ -207,4 +207,11 @@ input::placeholder {
     content: " *";
     color: #e74c3c;
 }
-  
+
+#contador-reenvio{
+margin-top: 10px;   /* distância do botão reenviar */
+margin-bottom: 20px; /* distância do botão ENVIAR */
+font-size: 13px;
+color: gray;
+text-align: center;
+}
