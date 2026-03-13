@@ -175,26 +175,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // 2. Transição: E-mail -> Código
-        if (btnEnviarEmail) {
-            btnEnviarEmail.addEventListener('click', function(e) {
-                e.preventDefault(); // Impede o botão de recarregar a página
-                // Futuramente aqui você fará a requisição para o back-end enviar o e-mail
-                stepEmail.style.display = 'none';
-                stepCodigo.style.display = 'block';
-            });
-        }
-
-        // 3. Transição: Código -> Nova Senha
-        if (btnEnviarCodigo) {
-            btnEnviarCodigo.addEventListener('click', function(e) {
-                e.preventDefault(); // Impede o botão de recarregar a página
-                // Futuramente aqui você enviará o código pro back-end validar
-                stepCodigo.style.display = 'none';
-                stepNovaSenha.style.display = 'block';
-            });
-        }
-
         // 4. Lógica para pular para o próximo quadradinho do código automaticamente
         const codigoInputs = document.querySelectorAll('.codigo-input');
         if (codigoInputs.length > 0) {

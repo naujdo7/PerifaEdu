@@ -22,8 +22,10 @@
                 <div class="form-group">
                     <label for="recuperacao-email" class="required">E-MAIL:</label>
                     <input type="email" class="caixa-texto" id="recuperacao-email" placeholder="Insira seu e-mail" required>
+                    <p id="erro-email" style="color:red; font-size:14px; padding-top:5px; padding-left:5px;"></p>
                 </div>
                 <button type="button" class="btn-login" id="btn-enviar-email">ENVIAR</button>
+                <p id="msg-email" class="msg-sucesso"></p>
             </div>
 
             <div id="step-codigo" class="recuperacao-step" style="display: none;">
@@ -61,8 +63,10 @@
                 <div class="form-group">
                     <label for="confirmar-senha" class="required">CONFIRMAR SENHA:</label>
                     <input type="password" class="caixa-texto" id="confirmar-senha" placeholder="Digite sua senha igual a anterior" required>
+                    <p id="erro-confirmar-senha" class="msg-erro"></p>
                 </div>
                 <button type="button" class="btn-login" id="btn-confirmar-senha">CONFIRMAR</button>
+                <p id="msg-senha" class="msg-sucesso"></p>
             </div>
     
         </div>
@@ -184,13 +188,86 @@ botao.style.opacity = "1";
 
 }
 
+/* RESETAR MODAL */
+
+function resetarRecuperacao(){
+
+document.getElementById("erro-email").innerText="";
+document.getElementById("msg-email").innerText="";
+document.getElementById("erro-confirmar-senha").innerText="";
+document.getElementById("msg-senha").innerText="";
+document.getElementById("contador-reenvio").innerText="";
+
+document.getElementById("recuperacao-email").value="";
+document.getElementById("nova-senha").value="";
+document.getElementById("confirmar-senha").value="";
+
+document.querySelectorAll(".codigo-input").forEach(input=>{
+input.value="";
+});
+
+document.getElementById("step-email").style.display="block";
+document.getElementById("step-codigo").style.display="none";
+document.getElementById("step-nova-senha").style.display="none";
+
+let btn=document.getElementById("btn-enviar-email");
+btn.disabled=false;
+btn.innerText="ENVIAR";
+
+email_recuperacao="";
+
+}
+
+/* FECHAR MODAL */
+
+document.querySelector(".close-recuperacao").onclick=function(){
+
+document.getElementById("recuperacao-modal").style.display="none";
+
+resetarRecuperacao();
+
+};
+
+/* FECHAR CLICANDO FORA */
+
+window.onclick=function(event){
+
+let modal=document.getElementById("recuperacao-modal");
+
+if(event.target==modal){
+
+modal.style.display="none";
+
+resetarRecuperacao();
+
+}
+
+};
+
 /* ENVIAR EMAIL */
 
-document.getElementById("btn-enviar-email").onclick = function(){
+document.getElementById("btn-enviar-email").onclick=function(){
 
-let email = document.getElementById("recuperacao-email").value;
+let btn=document.getElementById("btn-enviar-email");
 
-email_recuperacao = email;
+let email=document.getElementById("recuperacao-email").value.trim();
+
+if(email===""){
+document.getElementById("erro-email").innerText="Digite um email válido";
+return;
+}
+
+let regex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!regex.test(email)){
+document.getElementById("erro-email").innerText="Digite um email válido";
+return;
+}
+
+email_recuperacao=email;
+
+btn.disabled=true;
+btn.innerText="Enviando...";
 
 fetch("recuperar/enviar_codigo.php",{
 
@@ -199,25 +276,40 @@ headers:{
 "Content-Type":"application/x-www-form-urlencoded"
 },
 
-body:"email="+email
+body:"email="+encodeURIComponent(email)
 
 })
 .then(res=>res.text())
-.then(res=>res.trim())
 .then(res=>{
 
-if(res === "ok"){
+res=res.trim();
 
-alert("Código enviado");
+let partes=res.split("|");
+
+if(partes[0]==="ok"){
+
+let emailMascarado=partes[1];
+
+document.getElementById("msg-email").innerText=
+"✔ Código enviado para "+emailMascarado;
+
+document.getElementById("erro-email").innerText="";
+
+setTimeout(()=>{
 
 document.getElementById("step-email").style.display="none";
 document.getElementById("step-codigo").style.display="block";
+
+},2000);
 
 iniciarContagem();
 
 }else{
 
-alert(res);
+document.getElementById("erro-email").innerText=res;
+
+btn.disabled=false;
+btn.innerText="ENVIAR";
 
 }
 
@@ -225,11 +317,9 @@ alert(res);
 
 };
 
-
-
 /* AUTO PULAR INPUTS */
 
-let inputs = document.querySelectorAll(".codigo-input");
+let inputs=document.querySelectorAll(".codigo-input");
 
 inputs.forEach((input,index)=>{
 
@@ -252,9 +342,7 @@ document.getElementById("btn-enviar-codigo").onclick=function(){
 let codigo="";
 
 document.querySelectorAll(".codigo-input").forEach(input=>{
-
-codigo += input.value;
-
+codigo+=input.value;
 });
 
 fetch("recuperar/verificar_codigo.php",{
@@ -270,14 +358,17 @@ body:"codigo="+codigo+"&email="+email_recuperacao
 .then(res=>res.text())
 .then(res=>{
 
-if(res=="ok"){
+res=res.trim();
+
+if(res==="ok"){
 
 document.getElementById("step-codigo").style.display="none";
 document.getElementById("step-nova-senha").style.display="block";
 
 }else{
 
-alert("Código inválido ou expirado");
+document.getElementById("contador-reenvio").innerText=
+"❌ "+res;
 
 }
 
@@ -287,11 +378,11 @@ alert("Código inválido ou expirado");
 
 /* REENVIAR CODIGO */
 
-document.getElementById("reenviar-codigo").onclick = function(e){
+document.getElementById("reenviar-codigo").onclick=function(e){
 
 e.preventDefault();
 
-if(email_recuperacao == ""){
+if(email_recuperacao===""){
 alert("Digite o email primeiro");
 return;
 }
@@ -309,15 +400,21 @@ body:"email="+email_recuperacao
 .then(res=>res.text())
 .then(res=>{
 
-if(res=="ok"){
+res=res.trim();
 
-alert("Novo código enviado para seu email");
+let partes=res.split("|");
+
+if(partes[0]==="ok"){
+
+document.getElementById("contador-reenvio").innerText=
+"✔ Novo código enviado";
 
 iniciarContagem();
 
 }else{
 
-alert(res);
+document.getElementById("contador-reenvio").innerText=
+"❌ "+res;
 
 }
 
@@ -329,12 +426,14 @@ alert(res);
 
 document.getElementById("btn-confirmar-senha").onclick=function(){
 
-let senha = document.getElementById("nova-senha").value;
-let confirmar = document.getElementById("confirmar-senha").value;
+let senha=document.getElementById("nova-senha").value;
+let confirmar=document.getElementById("confirmar-senha").value;
 
-if(senha != confirmar){
+if(senha!=confirmar){
 
-alert("Senhas não coincidem");
+document.getElementById("erro-confirmar-senha").innerText=
+"❌ As senhas não coincidem";
+
 return;
 
 }
@@ -352,18 +451,26 @@ body:"senha="+senha+"&confirmar="+confirmar+"&email="+email_recuperacao
 .then(res=>res.text())
 .then(res=>{
 
-if(res=="ok"){
+if(res==="ok"){
 
-alert("Senha alterada com sucesso!");
+document.getElementById("erro-confirmar-senha").innerText="";
+
+document.getElementById("msg-senha").innerText=
+"✔ Senha alterada com sucesso!";
+
+setTimeout(()=>{
 location.reload();
+},2000);
 
 }else{
 
-alert(res);
+document.getElementById("erro-confirmar-senha").innerText=
+"❌ "+res;
 
 }
 
 });
 
 };
+
 </script>

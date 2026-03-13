@@ -12,6 +12,19 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 $email = $_POST['email'] ?? '';
 
+function mascararEmail($email){
+
+$partes = explode("@",$email);
+
+$nome = $partes[0];
+$dominio = $partes[1];
+
+$inicio = substr($nome,0,2);
+
+return $inicio . "***@" . $dominio;
+
+}
+
 if($email==""){
 echo "Email não enviado";
 exit;
@@ -27,6 +40,9 @@ if($result->num_rows==0){
 echo "Email não encontrado";
 exit;
 }
+
+/* MASCARAR EMAIL SOMENTE SE EXISTIR */
+$emailMascarado = mascararEmail($email);
 
 $codigo = rand(100000,999999);
 
@@ -46,7 +62,7 @@ $mail->Password = EMAIL_PASS;
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
-$mail->setFrom('davichicarellisenac@gmail.com','PerifaEdu');
+$mail->setFrom('perifaedu@gmail.com','PerifaEdu');
 $mail->addAddress($email);
 
 $mail->isHTML(true);
@@ -71,4 +87,4 @@ $mail->Body = "
 
 $mail->send();
 
-echo "ok";
+echo "ok|" . $emailMascarado;

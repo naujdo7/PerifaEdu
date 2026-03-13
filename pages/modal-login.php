@@ -19,11 +19,13 @@
                 <div class="form-group">
                     <label for="login-password" class="required">Senha:</label>
                     <input type="password" class="caixa-texto" name="senha" id="login-password" placeholder="Insira sua senha" required>
+                    <p id="erro-login" class="msg-erro2"></p>
                     <div class="forgot-password">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
                 </div>
                 <button type="submit" class="btn-login">ENTRAR</button>
+                <p id="msg-login" class="msg-sucesso2"></p>
             </form>
 
             <div class="social-login">
@@ -41,13 +43,56 @@
         </div>
     </div>
 
-    <script>
+<script>
 
-document.getElementById("loginForm").addEventListener("submit", function(e){
+const loginForm = document.getElementById("loginForm");
+const loginModal = document.getElementById("login-modal");
+const closeLogin = loginModal.querySelector(".close");
+
+/* FUNÇÃO PARA RESETAR LOGIN */
+
+function resetarLogin(){
+
+loginForm.reset();
+
+document.getElementById("msg-login").innerText="";
+document.getElementById("erro-login").innerText="";
+
+let btn = loginForm.querySelector(".btn-login");
+btn.disabled=false;
+btn.innerText="ENTRAR";
+
+}
+
+/* FECHAR MODAL */
+
+closeLogin.addEventListener("click", function(){
+
+loginModal.style.display="none";
+
+resetarLogin();
+
+});
+
+/* SUBMIT LOGIN */
+
+loginForm.addEventListener("submit", function(e){
 
 e.preventDefault();
 
+let btn = this.querySelector(".btn-login");
+
 let formData = new FormData(this);
+
+/* limpa mensagens */
+
+document.getElementById("msg-login").innerText="";
+document.getElementById("erro-login").innerText="";
+
+/* desabilita botão */
+
+btn.disabled = true;
+btn.innerText = "Entrando...";
 
 fetch("/perifaedu/PerifaEdu/pages/login.php",{
 method:"POST",
@@ -56,24 +101,42 @@ body:formData
 .then(res => res.text())
 .then(res => {
 
-console.log("Resposta:", res);
+res = res.trim();
 
-if(res.trim() === "ok"){
+if(res === "ok"){
 
-// salva que o usuário está logado
 localStorage.setItem("perifaEduLogado", "true");
 
-alert("Login realizado!");
+document.getElementById("msg-login").innerText =
+"✔ Login realizado com sucesso!";
+
+setTimeout(()=>{
+
 location.reload();
+
+},2000);
 
 }else{
 
-alert(res);
+document.getElementById("erro-login").innerText = res;
+
+btn.disabled=false;
+btn.innerText="ENTRAR";
 
 }
 
 })
-.catch(err => console.error(err));
+.catch(err => {
+
+console.error(err);
+
+document.getElementById("erro-login").innerText =
+"❌ Erro ao realizar login.";
+
+btn.disabled=false;
+btn.innerText="ENTRAR";
+
+});
 
 });
 

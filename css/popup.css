@@ -215,3 +215,33 @@ font-size: 13px;
 color: gray;
 text-align: center;
 }
+
+.msg-sucesso{
+color: #2ecc71;
+font-size: 14px;
+margin-top: 10px;
+font-weight: 500;
+}
+
+.msg-erro{
+color: #e74c3c;
+font-size: 13px;
+margin-top: 1px;
+font-weight: 500;
+}
+
+.msg-sucesso2{
+color: #2ecc71;
+font-size: 16px;
+margin-top: 10px;
+font-weight: 500;
+}
+
+.msg-erro2{
+color: #e74c3c;
+font-size: 14px;
+margin-top: 1px;
+margin-bottom: 8px;
+margin-left: 4px;
+font-weight: 500;
+}
