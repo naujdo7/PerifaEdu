@@ -11,6 +11,7 @@ require '../PHPMailer/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 $email = $_POST['email'] ?? '';
+$tipo = $_POST['tipo'] ?? 'recuperar';
 
 function mascararEmail($email){
 
@@ -30,6 +31,10 @@ echo "Email não enviado";
 exit;
 }
 
+/* VERIFICAR EMAIL APENAS NA RECUPERAÇÃO */
+
+if($tipo == "recuperar"){
+
 $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email=?");
 $stmt->bind_param("s",$email);
 $stmt->execute();
@@ -41,16 +46,38 @@ echo "Email não encontrado";
 exit;
 }
 
-/* MASCARAR EMAIL SOMENTE SE EXISTIR */
+}
+
+/* MASCARAR EMAIL */
 $emailMascarado = mascararEmail($email);
 
+/* GERAR CÓDIGO */
 $codigo = rand(100000,999999);
 
 $expira = date("Y-m-d H:i:s", strtotime("+5 minutes"));
 
+/* SALVAR CÓDIGO */
+
+if($tipo == "recuperar"){
+
 $stmt = $conn->prepare("UPDATE usuarios SET codigo=?, codigo_expira=? WHERE email=?");
 $stmt->bind_param("sss",$codigo,$expira,$email);
 $stmt->execute();
+
+}else{
+
+/* salvar temporariamente na sessão para cadastro */
+
+session_start();
+
+$_SESSION['codigo_cadastro'] = $codigo;
+$_SESSION['codigo_email'] = $email;
+$_SESSION['codigo_expira'] = $expira;
+$_SESSION['tentativas_codigo'] = 0;
+
+}
+
+/* ENVIAR EMAIL */
 
 $mail = new PHPMailer(true);
 
@@ -66,12 +93,14 @@ $mail->setFrom('perifaedu@gmail.com','PerifaEdu');
 $mail->addAddress($email);
 
 $mail->isHTML(true);
+
 $mail->Subject = 'PerifaEdu - Recupere sua senha';
 
 $mail->Body = "
+
 <p>Olá!</p>
 
-<p>Recebemos uma solicitação para redefinir sua senha no <strong>PerifaEdu</strong>.</p>
+<p>Recebemos uma solicitação para redefinir sua senha no <strong>PerifaEdu</strong></p>
 
 <p>Use o código abaixo para continuar:</p>
 
@@ -83,7 +112,9 @@ $mail->Body = "
 
 <hr>
 
-<p style='font-size:12px;color:gray;'>Equipe PerifaEdu</p>";
+<p style='font-size:12px;color:gray;'>Equipe PerifaEdu</p>
+
+";
 
 $mail->send();
 

@@ -44,6 +44,7 @@
                 <p id="contador-reenvio" style="font-size:13px;color:gray;"></p>
 
                 <button type="button" class="btn-login" id="btn-enviar-codigo">ENVIAR</button>
+                <p id="msg-cadastro-sucesso" style="margin-top:10px;font-size:16px;font-weight:bold;"></p>
             </div>
 
             <div id="step-nova-senha" class="recuperacao-step" style="display: none;">
@@ -345,6 +346,14 @@ document.querySelectorAll(".codigo-input").forEach(input=>{
 codigo+=input.value;
 });
 
+/* DEFINIR TIPO */
+
+let tipo = "recuperar";
+
+if(sessionStorage.getItem("cadastro_email")){
+tipo = "cadastro";
+}
+
 fetch("recuperar/verificar_codigo.php",{
 
 method:"POST",
@@ -352,7 +361,9 @@ headers:{
 "Content-Type":"application/x-www-form-urlencoded"
 },
 
-body:"codigo="+codigo+"&email="+email_recuperacao
+body:"codigo="+codigo+
+"&email="+email_recuperacao+
+"&tipo="+tipo
 
 })
 .then(res=>res.text())
@@ -362,8 +373,61 @@ res=res.trim();
 
 if(res==="ok"){
 
+/* SE FOR CADASTRO */
+
+if(tipo==="cadastro"){
+
+let dados = new URLSearchParams();
+
+dados.append("nome", sessionStorage.getItem("cadastro_nome"));
+dados.append("cpf", sessionStorage.getItem("cadastro_cpf"));
+dados.append("data_nascimento", sessionStorage.getItem("cadastro_data"));
+dados.append("usuario", sessionStorage.getItem("cadastro_usuario"));
+dados.append("email", sessionStorage.getItem("cadastro_email"));
+dados.append("senha", sessionStorage.getItem("cadastro_senha"));
+dados.append("confirmar_senha", sessionStorage.getItem("cadastro_senha"));
+
+fetch("pages/cadastrar.php",{
+method:"POST",
+body:dados
+})
+.then(res=>res.text())
+.then(res=>{
+
+let msg = document.getElementById("msg-cadastro-sucesso");
+
+if(res=="ok"){
+
+msg.style.color = "green";
+msg.style.fontSize = "16px";
+msg.style.fontWeight = "bold";
+msg.innerText = "✔ Cadastro realizado com sucesso!";
+
+sessionStorage.clear();
+
+setTimeout(()=>{
+
+window.location.href = "index.php";
+
+},2000);
+
+}else{
+
+msg.style.color = "red";
+msg.innerText = "❌ " + res;
+
+}
+
+});
+
+}else{
+
+/* RECUPERAÇÃO NORMAL */
+
 document.getElementById("step-codigo").style.display="none";
 document.getElementById("step-nova-senha").style.display="block";
+
+}
 
 }else{
 
@@ -387,14 +451,20 @@ alert("Digite o email primeiro");
 return;
 }
 
+let dados = new URLSearchParams();
+
+dados.append("email", email_recuperacao);
+
+/* verificar se é cadastro */
+
+if(sessionStorage.getItem("cadastro_email")){
+dados.append("tipo","cadastro");
+}
+
 fetch("recuperar/enviar_codigo.php",{
 
 method:"POST",
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
-
-body:"email="+email_recuperacao
+body:dados
 
 })
 .then(res=>res.text())
@@ -406,14 +476,14 @@ let partes=res.split("|");
 
 if(partes[0]==="ok"){
 
-document.getElementById("contador-reenvio").innerText=
+document.getElementById("contador-reenvio").innerText =
 "✔ Novo código enviado";
 
 iniciarContagem();
 
 }else{
 
-document.getElementById("contador-reenvio").innerText=
+document.getElementById("contador-reenvio").innerText =
 "❌ "+res;
 
 }

@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <form id="cadastroForm" method="POST" action="./cadastrar.php">
+            <form id="cadastroForm">
                 <h1>CADASTRO</h1>
                 <div class="form-group">
                     <label for="name" class="required">NOME COMPLETO:</label>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="cpf" class="required">CPF:</label>
                     <input type="text" class="caixa-texto" id="cpf" name="cpf" placeholder="Ex: 123.456.789-10" required>
-                    <small id="cpf-status"></small>
+                    <small id="cpf-status" style="margin-top: 3px; margin-left: 2px;"></small>
                     
                     <script>
                     const cpfInput = document.getElementById("cpf");
@@ -137,31 +137,8 @@
                             }
                             this.value = value;
                         });
+                        </script>
 
-                        document.getElementById("cadastroForm").addEventListener("submit", function(e){
-
-                        e.preventDefault(); // impede recarregar página
-
-                        let formData = new FormData(this);
-
-                        fetch("pages/cadastrar.php",{
-                        method:"POST",
-                        body:formData
-                        })
-                        .then(res=>res.text())
-                        .then(res=>{
-
-                        if(res=="ok"){
-                        alert("Cadastro realizado com sucesso!");
-                        location.reload();
-                        }else{
-                        alert(res);
-                        }
-
-                        });
-
-                        });
-                    </script>
                     <style>
                         /* Tema Pikaday - Azul Marinho #012E71 */
                         /* ===== CALENDÁRIO PERIFAEDU ===== */
@@ -310,6 +287,7 @@
                     <label for="confirm-password" class="required">REPETIR SENHA:</label>
                     <input type="password" class="caixa-texto" id="confirm-password" name="confirmar_senha" placeholder="Repita sua senha" required>
                     <i class="fa-solid fa-eye toggle-password" data-target="senha"></i>
+                    <p id="msg-cadastro-email" style="margin-top:10px;color:green;font-size:14px;"></p>
                 </div>
                 <button type="submit" class="btn-cadastro">CADASTRAR-SE</button>
             </form>
@@ -319,3 +297,149 @@
             </div>
         </div>
     </div>
+<script>
+
+document.getElementById("cadastroForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let form = this;
+let btn = form.querySelector(".btn-cadastro");
+let formData = new FormData(form);
+
+/* desativar botão */
+
+btn.disabled = true;
+btn.innerText = "Cadastrando...";
+
+/* salvar dados temporariamente */
+
+sessionStorage.setItem("cadastro_nome", formData.get("nome"));
+sessionStorage.setItem("cadastro_cpf", formData.get("cpf"));
+sessionStorage.setItem("cadastro_data", formData.get("data_nascimento"));
+sessionStorage.setItem("cadastro_usuario", formData.get("usuario"));
+sessionStorage.setItem("cadastro_email", formData.get("email"));
+sessionStorage.setItem("cadastro_senha", formData.get("senha"));
+sessionStorage.setItem("cadastro_confirmar", formData.get("confirmar_senha"));
+
+email_recuperacao = formData.get("email");
+
+/* enviar código */
+
+let dados = new URLSearchParams();
+
+dados.append("email", formData.get("email"));
+dados.append("tipo","cadastro");
+
+fetch("./recuperar/enviar_codigo.php",{
+method:"POST",
+body:dados
+})
+.then(res=>res.text())
+.then(res=>{
+
+res = res.trim();
+
+if(res.startsWith("ok")){
+
+let partes = res.split("|");
+let emailMascarado = partes[1];
+
+/* MOSTRAR EMAIL MASCARADO */
+
+let aviso = document.getElementById("msg-cadastro-email");
+
+if(aviso){
+aviso.innerText = "✔ Código enviado para " + emailMascarado;
+}
+
+/* esperar 2 segundos */
+
+setTimeout(()=>{
+
+/* fechar modal cadastro */
+
+document.getElementById("cadastro-modal").style.display = "none";
+
+/* abrir modal confirmação */
+
+document.getElementById("recuperacao-modal").style.display = "flex";
+
+document.getElementById("step-email").style.display = "none";
+document.getElementById("step-codigo").style.display = "block";
+
+/* iniciar contador de reenviar */
+
+iniciarContagem();
+
+},2000);
+
+}else{
+
+alert(res);
+
+btn.disabled = false;
+btn.innerText = "Cadastrar-se";
+
+}
+
+});
+
+});
+
+
+/* ================================= */
+/* REENVIAR CÓDIGO (CADASTRO) */
+/* ================================= */
+
+document.getElementById("reenviar-codigo").onclick=function(e){
+
+e.preventDefault();
+
+if(email_recuperacao===""){
+alert("Erro ao reenviar código.");
+return;
+}
+
+let dados = new URLSearchParams();
+
+dados.append("email", email_recuperacao);
+
+/* verificar se é cadastro */
+
+if(sessionStorage.getItem("cadastro_email")){
+dados.append("tipo","cadastro");
+}
+
+fetch("recuperar/enviar_codigo.php",{
+
+method:"POST",
+body:dados
+
+})
+.then(res=>res.text())
+.then(res=>{
+
+res=res.trim();
+
+let partes=res.split("|");
+
+if(partes[0]==="ok"){
+
+document.getElementById("contador-reenvio").innerText =
+"✔ Novo código enviado";
+
+iniciarContagem();
+
+}else{
+
+document.getElementById("contador-reenvio").innerText =
+"❌ "+res;
+
+}
+
+});
+
+};
+
+</script>

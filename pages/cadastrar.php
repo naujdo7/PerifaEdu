@@ -2,13 +2,20 @@
 
 require "../conexao.php";
 
-$nome = $_POST['nome'];
-$cpf = preg_replace('/[^0-9]/', '', $_POST['cpf']);
-$data = $_POST['data_nascimento'];
-$usuario = $_POST['usuario'];
-$email = $_POST['email'];
-$senha = $_POST['senha'];
-$confirmar = $_POST['confirmar_senha'];
+$nome = $_POST['nome'] ?? '';
+$cpf = preg_replace('/[^0-9]/', '', $_POST['cpf'] ?? '');
+$data = $_POST['data_nascimento'] ?? '';
+$usuario = $_POST['usuario'] ?? '';
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
+$confirmar = $_POST['confirmar_senha'] ?? '';
+
+/* VALIDAR SENHA */
+
+if($senha == "" || $confirmar == ""){
+echo "Erro ao validar senha. Tente novamente.";
+exit;
+}
 
 if($senha != $confirmar){
 echo "As senhas não coincidem";
@@ -31,8 +38,7 @@ exit;
 
 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-/* CONVERTER A DATA */
-$data = $_POST['data_nascimento'];
+/* FORMATAR DATA */
 
 $data_formatada = date("Y-m-d", strtotime($data));
 
@@ -47,5 +53,14 @@ $stmt->bind_param("ssssss", $nome, $cpf, $data_formatada, $usuario, $email, $sen
 $stmt->execute();
 
 echo "ok";
+
+$stmt = $conn->prepare("
+UPDATE usuarios 
+SET codigo=NULL, codigo_expira=NULL
+WHERE email=?
+");
+
+$stmt->bind_param("s",$email);
+$stmt->execute();
 
 ?>
