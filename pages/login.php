@@ -1,5 +1,7 @@
 <?php
 
+ini_set('session.cookie_path', '/');
+
 session_start();
 require "../conexao.php";
 
@@ -14,7 +16,7 @@ exit;
 /* procurar usuario */
 
 $stmt = $conn->prepare("
-SELECT id, nome_completo, senha
+SELECT id, nome_completo, usuario, senha
 FROM usuarios
 WHERE email = ?
 ");
@@ -42,5 +44,6 @@ exit;
 
 $_SESSION['usuario_id'] = $user['id'];
 $_SESSION['usuario_nome'] = $user['nome_completo'];
+$_SESSION['usuario_user'] = $user['usuario'];
 
 echo "ok";

@@ -96,7 +96,8 @@ btn.innerText = "Entrando...";
 
 fetch("/perifaedu/PerifaEdu/pages/login.php",{
 method:"POST",
-body:formData
+body:formData,
+credentials: "include"
 })
 .then(res => res.text())
 .then(res => {

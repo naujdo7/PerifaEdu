@@ -17,7 +17,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contato</h3>
-                <p>Email: contato@perifaedu.com.br</p>
+                <p>Email: perifaedu@gmail.com</p>
                 <p>Telefone: (11) 9999-9999</p>
             </div>
         </div>

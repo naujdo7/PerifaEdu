@@ -54,21 +54,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================
     // LÓGICA: Clique na bolinha do perfil em qualquer página
     // =========================================================
-    if (perfilBtn) {
-        perfilBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const paginaAtual = window.location.pathname;
+    const menuPerfil = document.getElementById('menu-perfil');
 
-            // Se NÃO estiver na página index.html (Início)
-            if (!paginaAtual.endsWith('index.php') && paginaAtual !== '/' && !paginaAtual.endsWith('/PerifaEdu/')) {
-                // Redireciona para o Início mandando o aviso na URL
-                window.location.href = '../index.php?abrirLogin=true';
-            } else {
-                // Se já estiver no index.html, só abre o modal normal
-                openLoginModal();
-            }
-        });
+if (perfilBtn && menuPerfil) {
+    perfilBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
+
+        if (usuarioLogado) {
+            menuPerfil.style.display =
+                menuPerfil.style.display === 'flex' ? 'none' : 'flex';
+        } else {
+            openLoginModal();
+        }
+    });
+
+const fecharMenu = document.getElementById('fechar-menu');
+
+if (fecharMenu) {
+    fecharMenu.addEventListener('click', function(e) {
+        e.preventDefault();
+        menuPerfil.style.display = 'none';
+    });
+}
+
+// 🔥 FECHAR CLICANDO FORA
+document.addEventListener('click', function (e) {
+    if (!menuPerfil.contains(e.target) && e.target !== perfilBtn) {
+        menuPerfil.style.display = 'none';
+    }
+});
+
     } else {
         console.log('Elemento do perfil não encontrado nesta página.');
     }
@@ -274,16 +291,19 @@ document.addEventListener("DOMContentLoaded", function() {
 // =========================================================
     // LÓGICA: BOTÃO DE SAIR (LOGOUT)
     // =========================================================
-    const btnSair = document.getElementById('btn-sair');
-    
-    if (btnSair) {
-        btnSair.addEventListener('click', function(e) {
-            e.preventDefault(); // Evita que a página pule para o topo
-            
-            // 1. Remove a informação de logado do navegador
-            localStorage.removeItem('perifaEduLogado');
-        
-            // 3. Recarrega a página para os menus sumirem
-            window.location.reload(); 
-        });
-    }
+    const btnLogout = document.getElementById('btn-logout');
+
+if (btnLogout) {
+    btnLogout.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // remove login do navegador
+        localStorage.removeItem('perifaEduLogado');
+
+        // encerra sessão no PHP
+        fetch('/perifaedu/PerifaEdu/pages/logout.php')
+            .finally(() => {
+                window.location.reload();
+            });
+    });
+}

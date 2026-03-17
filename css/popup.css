@@ -245,3 +245,95 @@ margin-bottom: 8px;
 margin-left: 4px;
 font-weight: 500;
 }
+
+/* BOTÃO PERFIL */
+.perfil-container {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-perfil {
+    position: absolute;
+    top: 120%; /* abaixo do botão */
+    right: 0;
+    
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    width: max-content;
+
+    min-width: 180px;
+    max-width: 260px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* Header */
+.perfil-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+}
+
+.perfil-foto-menu {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Nome + @ */
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-info strong {
+    font-size: 14px;
+}
+
+.perfil-info span {
+    font-size: 12px;
+    color: gray;
+}
+
+/* Links */
+.menu-perfil a {
+    text-decoration: none;
+    color: #000;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.menu-perfil a:hover {
+    background: #f2f2f2;
+}
+
+/* Logout */
+.logout {
+    color: red;
+    font-weight: bold;
+}
+
+/* Linha */
+.menu-perfil hr {
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
