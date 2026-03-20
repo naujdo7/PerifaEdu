@@ -26,6 +26,9 @@
                 </div>
                 <button type="button" class="btn-login" id="btn-enviar-email">ENVIAR</button>
                 <p id="msg-email" class="msg-sucesso"></p>
+                <button type="button" class="btn-voltar-login" id="btn-voltar-login">
+                    Voltar para o login
+                </button>
             </div>
 
             <div id="step-codigo" class="recuperacao-step" style="display: none;">
@@ -242,6 +245,20 @@ modal.style.display="none";
 resetarRecuperacao();
 
 }
+
+};
+
+/* BOTÃO DE VOLTAR PRO MODAL DE LOGIN */
+document.getElementById("btn-voltar-login").onclick = function(){
+
+    // Fecha o modal de recuperação
+    document.getElementById("recuperacao-modal").style.display = "none";
+
+    // Reseta tudo
+    resetarRecuperacao();
+
+    // Abre o modal de login
+    document.getElementById("login-modal").style.display = "block";
 
 };
 

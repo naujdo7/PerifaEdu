@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtns = document.querySelectorAll('.close');
     
     // Elemento da bolinha do perfil
-    const perfilBtn = document.querySelector('.perfil'); // Confirme se a classe é essa mesma (.perfil) ou mude aqui
+    const perfilBtns = document.querySelectorAll('.perfil'); // Confirme se a classe é essa mesma (.perfil) ou mude aqui
     
     // =========================================================
     // NOVA LÓGICA: VERIFICAR SE ESTÁ LOGADO (Menu Restrito)
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // LÓGICA: Ler URL para abrir login automaticamente
     // =========================================================
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('abrirLogin') === 'true' && loginModal) {
-        openLoginModal();
+    if (urlParams.get('abrirLogin') === 'true' && loginModal && !usuarioLogado) {
+    openLoginModal();
     }
     
     // =========================================================
@@ -56,18 +56,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================
     const menuPerfil = document.getElementById('menu-perfil');
 
-if (perfilBtn && menuPerfil) {
-    perfilBtn.addEventListener('click', function(e) {
-        e.preventDefault();
+if (perfilBtns.length > 0 && menuPerfil) {
 
-        const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
+    perfilBtns.forEach(perfilBtn => {
 
-        if (usuarioLogado) {
-            menuPerfil.style.display =
-                menuPerfil.style.display === 'flex' ? 'none' : 'flex';
-        } else {
-            openLoginModal();
-        }
+        perfilBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
+
+            if (usuarioLogado) {
+                menuPerfil.style.display =
+                    menuPerfil.style.display === 'flex' ? 'none' : 'flex';
+            } else {
+
+                if (!window.location.pathname.includes('index.php')) {
+                    window.location.href = "/PerifaEdu/PerifaEdu/index.php?abrirLogin=true";
+                } else {
+                    openLoginModal();
+                }
+
+            }
+        });
+
     });
 
 const fecharMenu = document.getElementById('fechar-menu');

@@ -337,3 +337,18 @@ font-weight: 500;
         transform: translateY(0);
     }
 }
+
+/* Botão de voltar pro modal de login */
+.btn-voltar-login {
+    margin-top: 2px;
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.btn-voltar-login:hover {
+    color: #0056b3;
+}
