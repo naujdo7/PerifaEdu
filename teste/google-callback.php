@@ -3,6 +3,11 @@ ini_set('session.cookie_path', '/');
 
 require 'config.php';
 
+$cpf = '';
+for($i = 0; $i < 11; $i++){
+    $cpf .= mt_rand(0, 9);
+}
+
 if(isset($_GET['code'])){
 
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
@@ -22,8 +27,9 @@ if(isset($_GET['code'])){
 
     if(!$user){
 	
-        $stmt = $pdo->prepare("INSERT INTO usuarios (usuario,email,fotoPerfil) VALUES (?,?,?)");
-        $stmt->execute([$name,$email,$picture]);
+        $stmt = $pdo->prepare("INSERT INTO usuarios (nome_completo, usuario, email, fotoPerfil, cpf) VALUES (?,?,?,?,?)");
+        $stmt->execute([$name, $name, $email, $picture, $cpf]);
+
 
         $user_id = $pdo->lastInsertId();
 
