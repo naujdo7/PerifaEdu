@@ -1,3 +1,11 @@
+// Detecta retorno do login Google e grava no localStorage
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('loginGoogle') === 'true') {
+    localStorage.setItem('perifaEduLogado', 'true');
+    // Limpa o parâmetro da URL sem recarregar
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+
 // Aguarda o DOM carregar
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos dos modais

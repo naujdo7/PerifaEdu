@@ -1,4 +1,4 @@
-  <!-- POPUP DE LOGIN -->
+<!-- POPUP DE LOGIN -->
   <div id="login-modal" class="modal">
         <div class="modal-content">
             <div class="header-login">
@@ -29,13 +29,29 @@
             </form>
 
             <div class="social-login">
-                <p>Fazer login com:</p>
-                <div class="social-icons">
-                    <div class="social-icon"> <img src="./img/apple.svg" alt=""></div>
-                    <div class="social-icon"> <img src="./img/google.svg" alt=""></div>
-                    <div class="social-icon"> <img src="./img/Microsoft.svg" alt=""></div>
-                </div>
+    <p>Fazer login com:</p>
+    <div class="social-icons">
+        
+        <a href="/teste">
+            <div class="social-icon">
+                <img src="./img/apple.svg" alt="">
             </div>
+        </a>
+        
+        <a href="<?php echo htmlspecialchars($login_url); ?>">
+            <div class="social-icon">
+                <img src="./img/google.svg" alt="">
+            </div>
+        </a>
+
+        <a href="/teste">
+            <div class="social-icon">
+                <img src="./img/Microsoft.svg" alt="">
+            </div>
+        </a>
+
+    </div>
+</div>
 
             <div class="register-link">
                 <p>Não tem login? <a href="#" id="open-cadastro">Clique aqui para cadastrar-se!</a></p>
