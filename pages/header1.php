@@ -4,7 +4,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $nomeUsuario = $_SESSION['usuario_nome'] ?? null;
-$usuario = $_SESSION['usuario_user'] ?? null;
+$emailUsuario = $_SESSION['usuario_email'] ?? null;
+$fotoUsuario = $_SESSION['fotoPerfil'] ?? null;
 
 ?>
 
@@ -29,22 +30,27 @@ $usuario = $_SESSION['usuario_user'] ?? null;
     <a href="./pages/sobre.php">SOBRE</a>
 
     <div class="perfil-container">
-    <img id="perfil-btn" class="perfil" src="/PerifaEdu/PerifaEdu/img/perfil.png">
+
+<?php
+$base = './';
+$foto = !empty($_SESSION['fotoPerfil']) 
+    ? $base . $_SESSION['fotoPerfil'] . '?v=' . time()
+    : $base . 'img/perfil.png';
+?>
+
+<!-- BOTÃO DO PERFIL -->
+<img id="perfil-btn" class="perfil" src="<?= $foto ?>">
 
     <div id="menu-perfil" class="menu-perfil">
         
         <div class="perfil-header">
-            <img src="/PerifaEdu/PerifaEdu/img/perfil.png" class="perfil-foto-menu">
+            <img src="<?= $foto ?>" class="foto-perfil-dropdown">
 
-            <div class="perfil-info">
-                <strong>
-                    <?php echo $nomeUsuario ? $nomeUsuario : "Usuário"; ?>
-                </strong>
-                <span>
-                    <?php echo isset($usuario) ? '@' . htmlspecialchars($usuario) : '@usuario'; ?>
-                </span>
-            </div>
-        </div>
+    <div class="perfil-info">
+        <strong><?= $nomeUsuario ? $nomeUsuario : "Usuário"; ?></strong>
+        <span><?= $emailUsuario ? htmlspecialchars($emailUsuario) : 'email@exemplo.com'; ?></span>
+    </div>
+</div>
 
         <a href="./pages/perfil.php">Meu perfil</a>
 

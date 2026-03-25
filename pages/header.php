@@ -2,7 +2,7 @@
 session_start();
 
 $nomeUsuario = $_SESSION['usuario_nome'] ?? null;
-$usuario = $_SESSION['usuario_user'] ?? null;
+$emailUsuario = $_SESSION['usuario_email'] ?? null;
 
 ?>
 
@@ -27,22 +27,31 @@ $usuario = $_SESSION['usuario_user'] ?? null;
     <a href="./sobre.php">SOBRE</a>
 
     <div class="perfil-container">
-    <img id="perfil-btn" class="perfil" src="/PerifaEdu/PerifaEdu/img/perfil.png">
+    <?php
+$base = '/PerifaEdu/PerifaEdu/';
+$foto = !empty($_SESSION['fotoPerfil']) 
+    ? $base . $_SESSION['fotoPerfil'] . '?v=' . time()
+    : $base . 'img/perfil.png';
+?>
+
+<img id="perfil-btn" class="perfil" src="<?= $foto ?>">
 
     <div id="menu-perfil" class="menu-perfil">
         
         <div class="perfil-header">
-            <img src="/PerifaEdu/PerifaEdu/img/perfil.png" class="perfil-foto-menu">
+<?php
+$foto = !empty($_SESSION['fotoPerfil']) 
+    ? '/PerifaEdu/PerifaEdu/' . $_SESSION['fotoPerfil'] . '?v=' . time()
+    : '/PerifaEdu/PerifaEdu/img/perfil.png';
+?>
 
-            <div class="perfil-info">
-                <strong>
-                    <?php echo $nomeUsuario ? $nomeUsuario : "Usuário"; ?>
-                </strong>
-                <span>
-                    <?php echo isset($usuario) ? '@' . htmlspecialchars($usuario) : '@usuario'; ?>
-                </span>
-            </div>
-        </div>
+<img src="<?= $foto ?>" class="foto-perfil-dropdown">
+
+    <div class="perfil-info">
+        <strong><?= $nomeUsuario ? $nomeUsuario : "Usuário"; ?></strong>
+        <span><?= $emailUsuario ? htmlspecialchars($emailUsuario) : 'email@exemplo.com'; ?></span>
+    </div>
+</div>
 
         <a href="./pages/perfil.php">Meu perfil</a>
 

@@ -40,6 +40,7 @@ if(isset($_GET['code'])){
 
     $_SESSION['usuario_id'] = $user_id;
     $_SESSION['usuario_nome'] = $name;
+    $_SESSION['usuario_email'] = $email;
     $_SESSION['picture'] = $picture;
 
     header("Location: /PerifaEdu/PerifaEdu/index.php?loginGoogle=true");
