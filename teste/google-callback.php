@@ -25,24 +25,32 @@ if(isset($_GET['code'])){
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    if(!$user){
-	
-        $stmt = $pdo->prepare("INSERT INTO usuarios (nome_completo, usuario, email, fotoPerfil, cpf) VALUES (?,?,?,?,?)");
-        $stmt->execute([$name, $name, $email, $picture, $cpf]);
+session_start();
 
+if(!$user){
 
-        $user_id = $pdo->lastInsertId();
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome_completo, usuario, email, fotoPerfil, cpf) VALUES (?,?,?,?,?)");
+    $stmt->execute([$name, $name, $email, $picture, $cpf]);
 
-    } else {
+    $user_id = $pdo->lastInsertId();
 
-        $user_id = $user['id'];
-    }
+    // 🔥 pega o usuário recém criado
+    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id=?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch();
 
-    $_SESSION['usuario_id'] = $user_id;
-    $_SESSION['usuario_nome'] = $name;
-    $_SESSION['usuario_email'] = $email;
-    $_SESSION['picture'] = $picture;
+} else {
+    $user_id = $user['id'];
+}
 
-    header("Location: /PerifaEdu/PerifaEdu/index.php?loginGoogle=true");
-    exit();
+/* 🔥 SESSÃO CORRETA */
+$_SESSION['usuario_id'] = $user_id;
+$_SESSION['usuario_nome'] = $user['nome_completo'];
+$_SESSION['usuario_email'] = $user['email'];
+
+/* 🔥 AQUI ESTÁ A CORREÇÃO */
+$_SESSION['fotoPerfil'] = $user['fotoPerfil']; 
+
+header("Location: /PerifaEdu/PerifaEdu/index.php?loginGoogle=true");
+exit();
 }

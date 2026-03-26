@@ -29,9 +29,16 @@ $emailUsuario = $_SESSION['usuario_email'] ?? null;
     <div class="perfil-container">
     <?php
 $base = '/PerifaEdu/PerifaEdu/';
-$foto = !empty($_SESSION['fotoPerfil']) 
-    ? $base . $_SESSION['fotoPerfil'] . '?v=' . time()
-    : $base . 'img/perfil.png';
+
+$fotoSession = $_SESSION['fotoPerfil'] ?? '';
+
+if (!empty($fotoSession) && filter_var($fotoSession, FILTER_VALIDATE_URL)) {
+    $foto = $fotoSession;
+} else {
+    $foto = !empty($fotoSession) 
+        ? $base . $fotoSession . '?v=' . time()
+        : $base . 'img/perfil.png';
+}
 ?>
 
 <img id="perfil-btn" class="perfil" src="<?= $foto ?>">
@@ -40,9 +47,15 @@ $foto = !empty($_SESSION['fotoPerfil'])
         
         <div class="perfil-header">
 <?php
-$foto = !empty($_SESSION['fotoPerfil']) 
-    ? '/PerifaEdu/PerifaEdu/' . $_SESSION['fotoPerfil'] . '?v=' . time()
-    : '/PerifaEdu/PerifaEdu/img/perfil.png';
+$fotoSession = $_SESSION['fotoPerfil'] ?? '';
+
+if (!empty($fotoSession) && filter_var($fotoSession, FILTER_VALIDATE_URL)) {
+    $foto = $fotoSession;
+} else {
+    $foto = !empty($fotoSession) 
+        ? $base . $fotoSession . '?v=' . time()
+        : $base . 'img/perfil.png';
+}
 ?>
 
 <img src="<?= $foto ?>" class="foto-perfil-dropdown">

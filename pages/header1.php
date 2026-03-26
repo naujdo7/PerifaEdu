@@ -32,10 +32,17 @@ $fotoUsuario = $_SESSION['fotoPerfil'] ?? null;
     <div class="perfil-container">
 
 <?php
-$base = './';
-$foto = !empty($_SESSION['fotoPerfil']) 
-    ? $base . $_SESSION['fotoPerfil'] . '?v=' . time()
-    : $base . 'img/perfil.png';
+$base = '/PerifaEdu/PerifaEdu/';
+
+$fotoSession = $_SESSION['fotoPerfil'] ?? '';
+
+if (!empty($fotoSession) && filter_var($fotoSession, FILTER_VALIDATE_URL)) {
+    $foto = $fotoSession;
+} else {
+    $foto = !empty($fotoSession) 
+        ? $base . $fotoSession . '?v=' . time()
+        : $base . 'img/perfil.png';
+}
 ?>
 
 <!-- BOTÃO DO PERFIL -->
