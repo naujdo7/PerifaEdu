@@ -29,9 +29,9 @@ $emailUsuario = $_SESSION['usuario_email'] ?? null;
     <div class="perfil-container">
     <?php
 $base = '/PerifaEdu/PerifaEdu/';
-$foto = !empty($_SESSION['fotoPerfil']) 
-    ? $base . $_SESSION['fotoPerfil'] . '?v=' . time()
-    : $base . 'img/perfil.png';
+
+$fotoSession = $_SESSION['fotoPerfil'] ?? 'img/perfil.png';
+$foto = $base . $fotoSession . '?v=' . time();
 ?>
 
 <img id="perfil-btn" class="perfil" src="<?= $foto ?>">
@@ -40,9 +40,8 @@ $foto = !empty($_SESSION['fotoPerfil'])
         
         <div class="perfil-header">
 <?php
-$foto = !empty($_SESSION['fotoPerfil']) 
-    ? '/PerifaEdu/PerifaEdu/' . $_SESSION['fotoPerfil'] . '?v=' . time()
-    : '/PerifaEdu/PerifaEdu/img/perfil.png';
+$fotoSession = $_SESSION['fotoPerfil'] ?? 'img/perfil.png';
+$foto = $base . $fotoSession . '?v=' . time();
 ?>
 
 <img src="<?= $foto ?>" class="foto-perfil-dropdown">

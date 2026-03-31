@@ -32,10 +32,10 @@ $fotoUsuario = $_SESSION['fotoPerfil'] ?? null;
     <div class="perfil-container">
 
 <?php
-$base = './';
-$foto = !empty($_SESSION['fotoPerfil']) 
-    ? $base . $_SESSION['fotoPerfil'] . '?v=' . time()
-    : $base . 'img/perfil.png';
+$base = '/PerifaEdu/PerifaEdu/';
+
+$fotoSession = $_SESSION['fotoPerfil'] ?? 'img/perfil.png';
+$foto = $base . $fotoSession . '?v=' . time();
 ?>
 
 <!-- BOTÃO DO PERFIL -->
