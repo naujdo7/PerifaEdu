@@ -130,6 +130,7 @@ body {
   margin-bottom: 12px;
   font-family: "Montserrat", sans-serif;
   text-align: center;
+  padding: 0px 0px 0px 0px;
 }
 
 .tags {
@@ -265,7 +266,7 @@ body {
   transition: color 0.2s;
 }
 
-.course-card:hover button {
+.course-card:hover .btn {
   background-color: #1180ff;
   color: #fff;
   border-color: #1180ff;
@@ -318,7 +319,7 @@ body {
   z-index: 2;
 }
 
-.course-card button {
+.course-card .btn {
   margin-top: auto;
   margin-bottom: 10px;
   width: 90%;
@@ -327,12 +328,15 @@ body {
   color: #012E71;
   font-family: "Alexandria";
   font-size: 17px;
+  text-decoration: none;
   /* font-weight: 600; */
   border: 2px solid #012E71;
   border-radius: 15px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 1;
 }
@@ -467,7 +471,7 @@ body {
     margin-left: 4px;
   }
 
-  .course-card button {
+  .course-card .btn {
     font-size: 13px;
     height: 32px;
     border-radius: 10px;

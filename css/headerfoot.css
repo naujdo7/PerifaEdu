@@ -405,7 +405,7 @@ footer {
 
 .perfil {
     width: 100%;
-    max-width: 50px; /* controla o limite */
+    max-width: 50px !important; /* controla o limite */
     height: auto;
     aspect-ratio: 1/1;
     border-radius: 50%;

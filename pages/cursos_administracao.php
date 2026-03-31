@@ -34,12 +34,12 @@
     <div class="tags-container">
       <h1>Encontre seu curso ideal</h1>
       <div class="tags">
-        <a href="./cursos_ti.html" class="tag-button">TI</a>
-        <a href="./cursos_administracao.html" class="tag-button active">Administração</a>
-        <a href="./cursos_saude.html" class="tag-button">Saúde</a>
-        <a href="./cursos_informatica.html" class="tag-button">Informática</a>
-        <a href="./cursos_sustentabilidade.html" class="tag-button">Sustentabilidade</a>
-        <a href="./cursos_tecnicos.html" class="tag-button">Todos</a>
+        <a href="./cursos_ti.php" class="tag-button">TI</a>
+        <a href="./cursos_administracao.php" class="tag-button">Administração</a>
+        <a href="./cursos_saude.php" class="tag-button">Saúde</a>
+        <a href="./cursos_informatica.php" class="tag-button">Informática</a>
+        <a href="./cursos_sustentabilidade.php" class="tag-button">Sustentabilidade</a>
+        <a href="./cursos_tecnicos.php" class="tag-button active">Todos</a>
       </div>
     </div>
 
@@ -53,7 +53,7 @@
           <h3>Técnico em ADM</h3>
           <p>Liderança, economia, marketing</p>
           <span>Duração | 1 ano</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=tecnico-em-adm" class="btn">Saiba mais</a>
         </div>
 
       </div>

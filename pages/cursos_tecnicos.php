@@ -32,12 +32,12 @@
     <div class="tags-container">
       <h1>Encontre seu curso ideal</h1>
       <div class="tags">
-        <a href="./cursos_ti.html" class="tag-button">TI</a>
-        <a href="./cursos_administracao.html" class="tag-button">Administração</a>
-        <a href="./cursos_saude.html" class="tag-button">Saúde</a>
-        <a href="./cursos_informatica.html" class="tag-button">Informática</a>
-        <a href="./cursos_sustentabilidade.html" class="tag-button">Sustentabilidade</a>
-        <a href="./cursos_tecnicos.html" class="tag-button active">Todos</a>
+        <a href="./cursos_ti.php" class="tag-button">TI</a>
+        <a href="./cursos_administracao.php" class="tag-button">Administração</a>
+        <a href="./cursos_saude.php" class="tag-button">Saúde</a>
+        <a href="./cursos_informatica.php" class="tag-button">Informática</a>
+        <a href="./cursos_sustentabilidade.php" class="tag-button">Sustentabilidade</a>
+        <a href="./cursos_tecnicos.php" class="tag-button active">Todos</a>
       </div>
     </div>
     <div class="conteudo__cursos">
@@ -49,7 +49,7 @@
           <h3>Técnico de TI</h3>
           <p>Front End, Back End e DS</p>
           <span>Duração | 2 anos</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=tecnico-de-ti" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -57,7 +57,7 @@
           <h3>Técnico de Informática</h3>
           <p>Bancada, Hardware</p>
           <span>Duração | 1,5 anos</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=tecnico-de-informatica" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -65,7 +65,7 @@
           <h3>Técnico em ADM</h3>
           <p>Liderança, economia, marketing</p>
           <span>Duração | 1 ano</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=tecnico-em-adm" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -73,7 +73,7 @@
           <h3>Sustentabilidade</h3>
           <p>Indústria, Urbano, Gestão Ambiental</p>
           <span>Duração | 1,5 anos</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=sustentabilidade" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -81,7 +81,7 @@
           <h3>Edificações</h3>
           <p>Construção Civil, Fiscalização de obras</p>
           <span>Duração | 2,5 anos</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=edificacoes" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -89,7 +89,7 @@
           <h3>Contabilidade</h3>
           <p>Finanças, autoria, Impostos</p>
           <span>Duração | 1 ano</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=contabilidade" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -97,7 +97,7 @@
           <h3>Nutrição</h3>
           <p>Saúde e bem-estar</p>
           <span>Duração | 1,5 anos</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=nutricao" class="btn">Saiba mais</a>
         </div>
 
         <div class="course-card">
@@ -105,7 +105,7 @@
           <h3>Psicologia</h3>
           <p>comportamento humano e processos mentais</p>
           <span>Duração | 2,5 anos</span>
-          <button>Saiba mais</button>
+          <a href="matricula.php?curso=psicologia" class="btn">Saiba mais</a>
         </div>
 
       </div>

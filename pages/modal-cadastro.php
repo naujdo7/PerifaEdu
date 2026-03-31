@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" defer>
     <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="./css/reset.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 
 </head>
  <div id="cadastro-modal" class="modal-cadastro">
@@ -117,14 +115,8 @@
 
                 <div class="form-group">
                     <label for="dataNascimento" class="required">DATA DE NASCIMENTO:</label>
-                    <input type="text" class="caixa-texto" id="dataNascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
+                    <input type="date" class="caixa-texto" id="dataNascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
                     <script>
-                        flatpickr("#dataNascimento", {
-                            dateFormat: "d/m/Y",
-                            allowInput: true,
-                            maxDate: "today",
-                            locale: flatpickr.l10ns.pt
-                        });
                         const dataInput = document.getElementById("dataNascimento");
                         dataInput.addEventListener("input", function () {
                             let value = this.value.replace(/\D/g, "");
@@ -138,82 +130,6 @@
                             this.value = value;
                         });
                         </script>
-
-                    <style>
-                        /* Tema Pikaday - Azul Marinho #012E71 */
-                        /* ===== CALENDÁRIO PERIFAEDU ===== */
-
-                        .flatpickr-calendar {
-                            border-radius: 18px;
-                            box-shadow: 0 20px 40px rgba(1, 46, 113, 0.25);
-                            border: none;
-                            font-family: 'Poppins', sans-serif;
-                        }
-
-                        /* Header azul principal */
-                        .flatpickr-months {
-                            background-color: #012E71;
-                            border-radius: 18px 18px 0 0;
-                        }
-
-                        .flatpickr-current-month {
-                            color: #FFFFFF;
-                            font-weight: 600;
-                        }
-
-                        .flatpickr-monthDropdown-months,
-                        .numInputWrapper span {
-                            color: white;
-                        }
-
-                        /* Dias da semana */
-                        .flatpickr-weekdays {
-                            background-color: #012E71;
-                        }
-
-                        .flatpickr-weekday {
-                            color: #C7D2FE;
-                            font-weight: 500;
-                        }
-
-                        /* Dias padrão */
-                        .flatpickr-day {
-                            border-radius: 10px;
-                            transition: all 0.2s ease;
-                        }
-
-                        /* Hover suave */
-                        .flatpickr-day:hover {
-                            background-color: rgba(1, 46, 113, 0.15);
-                            color: #012E71;
-                        }
-
-                        /* Dia selecionado */
-                        .flatpickr-day.selected,
-                        .flatpickr-day.startRange,
-                        .flatpickr-day.endRange {
-                            background-color: #012E71;
-                            color: white;
-                            border: none;
-                        }
-
-                        /* Dia atual */
-                        .flatpickr-day.today {
-                            border: 2px solid #012E71;
-                        }
-
-                        /* Setas */
-                        .flatpickr-prev-month svg,
-                        .flatpickr-next-month svg {
-                            fill: white;
-                        }
-
-                        /* Input ao focar */
-                        #dataNascimento:focus {
-                            border: 2px solid #012E71;
-                            box-shadow: 0 0 0 3px rgba(1, 46, 113, 0.15);
-                        }
-                    </style>
                 </div>
 
                 <div class="form-group">

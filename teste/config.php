@@ -21,6 +21,6 @@ $client->addScope("profile");
 $pdo = new PDO(
     "mysql:host=localhost;dbname=testeperifaedu;charset=utf8",
     "root",
-    "usbw",
+    "",
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 );
