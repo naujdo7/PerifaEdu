@@ -34,15 +34,8 @@ $fotoUsuario = $_SESSION['fotoPerfil'] ?? null;
 <?php
 $base = '/PerifaEdu/PerifaEdu/';
 
-$fotoSession = $_SESSION['fotoPerfil'] ?? '';
-
-if (!empty($fotoSession) && filter_var($fotoSession, FILTER_VALIDATE_URL)) {
-    $foto = $fotoSession;
-} else {
-    $foto = !empty($fotoSession) 
-        ? $base . $fotoSession . '?v=' . time()
-        : $base . 'img/perfil.png';
-}
+$fotoSession = $_SESSION['fotoPerfil'] ?? 'img/perfil.png';
+$foto = $base . $fotoSession . '?v=' . time();
 ?>
 
 <!-- BOTÃO DO PERFIL -->

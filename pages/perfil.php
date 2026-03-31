@@ -19,6 +19,9 @@ $usuario = $result->fetch_assoc();
 $foto = !empty($usuario['fotoPerfil']) 
     ? "/PerifaEdu/PerifaEdu/" . $usuario['fotoPerfil'] 
     : "/PerifaEdu/PerifaEdu/img/perfil.png";
+
+// 🔥 ERRO VIA URL
+$erro = $_GET['erro'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -58,38 +61,37 @@ input[type="file"]{
 
 <h2>Meu Perfil</h2>
 
-<!-- 🔥 IMAGEM -->
 <img id="preview" src="<?= $foto ?>">
 
 <p><?= htmlspecialchars($usuario['nome_completo']) ?></p>
 
-<!-- 🔥 FORM -->
 <form id="formFoto" action="upload_foto.php" method="POST" enctype="multipart/form-data">
     
-    <!-- input escondido -->
     <input type="file" id="inputFoto" name="fotoPerfil" accept="image/*">
 
-    <!-- botão fake -->
     <button type="button" onclick="abrirSeletor()">Alterar Foto</button>
 
     <br>
 
-    <!-- botão enviar -->
     <button type="submit">Enviar Foto</button>
+
+    <!-- 🔥 ERRO -->
+    <p id="erroFoto" style="color:red;">
+        <?= $erro === 'sem_foto' ? 'Você não selecionou nenhuma foto!' : '' ?>
+    </p>
+
 </form>
 
-<!-- 🔥 REMOVER FOTO -->
 <form action="remover_foto.php" method="POST">
     <button type="submit">Remover Foto</button>
 </form>
 
 <script>
-// 🔥 abre seletor
 function abrirSeletor(){
     document.getElementById("inputFoto").click();
 }
 
-// 🔥 preview da imagem
+// preview
 document.getElementById("inputFoto").addEventListener("change", function(event){
     const file = event.target.files[0];
 
@@ -101,6 +103,20 @@ document.getElementById("inputFoto").addEventListener("change", function(event){
         }
 
         reader.readAsDataURL(file);
+    }
+
+    // limpa erro
+    document.getElementById("erroFoto").innerText = "";
+});
+
+// validação antes de enviar
+document.getElementById("formFoto").addEventListener("submit", function(e){
+    const input = document.getElementById("inputFoto");
+    const erro = document.getElementById("erroFoto");
+
+    if(!input.files || input.files.length === 0){
+        e.preventDefault();
+        erro.innerText = "Você não selecionou nenhuma foto!";
     }
 });
 </script>

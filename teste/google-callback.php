@@ -1,8 +1,10 @@
 <?php
 ini_set('session.cookie_path', '/');
+session_start();
 
 require 'config.php';
 
+// gerar cpf aleatório
 $cpf = '';
 for($i = 0; $i < 11; $i++){
     $cpf .= mt_rand(0, 9);
@@ -18,39 +20,45 @@ if(isset($_GET['code'])){
 
     $name = $data->name;
     $email = $data->email;
-    $picture = $data->picture;
+
+    // 🔥 NÃO USAM A FOTO DO GOOGLE
+    // $picture = $data->picture;
 
     // verificar se usuário existe
     $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email=?");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-session_start();
+    if(!$user){
 
-if(!$user){
+        // 🔥 cria usuário SEM foto
+        $stmt = $pdo->prepare("
+            INSERT INTO usuarios (nome_completo, usuario, email, cpf) 
+            VALUES (?,?,?,?)
+        ");
+        $stmt->execute([$name, $name, $email, $cpf]);
 
-    $stmt = $pdo->prepare("INSERT INTO usuarios (nome_completo, usuario, email, fotoPerfil, cpf) VALUES (?,?,?,?,?)");
-    $stmt->execute([$name, $name, $email, $picture, $cpf]);
+        $user_id = $pdo->lastInsertId();
 
-    $user_id = $pdo->lastInsertId();
+        // 🔥 define foto padrão
+        $fotoPerfil = 'img/perfil.png';
 
-    // 🔥 pega o usuário recém criado
-    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id=?");
-    $stmt->execute([$user_id]);
-    $user = $stmt->fetch();
+    } else {
 
-} else {
-    $user_id = $user['id'];
-}
+        $user_id = $user['id'];
 
-/* 🔥 SESSÃO CORRETA */
-$_SESSION['usuario_id'] = $user_id;
-$_SESSION['usuario_nome'] = $user['nome_completo'];
-$_SESSION['usuario_email'] = $user['email'];
+        // 🔥 usa foto do banco se existir
+        $fotoPerfil = !empty($user['fotoPerfil']) 
+            ? $user['fotoPerfil'] 
+            : 'img/perfil.png';
+    }
 
-/* 🔥 AQUI ESTÁ A CORREÇÃO */
-$_SESSION['fotoPerfil'] = $user['fotoPerfil']; 
+    // 🔥 SESSÃO
+    $_SESSION['usuario_id'] = $user_id;
+    $_SESSION['usuario_nome'] = $name;
+    $_SESSION['usuario_email'] = $email;
+    $_SESSION['fotoPerfil'] = $fotoPerfil;
 
-header("Location: /PerifaEdu/PerifaEdu/index.php?loginGoogle=true");
-exit();
+    header("Location: /PerifaEdu/PerifaEdu/index.php?loginGoogle=true");
+    exit();
 }
