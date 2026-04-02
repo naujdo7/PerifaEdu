@@ -3,6 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" defer>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- idioma PT-BR -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
     <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="./css/reset.css">
 
@@ -115,21 +119,15 @@
 
                 <div class="form-group">
                     <label for="dataNascimento" class="required">DATA DE NASCIMENTO:</label>
-                    <input type="date" class="caixa-texto" id="dataNascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
+                    <input type="text" class="caixa-texto" id="dataNascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
                     <script>
-                        const dataInput = document.getElementById("dataNascimento");
-                        dataInput.addEventListener("input", function () {
-                            let value = this.value.replace(/\D/g, "");
-                            value = value.slice(0, 8);
-
-                            if (value.length > 4) {
-                                value = value.replace(/(\d{2})(\d{2})(\d{1,4})/, "$1/$2/$3");
-                            } else if (value.length > 2) {
-                                value = value.replace(/(\d{2})(\d{1,2})/, "$1/$2");
-                            }
-                            this.value = value;
+                        flatpickr("#dataNascimento", {
+                            dateFormat: "d/m/Y",
+                            locale: "pt",
+                            maxDate: "today", // impede datas futuras
+                            allowInput: true // permite digitar também
                         });
-                        </script>
+                    </script>
                 </div>
 
                 <div class="form-group">

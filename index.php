@@ -4,10 +4,6 @@ ini_set('session.cookie_path', '/');
 session_start();
 $nomeUsuario = $_SESSION['usuario_nome'] ?? null;
 
-require './teste/config.php';
- 
-$login_url = $client->createAuthUrl();
-
 require("./pages/modal-cadastro.php");
 require("./pages/modal-login.php");
 require("./pages/modal-redefinir-senha.php");

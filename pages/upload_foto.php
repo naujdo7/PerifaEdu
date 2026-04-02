@@ -1,38 +1,35 @@
 <?php
-session_start();
 
+session_start();
 require __DIR__ . '/../conexao.php';
 
-if(isset($_SESSION['usuario_id'])){
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: /PerifaEdu/PerifaEdu/index.php");
+    exit;
+}
 
-    $idUsuario = $_SESSION['usuario_id'];
+$idUsuario = isset($_SESSION['usuario_id']) ? (int)$_SESSION['usuario_id'] : 0;
 
+if ($idUsuario <= 0) {
+    die("Usuário não autenticado.");
+}
+
+/* ============================= */
+/* UPLOAD DA FOTO */
+/* ============================= */
+
+if (isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] == 0) {
+
+    /* 1️⃣ Buscar foto antiga */
     $stmt = $conn->prepare("SELECT fotoPerfil FROM usuarios WHERE id = ?");
     $stmt->bind_param("i", $idUsuario);
     $stmt->execute();
-
     $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    if($user){
-        $_SESSION['fotoPerfil'] = $user['fotoPerfil'];
-    }
-}
-
-require __DIR__ . '/../teste/config.php';
-
-if(isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] == 0){
-
-    $idUsuario = $_SESSION['usuario_id'];
-
-    // 🔥 1. BUSCAR FOTO ANTIGA
-    $stmt = $pdo->prepare("SELECT fotoPerfil FROM usuarios WHERE id = ?");
-    $stmt->execute([$idUsuario]);
-    $usuario = $stmt->fetch();
+    $usuario = $result->fetch_assoc();
 
     $fotoAntiga = $usuario['fotoPerfil'] ?? null;
 
-    // 🔥 2. APAGAR FOTO ANTIGA (SE EXISTIR)
+    /* 2️⃣ Apagar foto antiga (se não for padrão) */
     if (
         !empty($fotoAntiga) &&
         $fotoAntiga !== 'img/perfil.png' &&
@@ -41,24 +38,25 @@ if(isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] == 0){
         unlink(__DIR__ . '/../' . $fotoAntiga);
     }
 
-    // 🔥 3. SALVAR NOVA FOTO
+    /* 3️⃣ Salvar nova foto */
     $arquivo = $_FILES['fotoPerfil'];
 
-    $ext = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
-    $nomeArquivo = uniqid() . "." . $ext;
+    $ext = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
+    $nomeArquivo = uniqid("user_" . $idUsuario . "_", true) . "." . $ext;
 
     $caminho = "uploads/" . $nomeArquivo;
     $destino = __DIR__ . '/../' . $caminho;
 
     move_uploaded_file($arquivo['tmp_name'], $destino);
 
-    // 🔥 4. ATUALIZAR BANCO
-    $stmt = $pdo->prepare("UPDATE usuarios SET fotoPerfil=? WHERE id=?");
-    $stmt->execute([$caminho, $idUsuario]);
+    /* 4️⃣ Atualizar banco */
+    $stmt = $conn->prepare("UPDATE usuarios SET fotoPerfil = ? WHERE id = ?");
+    $stmt->bind_param("si", $caminho, $idUsuario);
+    $stmt->execute();
 
-    // 🔥 5. ATUALIZAR SESSÃO
+    /* 5️⃣ Atualizar sessão */
     $_SESSION['fotoPerfil'] = $caminho;
 
     header("Location: /PerifaEdu/PerifaEdu/index.php");
-    exit();
+    exit;
 }

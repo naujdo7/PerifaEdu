@@ -96,25 +96,35 @@ $mail->isHTML(true);
 
 $mail->Subject = 'PerifaEdu - Recupere sua senha';
 
-$mail->Body = "
+if ($tipo == 'cadastro') {
 
-<p>Olá!</p>
+    $mail->Subject = 'PerifaEdu - Confirme seu cadastro';
 
-<p>Recebemos uma solicitação para redefinir sua senha no <strong>PerifaEdu</strong></p>
+    $mail->Body = "
+    <p>Olá!</p>
+    <p>Obrigado por se cadastrar no <strong>PerifaEdu</strong>! 🎉</p>
+    <p>Para confirmar seu e-mail e ativar sua conta, use o código abaixo:</p>
+    <h1 style='color:#003366;'>$codigo</h1>
+    <p>Este código expira em <strong>5 minutos</strong>.</p>
+    <p>Se você não realizou esse cadastro, pode ignorar este e-mail.</p>
+    <hr>
+    <p style='font-size:12px;color:gray;'>Equipe PerifaEdu</p>
+    ";
 
-<p>Use o código abaixo para continuar:</p>
+} else {
 
-<h1 style='color:#003366;'>$codigo</h1>
+    $mail->Body = "
+    <p>Olá!</p>
+    <p>Recebemos uma solicitação para redefinir sua senha no <strong>PerifaEdu</strong></p>
+    <p>Use o código abaixo para continuar:</p>
+    <h1 style='color:#003366;'>$codigo</h1>
+    <p>Este código expira em <strong>5 minutos</strong>.</p>
+    <p>Se você não solicitou a redefinição de senha, pode ignorar este email.</p>
+    <hr>
+    <p style='font-size:12px;color:gray;'>Equipe PerifaEdu</p>
+    ";
 
-<p>Este código expira em <strong>5 minutos</strong>.</p>
-
-<p>Se você não solicitou a redefinição de senha, pode ignorar este email.</p>
-
-<hr>
-
-<p style='font-size:12px;color:gray;'>Equipe PerifaEdu</p>
-
-";
+}
 
 $mail->send();
 
