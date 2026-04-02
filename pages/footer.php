@@ -24,4 +24,6 @@
         <div class="footer-bottom" id="texto-footer">
             <p>&copy; 2026 PerifaEdu. Todos os direitos reservados.</p>
         </div>
+
+        <?php include __DIR__ . '/chatWidget.php'; ?>
     </footer>

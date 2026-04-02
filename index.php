@@ -20,11 +20,13 @@ require("./pages/modal-redefinir-senha.php");
     <link rel="stylesheet" href="css/headerfoot.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="./js/headerfoot.js" defer></script>
     <script src="./js/popup-login.js" defer></script>
+    <script src="js/chat.js"></script>
     <title>PerifaEdu - Educação Gratuita e de Qualidade</title>
     <meta name="description" content="PerifaEdu: Educação transforma. Aprenda no seu ritmo, onde e quando quiser. Totalmente grátis. Certificado garantido.">
 </head>
@@ -213,6 +215,21 @@ require("./pages/modal-redefinir-senha.php");
     });
 });
     </script>
+    <!-- CHAT -->
+<div id="chat-toggle" onclick="toggleChat()">💬</div>
+
+<div id="chat-container" style="display:none;">
+
+    <div id="chat-header">💬 Ajuda</div>
+
+    <div id="chat-box"></div>
+
+    <div id="chat-input-area">
+        <input id="msg" placeholder="Digite sua dúvida...">
+        <button onclick="enviar()">➤</button>
+    </div>
+
+</div>
 </body>
 
 </html>
