@@ -15,7 +15,7 @@
     <script src="../js/como-funciona-botao.js" defer></script>
     <script src="../js/headerfoot.js" defer></script>
     <script src="../js/popup-login.js" defer></script>
-    <title>PerifaEdu</title>
+    <title>Como Funciona - PerifaEdu</title>
 </head>
 
 <body>

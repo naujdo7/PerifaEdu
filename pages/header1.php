@@ -25,7 +25,7 @@ $foto         = $base . $fotoSession . '?v=' . time();
 
     <!-- Menu Desktop -->
     <nav class="desktop-menu">
-        <a href="../index.php" class="active">INÍCIO</a>
+        <a href="/Perifaedu/Perifaedu" class="active">INÍCIO</a>
         <a href="./pages/apostilas.php"       class="menu-restrito">APOSTILAS</a>
         <a href="./pages/cursos_tecnicos.php" class="menu-restrito">CURSOS</a>
         <a href="./pages/competencias.php"    class="menu-restrito">COMPETÊNCIAS</a>

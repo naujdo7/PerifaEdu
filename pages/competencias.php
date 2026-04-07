@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/popup.css">
     <script src="../js/headerfoot.js" defer></script>
     <script src="../js/popup-login.js" defer></script>
-    <title>Competências Educacionais</title>
+    <title>Competências Educacionais - PerifaEdu</title>
 </head>
 
 <body>
