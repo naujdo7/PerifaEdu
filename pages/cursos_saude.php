@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cursos Técnicos</title>
+  <title>Cursos Técnicos - PerifaEdu</title>
   <link rel="icon" href="../img/PerifaEdu-site.png" type="">
   <link rel="stylesheet" href="../css/cursos_tecnicos.css">
   <link rel="stylesheet" href="../css/headerfoot.css">

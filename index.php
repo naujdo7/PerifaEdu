@@ -15,7 +15,7 @@ require("./pages/modal-redefinir-senha.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/PerifaEdu-site.png" type="">
+    <link rel="icon" href="/PerifaEdu/PerifaEdu/img/PerifaEdu-site.png?v=2">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/headerfoot.css">
     <link rel="stylesheet" href="css/index.css">
@@ -52,7 +52,6 @@ require("./pages/modal-redefinir-senha.php");
         <section class="orion">
             <p class="p_sobre">
                 Sobre o Perifa <span>Edu</span><br>
-                Certificado garantido <br>
                 Apoio de mentores <br>
                 Conteúdo livre para todos!
             </p>
@@ -215,21 +214,5 @@ require("./pages/modal-redefinir-senha.php");
     });
 });
     </script>
-    <!-- CHAT -->
-<div id="chat-toggle" onclick="toggleChat()">💬</div>
-
-<div id="chat-container" style="display:none;">
-
-    <div id="chat-header">💬 Ajuda</div>
-
-    <div id="chat-box"></div>
-
-    <div id="chat-input-area">
-        <input id="msg" placeholder="Digite sua dúvida...">
-        <button onclick="enviar()">➤</button>
-    </div>
-
-</div>
 </body>
-
 </html>

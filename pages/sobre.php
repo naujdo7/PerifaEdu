@@ -15,7 +15,7 @@
     <script src="../js/headerfoot.js" defer></script>
     <script src="../js/popup-login.js" defer></script>
 
-    <title>PerifaEdu</title>
+    <title>Sobre - PerifaEdu</title>
 </head>
 
 <body>
