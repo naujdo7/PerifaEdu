@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require __DIR__ . '/../conexao.php';
+require __DIR__ . '/../config/conexao.php';
 
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: /PerifaEdu/PerifaEdu/index.php");

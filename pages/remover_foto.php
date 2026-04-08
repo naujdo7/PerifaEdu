@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/../conexao.php';
+require __DIR__ . '/../config/conexao.php';
 
 $idUsuario = $_SESSION['usuario_id'];
 

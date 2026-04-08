@@ -1,6 +1,6 @@
 <?php
 
-require '../conexao.php';
+require __DIR__ . '/../config/conexao.php';
 
 $email = $_POST['email'];
 $codigo_digitado = $_POST['codigo'];

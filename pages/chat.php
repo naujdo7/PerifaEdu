@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../conexao.php';
+require __DIR__ . '/../config/conexao.php';
 
 header('Content-Type: text/plain; charset=utf-8');
 
@@ -157,6 +157,18 @@ if (contem($msg, ['foto','imagem','perfil'])) {
 /* CERTIFICADO */
 if (contem($msg, ['certificado','cert','diploma'])) {
     $resp = "Atualmente, a plataforma não disponibiliza certificados. 😊";
+
+    salvarHistorico($conn, $msgOriginal, $resp);
+    aprender($conn, $msgOriginal, $resp);
+
+    echo $resp;
+    exit;
+}
+
+/* APOSTILAS */
+if (contem($msg, ['apostila','apostilas','pdf','material'])) {
+
+    $resp = "Você pode acessar as apostilas diretamente pela página de apostilas na plataforma. Basta selecionar o ano de ensino desejado e, em seguida, escolher o conteúdo que deseja estudar. Assim, você terá acesso rápido e organizado aos materiais disponíveis.";
 
     salvarHistorico($conn, $msgOriginal, $resp);
     aprender($conn, $msgOriginal, $resp);
