@@ -1,8 +1,8 @@
 <?php
 
-require '../conexao.php';
+require __DIR__ . '/../config/conexao.php';
 
-require '../config_env.php';
+require __DIR__ . '/../config/config_env.php';
 
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';

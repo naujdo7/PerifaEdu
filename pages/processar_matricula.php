@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── Conexão com o banco ──
-require_once '../conexao.php'; // ajuste o caminho se necessário
+require __DIR__ . '/../config/conexao.php'; // ajuste o caminho se necessário
 
 // ── Função de resposta ──
 function resposta(bool $ok, string $msg, array $extra = []): void {

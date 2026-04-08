@@ -5,8 +5,11 @@ session_start();
 session_unset(); // limpa sessão antiga
 session_regenerate_id(true); // gera nova sessão segura
 
-require 'google_config.php';
-require 'conexao.php';
+require __DIR__ . '/conexao.php';
+
+require __DIR__ . '/config_env.php';
+
+$redirectUri = "http://localhost/PerifaEdu/PerifaEdu/config/google_callback.php";
 
 /* ============================= */
 /* 1️⃣ Verificar retorno do Google */
@@ -26,8 +29,8 @@ $token = file_get_contents("https://oauth2.googleapis.com/token", false, stream_
         'header'  => "Content-type: application/x-www-form-urlencoded",
         'content' => http_build_query([
             'code' => $_GET['code'],
-            'client_id' => $clientID,
-            'client_secret' => $clientSecret,
+            'client_id' => GOOGLE_CLIENT_ID,
+            'client_secret' => GOOGLE_CLIENT_SECRET,
             'redirect_uri' => $redirectUri,
             'grant_type' => 'authorization_code'
         ])
@@ -135,5 +138,5 @@ $_SESSION['fotoPerfil'] = $dadoFoto['fotoPerfil'] ?? 'img/perfil.png';
 /* 8️⃣ Redirecionar */
 /* ============================= */
 
-header("Location: index.php?loginGoogle=true");
+header("Location: ../index.php?loginGoogle=true");
 exit;

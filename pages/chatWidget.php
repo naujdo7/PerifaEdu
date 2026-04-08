@@ -30,7 +30,8 @@
         <div id="chat-suggestions">
             <button class="suggestion-chip" onclick="sendSuggestion('Como faço login?')">Como faço login?</button>
             <button class="suggestion-chip" onclick="sendSuggestion('Esqueci minha senha')">Esqueci minha senha</button>
-            <button class="suggestion-chip" onclick="sendSuggestion('Como modificar minha foto?')">Modificar foto</button>
+            <button class="suggestion-chip" onclick="sendSuggestion('Como alterar minha foto?')">Alterar foto</button>
+            <button class="suggestion-chip" onclick="sendSuggestion('Como faço para acessar outras abas do site?')">Acessar outras abas</button>
         </div>
     </div>
 

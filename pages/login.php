@@ -3,7 +3,7 @@
 ini_set('session.cookie_path', '/');
 
 session_start();
-require "../conexao.php";
+require __DIR__ . '/../config/conexao.php';
 
 $email = $_POST['email'] ?? '';
 $senha = $_POST['senha'] ?? '';

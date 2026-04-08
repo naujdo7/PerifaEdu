@@ -104,9 +104,11 @@ $foto         = $base . $fotoSession . '?v=' . time();
     if (logout) {
         logout.addEventListener('click', function (e) {
             e.preventDefault();
-            fetch('/PerifaEdu/PerifaEdu/pages/logout.php')
-                .then(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php')
-                .catch(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php');
+            fetch('/PerifaEdu/PerifaEdu/pages/logout.php', {
+    method: 'POST'
+        })
+        .then(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php')
+        .catch(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php');
         });
     }
 })();

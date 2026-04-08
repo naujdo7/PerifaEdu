@@ -38,7 +38,7 @@
             </div>
         </a>
         
-        <a href="/perifaedu/perifaedu/google_login.php">
+        <a href="/Perifaedu/Perifaedu/config/google_login.php">
             <div class="social-icon">
                 <img src="./img/google.svg" alt="">
             </div>

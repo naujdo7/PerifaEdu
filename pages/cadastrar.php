@@ -1,6 +1,6 @@
 <?php
 
-require "../conexao.php";
+require __DIR__ . '/../config/conexao.php';
 
 $nome = $_POST['nome'] ?? '';
 $cpf = preg_replace('/[^0-9]/', '', $_POST['cpf'] ?? '');
