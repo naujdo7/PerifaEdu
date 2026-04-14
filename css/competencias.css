@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ===== RESET & BASE ===== */
 * {
     margin: 0;
     box-sizing: border-box;
@@ -7,252 +10,410 @@ body {
     width: 100%;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
-}
-
-.h1 {
-    color: rgb(255, 255, 255);
-    font-size: 10px;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    padding-top: 10%;
+    background-color: #f4f7fb;
 }
 
 span {
     color: #188EF8;
 }
 
-/* MAIN */
-
-.container-one {
-    display: flex;
-    background: linear-gradient(135deg, #0D2447, #021e90);
-    height: 25vw;
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-18px); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(24, 142, 248, 0.5); }
+    50%       { box-shadow: 0 0 0 12px rgba(24, 142, 248, 0); }
+}
+
+/* ===== HERO BANNER ===== */
+.container-one {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #041C3F 0%, #023982 55%, #035aa8 100%);
+    min-height: 280px;
+    overflow: hidden;
+    padding: 60px 80px;
+}
+
+/* Orbs decorativos */
+.container-one::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(24, 142, 248, 0.15) 0%, transparent 65%);
+    border-radius: 50%;
+    animation: float 7s ease-in-out infinite;
+}
+
+.container-one::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -60px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(99, 179, 255, 0.1) 0%, transparent 65%);
+    border-radius: 50%;
+    animation: float 9s ease-in-out infinite reverse;
+}
 
 .p_container-one {
-    padding-top: 20%;
-    color: rgb(254, 249, 249);
-    display: flex;
-    padding: 60px;
-    font-weight: bold;
-    font-size: 7vw;
-    width: 90%;
-
+    position: relative;
+    z-index: 1;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff 0%, #63B3FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideInLeft 0.7s ease-out;
 }
 
+.mini_container {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+}
 
-/* Conteúdos Didáticos */
+/* ===== BREADCRUMB / DIVIDER ===== */
+.section-divider {
+    height: 4px;
+    background: linear-gradient(90deg, #041C3F 0%, #188EF8 50%, #63B3FF 100%);
+}
 
+/* ===== CONTEÚDOS DIDÁTICOS ===== */
 #conteudos_didaticos {
     display: flex;
     flex-direction: column;
-    font-weight: bold;
-    padding-left: 20px;
-    background-color: #ffffff;
+    background: #ffffff;
+    padding: 60px 80px 80px;
+    position: relative;
+}
+
+#conteudos_didaticos::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #188EF8, transparent);
 }
 
 .h2_conteudos-didaticos {
-    color: #012E71;
-    margin-top: 40px;
     display: flex;
-    font-size: 50px;
-}
- 
-.h3_cursos-livres{
-  color: #012E71;
-    margin-top: 40px;
-    display: flex;
-    font-size: 50px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 50px;
+    animation: fadeInUp 0.6s ease-out;
 }
 
+.h2_conteudos-didaticos h2 {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #041C3F 0%, #188EF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-/* Caixa geral */
+.h2_conteudos-didaticos::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 44px;
+    background: linear-gradient(180deg, #188EF8, #63B3FF);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ===== GRID DE CAIXAS ===== */
 .caixas {
     display: flex;
     justify-content: center;
-    gap: 10vw;
-    padding: 4%;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding: 0;
     text-align: center;
-    
 }
 
-/* Título da caixa */
+/* ===== TÍTULO DAS CAIXAS ===== */
 .p_caixas {
-    font-size: 22px;
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 15px;
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #63B3FF;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(99, 179, 255, 0.25);
+    width: 100%;
 }
 
-/* Caixas individuais */
+/* ===== CAIXAS INDIVIDUAIS ===== */
 .caixa_um,
 .caixa_dois,
 .caixa_tres {
-    background-color: #0D2447;
-    width: 20vw;
+    background: linear-gradient(160deg, #0D2447 0%, #023982 100%);
+    width: 260px;
+    min-width: 220px;
     border-radius: 20px;
-    box-shadow: 1px 4px 12px rgba(0, 0, 0, 0.2);
-    padding: 4% 2%;
+    box-shadow: 0 8px 32px rgba(2, 57, 130, 0.25);
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    border: 1px solid rgba(99, 179, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: fadeInUp 0.7s ease-out both;
 }
 
-.caixa_dois {
-    height: 550px;
-    margin-top: 90px;
+.caixa_um  { animation-delay: 0.1s; }
+.caixa_dois { animation-delay: 0.2s; }
+.caixa_tres { animation-delay: 0.3s; }
+
+.caixa_um:hover,
+.caixa_dois:hover,
+.caixa_tres:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(24, 142, 248, 0.3);
+    border-color: rgba(99, 179, 255, 0.45);
 }
 
-.caixa_tres {
-    height: 430px;
-    margin-top: 130px;
-}
+/* Remove estilos fixos de height/margin-top antigos */
+.caixa_dois { margin-top: 0; height: auto; }
+.caixa_tres { margin-top: 0; height: auto; }
 
-.caixa_cursos-Livres {
-    background-color: #0D2447;
-    width: 20vw;
-    border-radius: 20px;
-    box-shadow: 1px 4px 12px rgba(0, 0, 0, 0.2);
-    padding: 4% 2%;
+/* ===== LINKS REDIRECCIONADOS ===== */
+.link-redirecionados {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
+    justify-content: center;
+    gap: 8px;
+    margin: 6px auto;
+    padding: 11px 20px;
+    background: rgba(24, 142, 248, 0.12);
+    border: 1px solid rgba(24, 142, 248, 0.25);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    width: 85%;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    letter-spacing: 0.3px;
+}
+
+.link-redirecionados::before {
+    content: '\f105'; /* fa-angle-right */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 12px;
+    color: #63B3FF;
+    transition: transform 0.2s ease;
 }
 
 .link-redirecionados:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 132, 255, 0.4);
+    background: linear-gradient(135deg, #188EF8 0%, #63B3FF 100%);
+    border-color: transparent;
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(24, 142, 248, 0.4);
+    color: #ffffff;
 }
 
-/* Links dentro das caixas */
-.link-redirecionados {
-    display: block;
-    text-align: center;
-    margin: 8% auto;
-    padding: 10px 15px;
-    background-color: rgb(7, 82, 194);
-    border-radius: 5px;
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-    width: 70%;
-    transition: background 0.3s ease;
+.link-redirecionados:hover::before {
+    transform: translateX(3px);
 }
 
-
-
-
-/* Cursos Livres */
+/* ===== CURSOS LIVRES ===== */
 #cursos-livres {
-    font-weight: bold;
-    padding-left: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #8097B8;
-    text-align: center;
+    padding: 80px 80px;
+    background: linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-
-.p_cursos-livres {
-    color: white;
-    font-size: 40px;
+#cursos-livres::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(24, 142, 248, 0.08) 0%, transparent 65%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
 }
 
-
-.caixas_CRL {
+.h3_cursos-livres {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10vw;
-    padding: 5%;
+    align-items: center;
+    gap: 16px;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #041C3F 0%, #188EF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 50px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.h3_cursos-livres::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 44px;
+    background: linear-gradient(180deg, #188EF8, #63B3FF);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ===== CAIXAS CURSOS LIVRES ===== */
+.caixa_cursos-Livres {
+    background: linear-gradient(160deg, #0D2447 0%, #023982 100%);
+    width: 260px;
+    min-width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(2, 57, 130, 0.2);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(99, 179, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: fadeInUp 0.7s ease-out both;
     text-align: center;
 }
 
+.caixa_cursos-Livres:nth-child(1) { animation-delay: 0.1s; }
+.caixa_cursos-Livres:nth-child(2) { animation-delay: 0.2s; }
+.caixa_cursos-Livres:nth-child(3) { animation-delay: 0.3s; }
 
-
-
-
-/* MEDIA QUERIES */
-
-/* Celular */
-@media (min-width: 320px) and (max-width: 600px) {
-    .p_cursos-livres {
-        font-size: 20px;
-    }
-
-    .container-one {
-        height: 40vw;
-    }
-
-    .p_container-one {
-        margin-top: -30px;
-        font-size: 40px;
-    }
-
-    .mini_container {
-        margin-right: 10%;
-        width: 53vw;
-        height: 25vw;
-    }
-
-    .h2_conteudos-didaticos {
-        font-size: 150%;
-    }
-
-    .caixas {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .caixa_um,
-    .caixa_dois,
-    .caixa_tres {
-        width: 65vw;
-        padding: 10%;
-    }
-
-    .p_caixas {
-        font-size: 150%;
-    }
-
-    .link-redirecionados {
-        font-size: 70%;
-    }
-
-
-    .caixa_cursos-Livres {
-        justify-self: center;
-        margin-top: 10%;
-        width: 65vw;
-        padding: 10%;
-        margin-bottom: 10%;
-    }
-
-
-
+.caixa_cursos-Livres:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(24, 142, 248, 0.3);
+    border-color: rgba(99, 179, 255, 0.45);
 }
 
-/* Tablet */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .p_container-one {
-        margin-top: -3%;
-    }
+/* ===== TÍTULO CURSOS LIVRES ===== */
+.p_cursos-livres {
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #63B3FF;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(99, 179, 255, 0.25);
+    width: 100%;
+}
 
-    .caixas {
-        flex-direction: column;
-        padding: 10%;
-        align-items: center;
-    }
+/* ===== ÍCONES DAS LÍNGUAS / CATEGORIAS ===== */
+.card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #188EF8 0%, #63B3FF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    margin: 0 auto 20px;
+    animation: pulse-ring 3s ease-in-out infinite;
+}
+
+/* ===== BADGE DE NÍVEL ===== */
+.badge-level {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.badge-level.iniciante  { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+.badge-level.medio      { background: rgba(251, 191, 36, 0.15);  color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.badge-level.avancado   { background: rgba(239, 68, 68, 0.15);   color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Desktop Grande */
+@media (min-width: 1441px) {
+    .container-one { padding: 80px 120px; }
+    #conteudos_didaticos { padding: 80px 120px 100px; }
+    #cursos-livres { padding: 100px 120px; }
+}
+
+/* Tablet – até 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container-one { padding: 50px 40px; min-height: 200px; }
+
+    #conteudos_didaticos,
+    #cursos-livres { padding: 50px 40px; }
+
+    .caixas { gap: 20px; }
 
     .caixa_um,
     .caixa_dois,
-    .caixa_tres {
-        width: 50vw;
-        padding: 5%;
+    .caixa_tres,
+    .caixa_cursos-Livres {
+        width: 45%;
+        min-width: 200px;
     }
+}
+
+/* Celular – até 600px */
+@media (max-width: 600px) {
+    .container-one { padding: 40px 24px; min-height: 160px; }
+    .container-one::before, .container-one::after { display: none; }
+
+    .p_container-one { font-size: clamp(28px, 8vw, 42px); }
+
+    #conteudos_didaticos,
+    #cursos-livres { padding: 40px 20px; }
+
+    .h2_conteudos-didaticos h2,
+    .h3_cursos-livres { font-size: 26px; }
+
+    .caixas { flex-direction: column; align-items: center; gap: 20px; }
+
+    .caixa_um,
+    .caixa_dois,
+    .caixa_tres,
+    .caixa_cursos-Livres {
+        width: 90%;
+        min-width: unset;
+    }
+
+    .link-redirecionados { font-size: 13px; width: 90%; }
 }

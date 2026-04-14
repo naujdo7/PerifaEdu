@@ -14,11 +14,19 @@ body {
 
 /* ANIMAÇÕES */
 @keyframes expandir2 {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.02); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
 }
 
-.animacao1:hover, .animacao2:hover, .animacao3:hover, .animacao4:hover {
+.animacao1:hover,
+.animacao2:hover,
+.animacao3:hover,
+.animacao4:hover {
   animation-name: expandir2;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
@@ -155,12 +163,12 @@ body {
 }
 
 #avaliacao {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 90%;
-    padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  padding-left: 50px;
 }
 
 
@@ -201,91 +209,97 @@ ul#autor {
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (max-width: 1024px) {
-/* SEÇÃO SOBRE */
+
+  /* SEÇÃO SOBRE */
   #titulo1 {
-    font-size: clamp(60px, 5vw, 22px); 
+    font-size: clamp(60px, 5vw, 22px);
     max-width: 100%;
     text-align: center;
   }
-  
-  
+
+
   #sobre {
     flex-direction: column;
     padding: 20px;
     align-items: center;
   }
-  
+
   #imagem-lateral {
     display: none;
   }
-  
-#caixas-de-texto {
-  display: flex;
-  align-items: center;
-}
+
+  #caixas-de-texto {
+    display: flex;
+    align-items: center;
+  }
 
 
-  .missao-e-valores, .visao-historia {
+  .missao-e-valores,
+  .visao-historia {
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
     width: 90%;
   }
-  
 
-  .texto-missao-valores, .texto-visao-historia {
+
+  .texto-missao-valores,
+  .texto-visao-historia {
     padding: 43px 0px 43px 33px;
     max-width: 100%;
     width: 100%;
-    order: 1; 
+    order: 1;
   }
-  
- 
-  #img-ideia, #img-valores, #img-visao, #img-historia {
+
+
+  #img-ideia,
+  #img-valores,
+  #img-visao,
+  #img-historia {
     width: 100%;
     justify-content: center;
-    order: 2; 
+    order: 2;
     display: flex;
     align-items: center;
   }
-  
+
 
   .texto-visao-historia {
     align-items: flex-start;
     padding: 20px;
   }
-  
+
   .subtitulo-visao-historia {
     padding-left: 0;
   }
-  
+
 
   #depoimento {
     padding: 40px 20px;
   }
-  
+
   #titulo-depoimento {
     font-size: clamp(60px, 10vw, 22px);
 
   }
-  
+
 
   #comentario {
     flex-direction: column;
     padding: 20px;
   }
-  
+
   #img-usuario {
     padding: 20px 0 0 0;
   }
-  
+
   #avaliacao {
     width: 100%;
     padding: 20px;
     align-items: center;
     text-align: center;
   }
- 
+
   #caixas-de-texto {
     gap: 0;
   }
@@ -297,24 +311,25 @@ ul#autor {
     display: none;
   }
 
-  .missao-e-valores, 
+  .missao-e-valores,
   .visao-historia {
     width: 90%;
     padding: 5%;
   }
 
- 
-  #titulo1{
-    font-size: clamp(30px, 5vw, 22px); 
+
+  #titulo1 {
+    font-size: clamp(30px, 5vw, 22px);
   }
 
-  #img-ideia, 
-  #img-valores, 
-  #img-visao, 
+  #img-ideia,
+  #img-valores,
+  #img-visao,
   #img-historia {
     display: none !important;
   }
-  .texto-missao-valores, 
+
+  .texto-missao-valores,
   .texto-visao-historia {
     width: 100%;
     padding: 0;
@@ -324,9 +339,9 @@ ul#autor {
     padding-bottom: 5px;
   }
 
-#subtitulo-depoimento {
+  #subtitulo-depoimento {
     font-size: clamp(12px, 6vw, 10px);
-}
+  }
 }
 
 /* CORREÇÃO PARA O TITULO EM TELAS MENORES */
