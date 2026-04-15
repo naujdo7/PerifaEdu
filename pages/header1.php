@@ -73,43 +73,58 @@ $foto         = $base . $fotoSession . '?v=' . time();
         <a href="./pages/como-funciona.php">COMO FUNCIONA</a>
         <a href="./pages/sobre.php">SOBRE</a>
         <a href="./pages/perfil.php"          class="menu-restrito">MEU PERFIL</a>
-        <a href="./index.php" id="btn-sair"   class="menu-restrito">SAIR</a>
+        <!-- Login: visivel quando nao logado -->
+        <a href="#" id="btn-login-mobile" class="btn-mobile-login">&#128274; ENTRAR</a>
+        <!-- Sair: visivel quando logado -->
+        <a href="#" id="btn-sair-mobile" class="menu-restrito">SAIR</a>
     </nav>
 </header>
 
+<!-- Sincroniza localStorage com sessão PHP real -->
+<script>
+(function(){
+    var logadoPHP = <?= ($nomeUsuario ? 'true' : 'false') ?>;
+    if (logadoPHP) {
+        localStorage.setItem('perifaEduLogado', 'true');
+    } else {
+        localStorage.removeItem('perifaEduLogado');
+    }
+})();
+</script>
+
 <script>
 (function () {
+    /* ── Perfil dropdown ── */
     const btn    = document.getElementById('perfil-btn');
     const menu   = document.getElementById('menu-perfil');
     const logout = document.getElementById('btn-logout');
 
-    if (!btn || !menu) return;
-
-    /* Abre/fecha */
-    btn.addEventListener('click', function () {
-        const aberto = menu.classList.toggle('aberto');
-        btn.classList.toggle('ativo', aberto);
-    });
-
-    /* Fecha ao clicar fora — captura no document ANTES do btn receber o click */
-    document.addEventListener('click', function (e) {
-        if (btn.contains(e.target)) return;
-        if (!menu.contains(e.target)) {
-            menu.classList.remove('aberto');
-            btn.classList.remove('ativo');
-        }
-    }, true);
-
-    /* Logout */
-    if (logout) {
-        logout.addEventListener('click', function (e) {
-            e.preventDefault();
-            fetch('/PerifaEdu/PerifaEdu/pages/logout.php', {
-    method: 'POST'
-        })
-        .then(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php')
-        .catch(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php');
+    if (btn && menu) {
+        btn.addEventListener('click', function () {
+            const aberto = menu.classList.toggle('aberto');
+            btn.classList.toggle('ativo', aberto);
         });
+
+        document.addEventListener('click', function (e) {
+            if (btn.contains(e.target)) return;
+            if (!menu.contains(e.target)) {
+                menu.classList.remove('aberto');
+                btn.classList.remove('ativo');
+            }
+        }, true);
     }
+
+    /* ── Logout (desktop + mobile) ── */
+    function fazerLogout() {
+        localStorage.removeItem('perifaEduLogado');
+        fetch('/PerifaEdu/PerifaEdu/pages/logout.php', { method: 'POST' })
+            .finally(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php');
+    }
+
+    if (logout) logout.addEventListener('click', function (e) { e.preventDefault(); fazerLogout(); });
+
+    /* ── Logout (mobile menu) ── */
+    const btnSairMobile = document.getElementById('btn-sair-mobile');
+    if (btnSairMobile) btnSairMobile.addEventListener('click', function (e) { e.preventDefault(); fazerLogout(); });
 })();
 </script>

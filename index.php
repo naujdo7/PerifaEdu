@@ -174,45 +174,16 @@ require("./pages/modal-redefinir-senha.php");
     require("./pages/footer.php");
     ?>
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-
-            // Fechar menu ao clicar em um link
-            const mobileLinks = document.querySelectorAll('.mobile-menu a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
-        }
-
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-
-        const href = this.getAttribute('href');
-
-        if (href === "#") return;
-
-        e.preventDefault();
-
-        const target = document.querySelector(href);
-
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
-        }
-    });
-});
+        });
     </script>
 </body>
 </html>

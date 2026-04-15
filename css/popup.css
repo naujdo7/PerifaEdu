@@ -9,6 +9,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   font-family: 'Montserrat', sans-serif;
+  align-items: center;
 }
 
 .modal-cadastro {
@@ -115,7 +116,9 @@ input::placeholder {
 }
 
 .icons-input {
-  margin-left: 450px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
 }
 
 .forgot-password a {
@@ -376,4 +379,48 @@ input::placeholder {
 
 .btn-voltar-login:hover {
   color: #0056b3;
+}
+
+/* ================================================
+   CENTRALIZAÇÃO DOS MODAIS — mobile + tablet
+   Apenas posicionamento, SEM alterar visual do desktop
+   ================================================ */
+
+@media (max-width: 768px) {
+  /* Login */
+  .modal-content {
+    width: 90vw;
+    max-width: 480px;
+    margin: 5vh auto;
+  }
+
+  /* Cadastro */
+  .modal-content-cadastro {
+    width: 90vw;
+    max-width: 500px;
+    margin: 5vh auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+.btn-cadastro {width: 50%;}
+  #cadastroForm {
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    height: 60%;
+  }
+
+  .modal-content-cadastro {
+    width: 95vw;
+    margin: 3vh auto;
+    max-height: 92vh;
+  }
+
+  #cadastroForm {
+    max-height: 72vh;
+  }
 }

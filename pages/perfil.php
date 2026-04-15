@@ -165,7 +165,7 @@ body {
     font-weight: 800;
     color: #fff;
     line-height: 1.2;
-    margin-bottom: 6px;
+    text-align: justify;
 }
 
 .hero-name span { color: var(--blue-300); }
@@ -1008,23 +1008,62 @@ body {
 }
 .toast.show { transform: translateY(0); opacity: 1; }
 
-/* ===== RESPONSIVO ===== */
+/* ===== RESPONSIVO tablet ===== */
+@media (max-width: 1024px) {
+    .apostila-card-btns { grid-template-columns: 1fr 1fr; }
+    .btn-ap-concluir { grid-column: 1 / -1; }
+    .apostila-card-title { font-size: .82rem; }
+    .niveis-nav { gap: 6px; }
+    .nivel-tab-btn { padding: 10px 16px; font-size: .83rem; }
+}
+
+/* ===== RESPONSIVO mobile ===== */
 @media (max-width: 768px) {
     .perfil-page { padding: 20px 16px 60px; }
-    .perfil-hero { flex-direction: column; text-align: center; padding: 28px 24px; gap: 20px; }
+    .perfil-hero { flex-direction: column; text-align: center; padding: 28px 20px; gap: 20px; }
     .hero-email { justify-content: center; }
     .hero-actions { justify-content: center; }
-    .hero-name { font-size: 1.5rem; }
-    .hero-avatar img { width: 90px; height: 90px; }
-    .tabs-nav { gap: 4px; padding: 5px; }
-    .tab-btn { min-width: 120px; font-size: .78rem; padding: 10px 14px; }
-    .card-body { padding: 20px; }
+    .hero-name { font-size: 1.3rem; text-align: center;}
+    .hero-avatar img { width: 86px; height: 86px; }
+
+    /* tabs: scroll horizontal em vez de quebrar */
+    .tabs-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 4px;
+        padding: 5px;
+    }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+        flex: 0 0 auto;
+        min-width: 130px;
+        font-size: .78rem;
+        padding: 10px 14px;
+        white-space: nowrap;
+    }
+
+    .card-body { padding: 18px 14px; }
     .info-grid { grid-template-columns: 1fr; }
+    .section-actions {justify-content: center;}
     .cursos-grid { grid-template-columns: 1fr; }
     .apostilas-grid { grid-template-columns: 1fr; }
     .foto-section { flex-direction: column; text-align: center; }
-    .niveis-nav { gap: 8px; }
-    .nivel-tab-btn { padding: 10px 16px; font-size: .82rem; }
+
+    .niveis-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 6px;
+        padding-bottom: 4px;
+    }
+    .niveis-nav::-webkit-scrollbar { display: none; }
+    .nivel-tab-btn { flex: 0 0 auto; padding: 10px 16px; font-size: .82rem; white-space: nowrap; }
+
+    .apostila-card-btns { grid-template-columns: 1fr 1fr; }
+    .btn-ap-concluir { grid-column: 1 / -1; }
 }
     </style>
 </head>

@@ -290,41 +290,34 @@ header {
 
 .menu-toggle {
   display: none;
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
   cursor: pointer;
-  padding: 10px;
+  padding: 8px 12px;
   z-index: 1000;
+  transition: background 0.25s ease, transform 0.25s ease;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
+}
+
+.menu-toggle.active {
+  background: rgba(24, 142, 248, 0.3);
+}
+
+.hamburger-icon {
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  display: block;
   transition: transform 0.3s ease;
 }
-
-.hamburger {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  position: relative;
-  transition: all 0.3s ease;
-}
-.hamburger-icon {
-  color: white;
-  font-size: 26px;
-  transition: all 0.3s ease;
-}
-.hamburger:before,
-.hamburger:after {
-  content: '';
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  transition: all 0.3s ease;
-}
-.hamburger:before { top: -8px; }
-.hamburger:after  { bottom: -8px; }
-
-.menu-toggle.active .hamburger { background-color: transparent; }
-.menu-toggle.active .hamburger:before { transform: rotate(45deg);  top: 0; }
-.menu-toggle.active .hamburger:after  { transform: rotate(-45deg); bottom: 0; }
 
 /* ================================================
    MEDIA QUERIES
@@ -342,32 +335,24 @@ header {
   .desktop-menu { display: none; }
 
   .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(24, 142, 248, 0.1);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-left: auto;
-    z-index: 1000;
+    display: flex;  /* ativa o botão — flex properties já definidas acima */
   }
-  .menu-toggle.active { background: rgba(24, 142, 248, 0.2); }
 
   .mobile-menu {
     position: fixed;
-    top: 70px;
+    top: 60px;   /* altura do header no tablet */
     left: 0;
     width: 100%;
-    background: linear-gradient(135deg, #023982 0%, #035aa8 100%);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(160deg, #012E71 0%, #023982 50%, #035aa8 100%);
+    backdrop-filter: blur(16px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transform: translateY(-100%);
+    padding: 24px 0 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    transform: translateY(-110%);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
     z-index: 999;
     pointer-events: none;
   }
@@ -378,26 +363,43 @@ header {
   }
 
   .mobile-menu a {
-    margin: 12px 0;
-    font-size: 16px;
-    color: white;
+    width: 80%;
+    margin: 6px 0;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transform: scale(0.9);
+    transform: translateX(-20px);
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s ease;
     font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    letter-spacing: 0.3px;
+    text-align: center;
   }
-  .mobile-menu.active a { transform: scale(1); opacity: 1; }
-  .mobile-menu a:hover  { background-color: rgba(24, 142, 248, 0.2); }
+  .mobile-menu.active a   { transform: translateX(0); opacity: 1; }
+  .mobile-menu a:hover    { background: rgba(24, 142, 248, 0.2); color: #fff; }
+
+  /* Botão de login no menu mobile */
+  .btn-mobile-login {
+    background: linear-gradient(135deg, rgba(24,142,248,.25), rgba(17,128,255,.35)) !important;
+    border: 1.5px solid rgba(24,142,248,.5) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    letter-spacing: .5px;
+  }
+  .btn-mobile-login:hover {
+    background: rgba(24,142,248,.4) !important;
+  }
 
   /* Cascata de aparição */
-  .mobile-menu.active a:nth-child(1) { transition-delay: 0.1s; }
-  .mobile-menu.active a:nth-child(2) { transition-delay: 0.2s; }
-  .mobile-menu.active a:nth-child(3) { transition-delay: 0.3s; }
-  .mobile-menu.active a:nth-child(4) { transition-delay: 0.4s; }
-  .mobile-menu.active a:nth-child(5) { transition-delay: 0.5s; }
+  .mobile-menu.active a:nth-child(1) { transition-delay: 0.05s; }
+  .mobile-menu.active a:nth-child(2) { transition-delay: 0.10s; }
+  .mobile-menu.active a:nth-child(3) { transition-delay: 0.15s; }
+  .mobile-menu.active a:nth-child(4) { transition-delay: 0.20s; }
+  .mobile-menu.active a:nth-child(5) { transition-delay: 0.25s; }
+  .mobile-menu.active a:nth-child(6) { transition-delay: 0.30s; }
+  .mobile-menu.active a:nth-child(7) { transition-delay: 0.35s; }
 }
 
 /* Mobile — até 768px */
@@ -408,6 +410,8 @@ header {
 
   /* Foto de perfil no header menor no mobile */
   #perfil-btn { width: 36px; height: 36px; }
+
+  .mobile-menu { top: 60px; } /* ajusta para header de 60px no mobile */
 }
 
 /* ================================================

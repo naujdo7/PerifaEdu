@@ -704,6 +704,22 @@ body {
   .nivel-btn {
     min-width: 220px;
   }
+
+  /* apostila-item no tablet: 3 botões ficam pequenos demais → 2+1 */
+  .apostila-buttons {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-concluir {
+    grid-column: 1 / -1;
+  }
+
+  /* texto do título não vaza */
+  .apostila-title {
+    font-size: .85rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 /* ===== RESPONSIVO Mobile ===== */

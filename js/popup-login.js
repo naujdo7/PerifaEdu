@@ -1,328 +1,269 @@
-// Detecta retorno do login Google e grava no localStorage
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('loginGoogle') === 'true') {
-    localStorage.setItem('perifaEduLogado', 'true');
-    // Limpa o parâmetro da URL sem recarregar
-    window.history.replaceState({}, document.title, window.location.pathname);
+// =========================================================
+// DETECTA RETORNO DO LOGIN GOOGLE
+// =========================================================
+(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('loginGoogle') === 'true') {
+        localStorage.setItem('perifaEduLogado', 'true');
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+})();
+
+// =========================================================
+// FUNÇÕES GLOBAIS DE MODAL (disponíveis antes do DOM ready)
+// =========================================================
+function openLogin() {
+    const loginModal    = document.getElementById('login-modal');
+    const cadastroModal = document.getElementById('cadastro-modal');
+    if (cadastroModal) cadastroModal.style.display = 'none';
+    if (loginModal)    loginModal.style.display    = 'flex';
 }
 
-// Aguarda o DOM carregar
+function openCadastro() {
+    const loginModal    = document.getElementById('login-modal');
+    const cadastroModal = document.getElementById('cadastro-modal');
+    if (loginModal)    loginModal.style.display    = 'none';
+    if (cadastroModal) cadastroModal.style.display = 'flex';
+}
+
+function closeAllModals() {
+    const loginModal    = document.getElementById('login-modal');
+    const cadastroModal = document.getElementById('cadastro-modal');
+    const recModal      = document.getElementById('recuperacao-modal');
+    if (loginModal)    loginModal.style.display    = 'none';
+    if (cadastroModal) cadastroModal.style.display = 'none';
+    if (recModal)      recModal.style.display      = 'none';
+}
+
+// =========================================================
+// LOGOUT CENTRALIZADO
+// =========================================================
+function fazerLogout() {
+    localStorage.removeItem('perifaEduLogado');
+    fetch('/PerifaEdu/PerifaEdu/pages/logout.php', { method: 'POST' })
+        .finally(function () {
+            window.location.href = '/PerifaEdu/PerifaEdu/index.php';
+        });
+}
+
+// =========================================================
+// DOM READY — toda lógica de interação
+// =========================================================
 document.addEventListener('DOMContentLoaded', function () {
-    // Elementos dos modais
-    const loginModal = document.getElementById('login-modal');
+
+    const loginModal    = document.getElementById('login-modal');
     const cadastroModal = document.getElementById('cadastro-modal');
 
-    // Botões de abrir/fechar
-    const openCadastroBtn = document.getElementById('open-cadastro');
-    const openLoginBtn = document.getElementById('open-login');
-    const closeBtns = document.querySelectorAll('.close');
-
-    // Elemento da bolinha do perfil
-    const perfilBtns = document.querySelectorAll('.perfil'); // Confirme se a classe é essa mesma (.perfil) ou mude aqui
-
-    // =========================================================
-    // NOVA LÓGICA: VERIFICAR SE ESTÁ LOGADO (Menu Restrito)
-    // =========================================================
+    // ----------------------------------------------------------
+    // VERIFICAR ESTADO DE LOGIN (localStorage sincronizado com PHP
+    // pelo snippet inline no header — ver header.php / header1.php)
+    // ----------------------------------------------------------
     const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
     const itensRestritos = document.querySelectorAll('.menu-restrito');
 
     if (usuarioLogado) {
-        // Se estiver logado, nós removemos a classe que esconde o menu!
-        itensRestritos.forEach(item => {
+        // Revela itens restritos
+        itensRestritos.forEach(function (item) {
             item.classList.remove('menu-restrito');
         });
-    }
-
-    // Função para abrir modal de login
-    function openLoginModal() {
-        if (cadastroModal) cadastroModal.style.display = 'none';
-        if (loginModal) loginModal.style.display = 'block'; // ou 'flex' dependendo do seu CSS
-    }
-
-    // Função para abrir modal de cadastro
-    function openCadastroModal() {
-        if (loginModal) loginModal.style.display = 'none';
-        if (cadastroModal) cadastroModal.style.display = 'block'; // ou 'flex' dependendo do seu CSS
-    }
-
-    // Função para fechar modais
-    function closeModals() {
-        if (loginModal) loginModal.style.display = 'none';
-        if (cadastroModal) cadastroModal.style.display = 'none';
-    }
-
-    // =========================================================
-    // LÓGICA: Ler URL para abrir login automaticamente
-    // =========================================================
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('abrirLogin') === 'true' && loginModal && !usuarioLogado) {
-        openLoginModal();
-    }
-
-    // =========================================================
-    // LÓGICA: Clique na bolinha do perfil em qualquer página
-    // =========================================================
-    const menuPerfil = document.getElementById('menu-perfil');
-
-    if (perfilBtns.length > 0 && menuPerfil) {
-
-        perfilBtns.forEach(perfilBtn => {
-
-            perfilBtn.addEventListener('click', function (e) {
+        // Esconde botão de login do menu mobile
+        var btnLoginMobile = document.getElementById('btn-login-mobile');
+        if (btnLoginMobile) btnLoginMobile.style.display = 'none';
+    } else {
+        // Botão ENTRAR do menu mobile → abre modal ou redireciona
+        var btnLoginMobile = document.getElementById('btn-login-mobile');
+        if (btnLoginMobile) {
+            btnLoginMobile.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
-
-                if (usuarioLogado) {
-                    menuPerfil.style.display =
-                        menuPerfil.style.display === 'flex' ? 'none' : 'flex';
+                // Fecha o menu mobile
+                var mobileMenu = document.querySelector('.mobile-menu');
+                var menuToggle = document.querySelector('.menu-toggle');
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (menuToggle) menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+                // Abre modal de login (se existir nesta página) ou redireciona
+                if (loginModal) {
+                    openLogin();
                 } else {
-
-                    if (!window.location.pathname.includes('index.php')) {
-                        window.location.href = "/PerifaEdu/PerifaEdu/index.php?abrirLogin=true";
-                    } else {
-                        openLoginModal();
-                    }
-
+                    window.location.href = '/PerifaEdu/PerifaEdu/index.php?abrirLogin=true';
                 }
             });
-
-        });
-
-        const fecharMenu = document.getElementById('fechar-menu');
-
-        if (fecharMenu) {
-            fecharMenu.addEventListener('click', function (e) {
-                e.preventDefault();
-                menuPerfil.style.display = 'none';
-            });
         }
-
-        // 🔥 FECHAR CLICANDO FORA
-        document.addEventListener('click', function (e) {
-            if (!menuPerfil.contains(e.target) && e.target !== perfilBtn) {
-                menuPerfil.style.display = 'none';
-            }
-        });
-
-    } else {
-        console.log('Elemento do perfil não encontrado nesta página.');
     }
 
-    // Abrir cadastro a partir do login
-    if (openCadastroBtn) {
-        openCadastroBtn.addEventListener('click', function (e) {
+    // ----------------------------------------------------------
+    // ABRE LOGIN SE URL PEDIR (?abrirLogin=true)
+    // ----------------------------------------------------------
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('abrirLogin') === 'true' && loginModal && !usuarioLogado) {
+        openLogin();
+    }
+
+    // ----------------------------------------------------------
+    // BOTÃO DE SAIR — mobile menu
+    // ----------------------------------------------------------
+    var btnSairMobile = document.getElementById('btn-sair-mobile');
+    if (btnSairMobile) {
+        btnSairMobile.addEventListener('click', function (e) {
             e.preventDefault();
-            openCadastroModal();
+            fazerLogout();
         });
     }
 
-    // Abrir login a partir do cadastro
-    if (openLoginBtn) {
-        openLoginBtn.addEventListener('click', function (e) {
+    // ----------------------------------------------------------
+    // BOTÃO DE SAIR — desktop dropdown (fallback, caso header não
+    // tenha seu próprio listener)
+    // ----------------------------------------------------------
+    var btnLogout = document.getElementById('btn-logout');
+    if (btnLogout && !btnLogout.dataset.listenerSet) {
+        btnLogout.dataset.listenerSet = '1';
+        btnLogout.addEventListener('click', function (e) {
             e.preventDefault();
-            openLoginModal();
+            fazerLogout();
         });
     }
 
-    // Fechar modais com o X
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', closeModals);
+    // ----------------------------------------------------------
+    // ABRIR/FECHAR MODAIS — botões internos
+    // ----------------------------------------------------------
+    var openCadastroBtn = document.getElementById('open-cadastro');
+    var openLoginBtn    = document.getElementById('open-login');
+    var closeBtns       = document.querySelectorAll('.close');
+
+    if (openCadastroBtn) openCadastroBtn.addEventListener('click', function (e) { e.preventDefault(); openCadastro(); });
+    if (openLoginBtn)    openLoginBtn.addEventListener('click',    function (e) { e.preventDefault(); openLogin(); });
+
+    closeBtns.forEach(function (btn) {
+        btn.addEventListener('click', closeAllModals);
     });
 
-    // Fechar modal clicando fora
-    window.addEventListener('click', function (event) {
-        if (event.target === loginModal) {
-            closeModals();
-        }
-        if (event.target === cadastroModal) {
-            closeModals();
-        }
+    // Fechar clicando no overlay
+    window.addEventListener('click', function (e) {
+        if (e.target === loginModal || e.target === cadastroModal) closeAllModals();
     });
 
     // Fechar com ESC
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-            closeModals();
-        }
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeAllModals();
     });
-});
-// Funções globais para usar em outros lugares (Se precisar chamar direto no HTML)
-function openLogin() {
-    const loginModal = document.getElementById('login-modal');
-    const cadastroModal = document.getElementById('cadastro-modal');
-    if (loginModal && cadastroModal) {
-        cadastroModal.style.display = 'none';
-        loginModal.style.display = 'block';
+
+    // ----------------------------------------------------------
+    // BOLINHA DO PERFIL (usada por popup-login.js como fallback,
+    // mas o handler principal está no header inline)
+    // ----------------------------------------------------------
+    var perfilBtns = document.querySelectorAll('.perfil');
+    var menuPerfil = document.getElementById('menu-perfil');
+
+    if (perfilBtns.length > 0 && menuPerfil) {
+        var ultimoPerfilBtn = null;
+
+        perfilBtns.forEach(function (perfilBtn) {
+            perfilBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                ultimoPerfilBtn = perfilBtn;
+
+                if (localStorage.getItem('perifaEduLogado') === 'true') {
+                    menuPerfil.style.display =
+                        menuPerfil.style.display === 'flex' ? 'none' : 'flex';
+                } else {
+                    if (!window.location.pathname.includes('index.php')) {
+                        window.location.href = '/PerifaEdu/PerifaEdu/index.php?abrirLogin=true';
+                    } else {
+                        openLogin();
+                    }
+                }
+            });
+        });
+
+        // Fecha ao clicar fora do menu
+        document.addEventListener('click', function (e) {
+            if (!menuPerfil.contains(e.target) &&
+                (!ultimoPerfilBtn || !ultimoPerfilBtn.contains(e.target))) {
+                menuPerfil.style.display = 'none';
+            }
+        });
     }
-}
 
-function openCadastro() {
-    const loginModal = document.getElementById('login-modal');
-    const cadastroModal = document.getElementById('cadastro-modal');
-    if (loginModal && cadastroModal) {
-        loginModal.style.display = 'none';
-        cadastroModal.style.display = 'block';
-    }
-}
+    // ----------------------------------------------------------
+    // ESQUECEU A SENHA
+    // ----------------------------------------------------------
+    var linkEsqueceuSenha = document.querySelector('.forgot-password a');
+    var recuperacaoModal  = document.getElementById('recuperacao-modal');
+    var closeRecuperacao  = document.querySelector('.close-recuperacao');
 
-function closeAllModals() {
-    const loginModal = document.getElementById('login-modal');
-    const cadastroModal = document.getElementById('cadastro-modal');
-    if (loginModal) loginModal.style.display = 'none';
-    if (cadastroModal) cadastroModal.style.display = 'none';
-}
-
-// ESQUECEU A SENHA (1-3)
-document.addEventListener("DOMContentLoaded", function () {
-    // Pegando os elementos principais
-    const linkEsqueceuSenha = document.querySelector('.forgot-password a');
-    const loginModal = document.getElementById('login-modal');
-    const recuperacaoModal = document.getElementById('recuperacao-modal');
-    const closeRecuperacao = document.querySelector('.close-recuperacao');
-
-    // Pegando os passos
-    const stepEmail = document.getElementById('step-email');
-    const stepCodigo = document.getElementById('step-codigo');
-    const stepNovaSenha = document.getElementById('step-nova-senha');
-
-    // Botões
-    const btnEnviarEmail = document.getElementById('btn-enviar-email');
-    const btnEnviarCodigo = document.getElementById('btn-enviar-codigo');
-
-    // Só executa se os elementos existirem na tela
     if (linkEsqueceuSenha && recuperacaoModal) {
-        // 1. Abrir modal de recuperação e fechar o de login
         linkEsqueceuSenha.addEventListener('click', function (e) {
             e.preventDefault();
-            loginModal.style.display = 'none'; // Esconde o login
-            recuperacaoModal.style.display = 'flex'; // Mostra a recuperação
+            if (loginModal) loginModal.style.display = 'none';
+            recuperacaoModal.style.display = 'flex';
 
-            // Garante que sempre abra no passo 1
-            stepEmail.style.display = 'block';
-            stepCodigo.style.display = 'none';
-            stepNovaSenha.style.display = 'none';
-        });
-
-        // Fechar modal no 'X'
-        if (closeRecuperacao) {
-            closeRecuperacao.addEventListener('click', function () {
-                recuperacaoModal.style.display = 'none';
-            });
-        }
-
-        // 4. Lógica para pular para o próximo quadradinho do código automaticamente
-        const codigoInputs = document.querySelectorAll('.codigo-input');
-        if (codigoInputs.length > 0) {
-            codigoInputs.forEach((input, index) => {
-                input.addEventListener('input', function () {
-                    // Se o usuário digitou um número, pula para o próximo input
-                    if (this.value.length === 1 && index < codigoInputs.length - 1) {
-                        codigoInputs[index + 1].focus();
-                    }
-                });
-
-                // Permite apagar e voltar para o quadradinho anterior com o Backspace
-                input.addEventListener('keydown', function (e) {
-                    if (e.key === 'Backspace' && this.value === '' && index > 0) {
-                        codigoInputs[index - 1].focus();
-                    }
-                });
-            });
-        }
-    }
-});
-
-// ==========================================
-// FUNÇÃO GLOBAL DE VALIDAÇÃO DE SENHA
-// ==========================================
-function toggleRule(id, isValid) {
-    const element = document.getElementById(id);
-    if (element) {
-        if (isValid) {
-            element.classList.add("valid");
-            // Mantém apenas o texto após o símbolo (se já tiver "✔" ou "❌", não duplica)
-            const textContent = element.textContent.replace(/^[✔❌]\s*/, "");
-            element.textContent = "✔ " + textContent;
-        } else {
-            element.classList.remove("valid");
-            const textContent = element.textContent.replace(/^[✔❌]\s*/, "");
-            element.textContent = "❌ " + textContent;
-        }
-    }
-}
-
-// ==========================================
-// VALIDAÇÃO SENHA "REDEFINIR SENHA"
-// ==========================================
-document.addEventListener("DOMContentLoaded", function () {
-    const novaSenhaInput = document.getElementById("nova-senha");
-
-    if (novaSenhaInput) {
-        novaSenhaInput.addEventListener("input", function () {
-            const value = this.value;
-
-            const rules = {
-                length: value.length >= 8,
-                upper: /[A-Z]/.test(value),
-                lower: /[a-z]/.test(value),
-                number: /[0-9]/.test(value),
-                special: /[^A-Za-z0-9]/.test(value)
-            };
-
-            // Chamando a função para atualizar os IDs específicos da recuperação
-            toggleRule("rec-rule-length", rules.length);
-            toggleRule("rec-rule-upper", rules.upper);
-            toggleRule("rec-rule-lower", rules.lower);
-            toggleRule("rec-rule-number", rules.number);
-            toggleRule("rec-rule-special", rules.special);
+            var stepEmail    = document.getElementById('step-email');
+            var stepCodigo   = document.getElementById('step-codigo');
+            var stepNovaSenha= document.getElementById('step-nova-senha');
+            if (stepEmail)     stepEmail.style.display     = 'block';
+            if (stepCodigo)    stepCodigo.style.display    = 'none';
+            if (stepNovaSenha) stepNovaSenha.style.display = 'none';
         });
     }
-});
 
-// ==========================================
-// VALIDAÇÃO SENHA "CADASTRO"
-// ==========================================
-document.addEventListener("DOMContentLoaded", function () {
-    const senhaInput = document.getElementById("cadastro-password");
-
-    if (senhaInput) {
-        senhaInput.addEventListener("input", function () {
-            const value = this.value;
-
-            const rules = {
-                length: value.length >= 8,
-                upper: /[A-Z]/.test(value),
-                lower: /[a-z]/.test(value),
-                number: /[0-9]/.test(value),
-                special: /[^A-Za-z0-9]/.test(value)
-            };
-
-            toggleRule("rule-length", rules.length);
-            toggleRule("rule-upper", rules.upper);
-            toggleRule("rule-lower", rules.lower);
-            toggleRule("rule-number", rules.number);
-            toggleRule("rule-special", rules.special);
+    if (closeRecuperacao) {
+        closeRecuperacao.addEventListener('click', function () {
+            if (recuperacaoModal) recuperacaoModal.style.display = 'none';
         });
     }
-});
 
-// =========================================================
-// LÓGICA: BOTÃO DE SAIR (LOGOUT)
-// =========================================================
-const btnLogout = document.getElementById('btn-logout');
-
-if (btnLogout) {
-    btnLogout.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        // remove login do navegador
-        localStorage.removeItem('perifaEduLogado');
-
-        // encerra sessão no PHP
-        fetch('/perifaedu/PerifaEdu/pages/logout.php')
-            .finally(() => {
-                window.location.reload();
-            });
+    // Navegação por código (dígitos)
+    var codigoInputs = document.querySelectorAll('.codigo-input');
+    codigoInputs.forEach(function (input, index) {
+        input.addEventListener('input', function () {
+            if (this.value.length === 1 && index < codigoInputs.length - 1) {
+                codigoInputs[index + 1].focus();
+            }
+        });
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Backspace' && this.value === '' && index > 0) {
+                codigoInputs[index - 1].focus();
+            }
+        });
     });
+});
+
+// =========================================================
+// VALIDAÇÃO DE SENHA — funções globais reutilizáveis
+// =========================================================
+function toggleRule(id, isValid) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var text = el.textContent.replace(/^[✔❌]\s*/, '');
+    el.textContent = (isValid ? '✔ ' : '❌ ') + text;
+    if (isValid) el.classList.add('valid');
+    else         el.classList.remove('valid');
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Senha no cadastro
+    var senhaInputCad = document.getElementById('cadastro-password');
+    if (senhaInputCad) {
+        senhaInputCad.addEventListener('input', function () {
+            var v = this.value;
+            toggleRule('rule-length',  v.length >= 8);
+            toggleRule('rule-upper',   /[A-Z]/.test(v));
+            toggleRule('rule-lower',   /[a-z]/.test(v));
+            toggleRule('rule-number',  /[0-9]/.test(v));
+            toggleRule('rule-special', /[^A-Za-z0-9]/.test(v));
+        });
+    }
+
+    // Senha na recuperação
+    var senhaInputRec = document.getElementById('nova-senha');
+    if (senhaInputRec) {
+        senhaInputRec.addEventListener('input', function () {
+            var v = this.value;
+            toggleRule('rec-rule-length',  v.length >= 8);
+            toggleRule('rec-rule-upper',   /[A-Z]/.test(v));
+            toggleRule('rec-rule-lower',   /[a-z]/.test(v));
+            toggleRule('rec-rule-number',  /[0-9]/.test(v));
+            toggleRule('rec-rule-special', /[^A-Za-z0-9]/.test(v));
+        });
+    }
+});

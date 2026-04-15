@@ -6,6 +6,7 @@
   border: none !important;
   padding: 0 !important;
   overflow: hidden;
+  z-index: 100001 !important; /* acima do overlay do modal (z-index: 1000) */
 }
 .flatpickr-months {
   background: #012E71 !important;

@@ -3,10 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="./css/flatpickr-perifaedu.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- idioma PT-BR -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <link rel="stylesheet" href="./css/flatpickr-perifaedu.css">
     <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="./css/reset.css">
 
@@ -120,14 +120,15 @@
                 <div class="form-group">
                     <label for="dataNascimento" class="required">DATA DE NASCIMENTO:</label>
                     <input type="text" class="caixa-texto" id="dataNascimento" name="data_nascimento" placeholder="DD/MM/AAAA" required>
-                    <script>
-                        flatpickr("#dataNascimento", {
-                            dateFormat: "d/m/Y",
-                            locale: "pt",
-                            maxDate: "today", // impede datas futuras
-                            allowInput: true // permite digitar também
-                        });
-                    </script>
+                <script>
+                    flatpickr("#dataNascimento", {
+                        dateFormat: "d/m/Y",
+                        locale: "pt",
+                        maxDate: "today",
+                        allowInput: true,
+                        appendTo: document.body
+                    });
+                </script>
                 </div>
 
                 <div class="form-group">
@@ -143,7 +144,6 @@
                 <div class="form-group">
                     <label for="cadastro-password" class="required">SENHA:</label>
                     <input type="password" class="caixa-texto" id="cadastro-password" name="senha" placeholder="Insira sua senha" required>
-                    <i class="fa-solid fa-eye toggle-password" data-target="senha"></i>
                     <div class="password-rules">
                         <p id="rule-length">❌ Mínimo 8 caracteres</p>
                         <p id="rule-upper">❌ Letra minúscula</p>
@@ -200,7 +200,6 @@
                 <div class="form-group">
                     <label for="confirm-password" class="required">REPETIR SENHA:</label>
                     <input type="password" class="caixa-texto" id="confirm-password" name="confirmar_senha" placeholder="Repita sua senha" required>
-                    <i class="fa-solid fa-eye toggle-password" data-target="senha"></i>
                     <p id="msg-cadastro-email" style="margin-top:10px;color:green;font-size:14px;"></p>
                 </div>
                 <button type="submit" class="btn-cadastro">CADASTRAR-SE</button>
