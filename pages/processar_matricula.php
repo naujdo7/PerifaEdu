@@ -1,7 +1,7 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 header('X-Content-Type-Options: nosniff');
-
 // ── Só aceita POST ──
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['sucesso' => false, 'mensagem' => 'Método não permitido.']);
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── Conexão com o banco ──
-require_once '../conexao.php'; // ajuste o caminho se necessário
+require __DIR__ . '/../config/conexao.php';
 
 // ── Função de resposta ──
 function resposta(bool $ok, string $msg, array $extra = []): void {
@@ -44,6 +44,14 @@ $como_conheceu = limpar($_POST['como_conheceu']     ?? '');
 $observacoes   = limpar($_POST['observacoes']       ?? '');
 
 // ── Validações ──
+if (!isset($_SESSION['usuario_email'])) {
+    resposta(false, 'Você precisa estar logado para realizar a matrícula.');
+}
+
+if ($email !== $_SESSION['usuario_email']) {
+    resposta(false, 'O e-mail informado no formulário deve ser o mesmo do seu login.');
+}
+
 if (strlen($nome) < 5) {
     resposta(false, 'Nome completo inválido.');
 }
@@ -81,9 +89,6 @@ $stmt = $conn->prepare("SELECT id FROM matriculas WHERE cpf = ? LIMIT 1");
 $stmt->bind_param("s", $cpf);
 $stmt->execute();
 $stmt->store_result();
-if ($stmt->num_rows > 0) {
-    resposta(false, 'Este CPF já possui uma inscrição cadastrada.');
-}
 $stmt->close();
 
 // ── Insere no banco ──

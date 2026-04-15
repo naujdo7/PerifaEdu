@@ -7,19 +7,19 @@ if (urlParams.get('loginGoogle') === 'true') {
 }
 
 // Aguarda o DOM carregar
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Elementos dos modais
     const loginModal = document.getElementById('login-modal');
     const cadastroModal = document.getElementById('cadastro-modal');
-    
+
     // Botões de abrir/fechar
     const openCadastroBtn = document.getElementById('open-cadastro');
     const openLoginBtn = document.getElementById('open-login');
     const closeBtns = document.querySelectorAll('.close');
-    
+
     // Elemento da bolinha do perfil
     const perfilBtns = document.querySelectorAll('.perfil'); // Confirme se a classe é essa mesma (.perfil) ou mude aqui
-    
+
     // =========================================================
     // NOVA LÓGICA: VERIFICAR SE ESTÁ LOGADO (Menu Restrito)
     // =========================================================
@@ -29,26 +29,26 @@ document.addEventListener('DOMContentLoaded', function() {
     if (usuarioLogado) {
         // Se estiver logado, nós removemos a classe que esconde o menu!
         itensRestritos.forEach(item => {
-            item.classList.remove('menu-restrito'); 
+            item.classList.remove('menu-restrito');
         });
     }
 
     // Função para abrir modal de login
     function openLoginModal() {
-        if(cadastroModal) cadastroModal.style.display = 'none';
-        if(loginModal) loginModal.style.display = 'block'; // ou 'flex' dependendo do seu CSS
+        if (cadastroModal) cadastroModal.style.display = 'none';
+        if (loginModal) loginModal.style.display = 'block'; // ou 'flex' dependendo do seu CSS
     }
-    
+
     // Função para abrir modal de cadastro
     function openCadastroModal() {
-        if(loginModal) loginModal.style.display = 'none';
-        if(cadastroModal) cadastroModal.style.display = 'block'; // ou 'flex' dependendo do seu CSS
+        if (loginModal) loginModal.style.display = 'none';
+        if (cadastroModal) cadastroModal.style.display = 'block'; // ou 'flex' dependendo do seu CSS
     }
-    
+
     // Função para fechar modais
     function closeModals() {
-        if(loginModal) loginModal.style.display = 'none';
-        if(cadastroModal) cadastroModal.style.display = 'none';
+        if (loginModal) loginModal.style.display = 'none';
+        if (cadastroModal) cadastroModal.style.display = 'none';
     }
 
     // =========================================================
@@ -56,82 +56,82 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('abrirLogin') === 'true' && loginModal && !usuarioLogado) {
-    openLoginModal();
+        openLoginModal();
     }
-    
+
     // =========================================================
     // LÓGICA: Clique na bolinha do perfil em qualquer página
     // =========================================================
     const menuPerfil = document.getElementById('menu-perfil');
 
-if (perfilBtns.length > 0 && menuPerfil) {
+    if (perfilBtns.length > 0 && menuPerfil) {
 
-    perfilBtns.forEach(perfilBtn => {
+        perfilBtns.forEach(perfilBtn => {
 
-        perfilBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+            perfilBtn.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
+                const usuarioLogado = localStorage.getItem('perifaEduLogado') === 'true';
 
-            if (usuarioLogado) {
-                menuPerfil.style.display =
-                    menuPerfil.style.display === 'flex' ? 'none' : 'flex';
-            } else {
-
-                if (!window.location.pathname.includes('index.php')) {
-                    window.location.href = "/PerifaEdu/PerifaEdu/index.php?abrirLogin=true";
+                if (usuarioLogado) {
+                    menuPerfil.style.display =
+                        menuPerfil.style.display === 'flex' ? 'none' : 'flex';
                 } else {
-                    openLoginModal();
-                }
 
-            }
+                    if (!window.location.pathname.includes('index.php')) {
+                        window.location.href = "/PerifaEdu/PerifaEdu/index.php?abrirLogin=true";
+                    } else {
+                        openLoginModal();
+                    }
+
+                }
+            });
+
         });
 
-    });
+        const fecharMenu = document.getElementById('fechar-menu');
 
-const fecharMenu = document.getElementById('fechar-menu');
+        if (fecharMenu) {
+            fecharMenu.addEventListener('click', function (e) {
+                e.preventDefault();
+                menuPerfil.style.display = 'none';
+            });
+        }
 
-if (fecharMenu) {
-    fecharMenu.addEventListener('click', function(e) {
-        e.preventDefault();
-        menuPerfil.style.display = 'none';
-    });
-}
-
-// 🔥 FECHAR CLICANDO FORA
-document.addEventListener('click', function (e) {
-    if (!menuPerfil.contains(e.target) && e.target !== perfilBtn) {
-        menuPerfil.style.display = 'none';
-    }
-});
+        // 🔥 FECHAR CLICANDO FORA
+        document.addEventListener('click', function (e) {
+            if (!menuPerfil.contains(e.target) && e.target !== perfilBtn) {
+                menuPerfil.style.display = 'none';
+            }
+        });
 
     } else {
         console.log('Elemento do perfil não encontrado nesta página.');
     }
-    
+
     // Abrir cadastro a partir do login
     if (openCadastroBtn) {
-        openCadastroBtn.addEventListener('click', function(e) {
+        openCadastroBtn.addEventListener('click', function (e) {
             e.preventDefault();
             openCadastroModal();
         });
     }
-    
+
     // Abrir login a partir do cadastro
     if (openLoginBtn) {
-        openLoginBtn.addEventListener('click', function(e) {
+        openLoginBtn.addEventListener('click', function (e) {
             e.preventDefault();
             openLoginModal();
         });
     }
-    
+
     // Fechar modais com o X
     closeBtns.forEach(btn => {
         btn.addEventListener('click', closeModals);
     });
-    
+
     // Fechar modal clicando fora
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target === loginModal) {
             closeModals();
         }
@@ -139,9 +139,9 @@ document.addEventListener('click', function (e) {
             closeModals();
         }
     });
-    
+
     // Fechar com ESC
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
             closeModals();
         }
@@ -174,7 +174,7 @@ function closeAllModals() {
 }
 
 // ESQUECEU A SENHA (1-3)
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Pegando os elementos principais
     const linkEsqueceuSenha = document.querySelector('.forgot-password a');
     const loginModal = document.getElementById('login-modal');
@@ -193,11 +193,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Só executa se os elementos existirem na tela
     if (linkEsqueceuSenha && recuperacaoModal) {
         // 1. Abrir modal de recuperação e fechar o de login
-        linkEsqueceuSenha.addEventListener('click', function(e) {
+        linkEsqueceuSenha.addEventListener('click', function (e) {
             e.preventDefault();
             loginModal.style.display = 'none'; // Esconde o login
             recuperacaoModal.style.display = 'flex'; // Mostra a recuperação
-            
+
             // Garante que sempre abra no passo 1
             stepEmail.style.display = 'block';
             stepCodigo.style.display = 'none';
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Fechar modal no 'X'
         if (closeRecuperacao) {
-            closeRecuperacao.addEventListener('click', function() {
+            closeRecuperacao.addEventListener('click', function () {
                 recuperacaoModal.style.display = 'none';
             });
         }
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const codigoInputs = document.querySelectorAll('.codigo-input');
         if (codigoInputs.length > 0) {
             codigoInputs.forEach((input, index) => {
-                input.addEventListener('input', function() {
+                input.addEventListener('input', function () {
                     // Se o usuário digitou um número, pula para o próximo input
                     if (this.value.length === 1 && index < codigoInputs.length - 1) {
                         codigoInputs[index + 1].focus();
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
 
                 // Permite apagar e voltar para o quadradinho anterior com o Backspace
-                input.addEventListener('keydown', function(e) {
+                input.addEventListener('keydown', function (e) {
                     if (e.key === 'Backspace' && this.value === '' && index > 0) {
                         codigoInputs[index - 1].focus();
                     }
@@ -255,7 +255,7 @@ function toggleRule(id, isValid) {
 // ==========================================
 // VALIDAÇÃO SENHA "REDEFINIR SENHA"
 // ==========================================
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const novaSenhaInput = document.getElementById("nova-senha");
 
     if (novaSenhaInput) {
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================================
 // VALIDAÇÃO SENHA "CADASTRO"
 // ==========================================
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const senhaInput = document.getElementById("cadastro-password");
 
     if (senhaInput) {
@@ -308,12 +308,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // =========================================================
-    // LÓGICA: BOTÃO DE SAIR (LOGOUT)
-    // =========================================================
-    const btnLogout = document.getElementById('btn-logout');
+// LÓGICA: BOTÃO DE SAIR (LOGOUT)
+// =========================================================
+const btnLogout = document.getElementById('btn-logout');
 
 if (btnLogout) {
-    btnLogout.addEventListener('click', function(e) {
+    btnLogout.addEventListener('click', function (e) {
         e.preventDefault();
 
         // remove login do navegador

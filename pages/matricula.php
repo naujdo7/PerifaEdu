@@ -121,6 +121,10 @@ require_once("./header.php");
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/headerfoot.css">
   <link rel="stylesheet" href="../css/popup.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="../css/flatpickr-perifaedu.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
   <script src="../js/headerfoot.js" defer></script>
   <script src="../js/popup-login.js" defer></script>
   <style>
@@ -306,7 +310,7 @@ require_once("./header.php");
         </div>
         <div class="form-group">
           <label for="data_nascimento">Data de Nascimento <span class="req">*</span></label>
-          <input type="date" id="data_nascimento" name="data_nascimento">
+          <input type="text" id="data_nascimento" name="data_nascimento" placeholder="DD/MM/AAAA">
           <span class="field-error" id="err_data">Data inválida ou idade mínima de 14 anos.</span>
         </div>
         <div class="form-group">
@@ -485,13 +489,26 @@ document.getElementById('cpf').addEventListener('input', function(){ this.value 
 document.getElementById('telefone').addEventListener('input', function(){ this.value = maskPhone(this.value); });
 document.getElementById('cep').addEventListener('input', function(){ this.value = maskCEP(this.value); });
 
-/* ── Calcula idade ── */
-document.getElementById('data_nascimento').addEventListener('change', function(){
-  const dob = new Date(this.value), today = new Date();
-  let age = today.getFullYear() - dob.getFullYear();
-  const m = today.getMonth() - dob.getMonth();
-  if(m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-  document.getElementById('idade').value = age > 0 ? age : '';
+/* ── Calcula idade (Flatpickr) ── */
+flatpickr("#data_nascimento", {
+  altInput: true,
+  altFormat: "d/m/Y",
+  dateFormat: "Y-m-d",
+  locale: "pt",
+  maxDate: "today",
+  allowInput: true,
+  onChange: function(selectedDates, dateStr, instance) {
+    if(selectedDates.length > 0) {
+      const dob = selectedDates[0];
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if(m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+      document.getElementById('idade').value = age > 0 ? age : '';
+    } else {
+      document.getElementById('idade').value = '';
+    }
+  }
 });
 
 /* ── Helpers ── */
