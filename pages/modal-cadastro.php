@@ -146,8 +146,8 @@
                     <input type="password" class="caixa-texto" id="cadastro-password" name="senha" placeholder="Insira sua senha" required>
                     <div class="password-rules">
                         <p id="rule-length">❌ Mínimo 8 caracteres</p>
-                        <p id="rule-upper">❌ Letra minúscula</p>
-                        <p id="rule-lower">❌ Letra maiúscula</p>
+                        <p id="rule-upper">❌ Letra maiúscula</p>
+                        <p id="rule-lower">❌ Letra minúscula</p>
                         <p id="rule-number">❌ Número</p>
                         <p id="rule-special">❌ Caractere especial</p>
                     </div>

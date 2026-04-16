@@ -185,11 +185,6 @@ input::placeholder {
 
 }
 
-.social-icons img {
-  width: 30px;
-  height: 30px;
-}
-
 .social-icon:hover {
   transform: translateY(-3px);
 }

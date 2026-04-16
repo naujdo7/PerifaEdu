@@ -529,6 +529,7 @@ async function toggleConcluidoApostila(apostilaId, nomeDisciplina) {
     const res = await fetch('/PerifaEdu/PerifaEdu/pages/api_progresso.php', { method: 'POST', body });
     const data = await res.json();
 
+    
     if (data.sucesso) {
       if (acao === 'marcar') {
         apostilasConcluidas.add(apostilaId);
@@ -546,15 +547,15 @@ async function toggleConcluidoApostila(apostilaId, nomeDisciplina) {
     } else {
       // Não logado ou erro — restaura estado anterior
       btn.innerHTML = jaConcluida
-        ? '<i class="fas fa-check-circle"></i> Concluído ✔'
-        : '<i class="far fa-circle"></i> Marcar como concluído';
+        ? '<i class="fas fa-check-circle"></i> Concluído'
+        : '<i class="far fa-circle"></i> Concluído';
       mostrarToastApostilas('Faça login para salvar seu progresso.', true);
     }
   } catch (e) {
     // Erro de rede — restaura
     btn.innerHTML = jaConcluida
-      ? '<i class="fas fa-check-circle"></i> Concluído ✔'
-      : '<i class="far fa-circle"></i> Marcar como concluído';
+      ? '<i class="fas fa-check-circle"></i> Concluído'
+      : '<i class="far fa-circle"></i> Concluído';
   } finally {
     btn.dataset.loading = '0';
   }

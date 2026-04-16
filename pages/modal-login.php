@@ -24,8 +24,8 @@
                         <a href="#">Esqueceu a senha?</a>
                     </div>
                 </div>
+                <p id="msg-login" class="msg-sucesso2" style="padding-bottom: 10px;"></p>
                 <button type="submit" class="btn-login">ENTRAR</button>
-                <p id="msg-login" class="msg-sucesso2"></p>
             </form>
 
             <div class="social-login">
@@ -34,7 +34,7 @@
         
         <a href="/teste">
             <div class="social-icon">
-                <img src="./img/apple.svg" alt="">
+                <img src="./img/facebook.svg" alt="">
             </div>
         </a>
         
@@ -43,13 +43,6 @@
                 <img src="./img/google.svg" alt="">
             </div>
         </a>
-
-        <a href="/teste">
-            <div class="social-icon">
-                <img src="./img/Microsoft.svg" alt="">
-            </div>
-        </a>
-
     </div>
 </div>
 
