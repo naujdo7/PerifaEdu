@@ -529,6 +529,7 @@ async function toggleConcluidoApostila(apostilaId, nomeDisciplina) {
     const res = await fetch(window.baseUrl + 'pages/api_progresso.php', { method: 'POST', body });
     const data = await res.json();
 
+    
     if (data.sucesso) {
       if (acao === 'marcar') {
         apostilasConcluidas.add(apostilaId);
