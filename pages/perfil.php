@@ -1410,9 +1410,9 @@ const APOSTILAS_DATA = {
       '1º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Introdução às Letras', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_coletanea_atividades_aluno_1ano.pdf' },
-            { titulo: 'Vogais e Consoantes', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_coletanea_atividades_aluno_1ano.pdf' },
-            { titulo: 'Primeiras Palavras', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_coletanea_atividades_aluno_1ano.pdf' }
+            { titulo: 'Introdução às Letras', url: '../conteudos/1ano/1º Ano - Português - Introdução às Letras (Premium).pdf' },
+            { titulo: 'Vogais e Consoantes', url: '../conteudos/1ano/1º Ano - Português - Vogais e Consoantes (Premium).pdf' },
+            { titulo: 'Primeiras Palavras', url: '../conteudos/1ano/1º Ano - Português - Primeiras Palavras (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Números de 0 a 10', url: 'https://www.computacao.unitri.edu.br/erac/index.php/erac/article/viewFile/109/75' },
@@ -1420,42 +1420,42 @@ const APOSTILAS_DATA = {
             { titulo: 'Subtração Básica', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Animais e Plantas', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_coletanea_atividades_aluno_1ano.pdf' },
-            { titulo: 'Corpo Humano', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_coletanea_atividades_aluno_1ano.pdf' },
-            { titulo: 'Estações do Ano', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_coletanea_atividades_aluno_1ano.pdf' }
+            { titulo: 'Animais e Plantas', url: '../conteudos/1ano/1º Ano - Ciências - Animais e Plantas (Premium).pdf' },
+            { titulo: 'Corpo Humano', url: '../conteudos/1ano/1º Ano - Ciências - Corpo Humano (Premium).pdf' },
+            { titulo: 'Estações do Ano', url: '../conteudos/1ano/1º Ano - Ciências - Estações do Ano (Premium).pdf' }
           ]
         }
       },
       '2º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Leitura e Escrita', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_2ano_portugues.pdf' },
-            { titulo: 'Sílabas e Palavras', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_2ano_portugues.pdf' }
+            { titulo: 'Leitura e Escrita', url: '../conteudos/2ano/2º Ano - Português - Leitura e Escrita (Premium).pdf' },
+            { titulo: 'Sílabas e Palavras', url: '../conteudos/2ano/2º Ano - Português - Sílabas e Palavras (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Números até 100', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' },
             { titulo: 'Multiplicação Introdução', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Seres Vivos', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_2ano_ciencias.pdf' }
+            { titulo: 'Seres Vivos', url: '../conteudos/2ano/2º Ano - Ciências - Seres Vivos (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'História da Família', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_2ano_historia.pdf' }
+            { titulo: 'História da Família', url: '../conteudos/2ano/2º Ano - História - História da Família (Premium).pdf' }
           ]
         }
       },
       '3º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Separação de Sílabas', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_3ano_portugues.pdf' },
-            { titulo: 'Pontuação Básica', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_3ano_portugues.pdf' }
+            { titulo: 'Separação de Sílabas', url: '../conteudos/3ano/3º Ano - Português - Separação de Sílabas (Premium).pdf' },
+            { titulo: 'Pontuação Básica', url: '../conteudos/3ano/3º Ano - Português - Pontuação Básica (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Multiplicação', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' },
             { titulo: 'Divisão Simples', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Habitat e Nicho', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_3ano_ciencias.pdf' }
+            { titulo: 'Habitat e Nicho', url: '../conteudos/3ano/3º Ano - Ciências - Habitat e Nicho (Premium).pdf' }
           ],
           'Geografia': [
             { titulo: 'Mapa do Brasil', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_3ano_geografia.pdf' }
@@ -1465,36 +1465,36 @@ const APOSTILAS_DATA = {
       '4º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Análise de Textos', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_4ano_portugues.pdf' },
-            { titulo: 'Concordância Verbal', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_4ano_portugues.pdf' }
+            { titulo: 'Análise de Textos', url: '../conteudos/4ano/4º Ano - Português - Análise de Textos (Premium).pdf' },
+            { titulo: 'Concordância Verbal', url: '../conteudos/4ano/4º Ano - Português - Concordância Verbal (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Frações Básicas', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' },
             { titulo: 'Números Decimais', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Sistema Solar', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_4ano_ciencias.pdf' }
+            { titulo: 'Sistema Solar', url: '../conteudos/4ano/4º Ano - Ciências - Sistema Solar (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Regiões do Brasil', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_4ano_geografia.pdf' }
+            { titulo: 'Regiões do Brasil', url: '../conteudos/4ano/4º Ano - Geografia - Regiões do Brasil (Premium).pdf' }
           ]
         }
       },
       '5º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Gêneros Textuais', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_5ano_portugues.pdf' },
-            { titulo: 'Interpretação de Textos', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_5ano_portugues.pdf' }
+            { titulo: 'Gêneros Textuais', url: '../conteudos/5ano/5º Ano - Português - Gêneros Textuais (Premium).pdf' },
+            { titulo: 'Interpretação de Textos', url: '../conteudos/5ano/5º Ano - Português - Interpretação de Textos (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Operações com Decimais', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' },
             { titulo: 'Geometria Básica', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Mudanças Climáticas', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_5ano_ciencias.pdf' }
+            { titulo: 'Mudanças Climáticas', url: '../conteudos/5ano/5º Ano - Ciências - Mudanças Climáticas (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Continentes e Oceanos', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_5ano_geografia.pdf' }
+            { titulo: 'Continentes e Oceanos', url: '../conteudos/5ano/5º Ano - Geografia - Continentes e Oceanos (Premium).pdf' }
           ]
         }
       }
@@ -1506,89 +1506,89 @@ const APOSTILAS_DATA = {
       '6º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Morfologia: Classes de Palavras', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_6ano_portugues.pdf' }
+            { titulo: 'Morfologia: Classes de Palavras', url: '../conteudos/6ano/6º Ano - Português - Morfologia Classes de Palavras (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Potenciação e Radiciação', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' },
             { titulo: 'Raiz Quadrada', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Célula e Vida', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_6ano_ciencias.pdf' }
+            { titulo: 'Célula e Vida', url: '../conteudos/6ano/6º Ano - Ciências - Célula e Vida (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'Pré-História Brasileira', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_6ano_historia.pdf' }
+            { titulo: 'Pré-História Brasileira', url: '../conteudos/6ano/6º Ano - História - Pré-História Brasileira (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Cartografia', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_6ano_geografia.pdf' }
+            { titulo: 'Cartografia', url: '../conteudos/6ano/6º Ano - Geografia - Cartografia (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Present Simple', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_6ano_ingles.pdf' }
+            { titulo: 'Present Simple', url: '../conteudos/6ano/6º Ano - Inglês - Present Simple (Premium).pdf' }
           ]
         }
       },
       '7º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Sintaxe da Oração', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_7ano_portugues.pdf' }
+            { titulo: 'Sintaxe da Oração', url: '../conteudos/7ano/7º Ano - Português - Sintaxe da Oração (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Expressões Algébricas', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Sistema Nervoso', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_7ano_ciencias.pdf' }
+            { titulo: 'Sistema Nervoso', url: '../conteudos/7ano/7º Ano - Ciências - Sistema Nervoso (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'Brasil Colonial', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_7ano_historia.pdf' }
+            { titulo: 'Brasil Colonial', url: '../conteudos/7ano/7º Ano - História - Brasil Colonial (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Clima e Vegetação', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_7ano_geografia.pdf' }
+            { titulo: 'Clima e Vegetação', url: '../conteudos/7ano/7º Ano - Geografia - Clima e Vegetação (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Present Continuous', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_7ano_ingles.pdf' }
+            { titulo: 'Present Continuous', url: '../conteudos/7ano/7º Ano - Inglês - Present Continuous (Premium).pdf' }
           ]
         }
       },
       '8º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Análise Sintática Completa', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_8ano_portugues.pdf' }
+            { titulo: 'Análise Sintática Completa', url: '../conteudos/8ano/8º Ano - Português - Análise Sintática Completa (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Equações do 1º Grau', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Reprodução Humana', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_8ano_ciencias.pdf' }
+            { titulo: 'Reprodução Humana', url: '../conteudos/8ano/8º Ano - Ciências - Reprodução Humana (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'Independência do Brasil', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_8ano_historia.pdf' }
+            { titulo: 'Independência do Brasil', url: '../conteudos/8ano/8º Ano - História - Independência do Brasil (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'População Brasileira', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_8ano_geografia.pdf' }
+            { titulo: 'População Brasileira', url: '../conteudos/8ano/8º Ano - Geografia - População Brasileira (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Simple Past', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_8ano_ingles.pdf' }
+            { titulo: 'Simple Past', url: '../conteudos/8ano/8º Ano - Inglês - Simple Past (Premium).pdf' }
           ]
         }
       },
       '9º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Período Composto', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_portugues.pdf' }
+            { titulo: 'Período Composto', url: '../conteudos/9ano/9º Ano - Português - Período Composto (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Equações do 2º Grau', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Ciências': [
-            { titulo: 'Evolução e Seleção Natural', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_ciencias.pdf' }
+            { titulo: 'Evolução e Seleção Natural', url: '../conteudos/9ano/9º Ano - Ciências - Evolução e Seleção Natural (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'República Velha', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_historia.pdf' }
+            { titulo: 'República Velha', url: '../conteudos/9ano/9º Ano - História - República Velha (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Economia Brasileira', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_geografia.pdf' }
+            { titulo: 'Economia Brasileira', url: '../conteudos/9ano/9º Ano - Geografia - Economia Brasileira (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Present Perfect', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_ingles.pdf' }
+            { titulo: 'Present Perfect', url: '../conteudos/9ano/9º Ano - Inglês - Present Perfect (Premium).pdf' }
           ]
         }
       }
@@ -1600,84 +1600,84 @@ const APOSTILAS_DATA = {
       '1º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Literatura Portuguesa', url: 'https://educapes.capes.gov.br/bitstream/capes/560994/2/Apostila%20Literatura%20-%20Produto%20Educacional.pdf' }
+            { titulo: 'Literatura Portuguesa', url: '../conteudos/1med/1º Ano - Português - Literatura Portuguesa (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Funções Quadráticas', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Química': [
-            { titulo: 'Química Geral e Inorgânica', url: 'https://educapes.capes.gov.br/bitstream/capes/205370/4/APOSTILA_QUIMICA_GERAL_E_INORGANICA.pdf' }
+            { titulo: 'Química Geral e Inorgânica', url: '../conteudos/1med/1º Ano - Química - Química Geral e Inorgânica (Premium).pdf' }
           ],
           'Física': [
-            { titulo: 'Mecânica e Cinemática', url: 'https://educapes.capes.gov.br/bitstream/capes/178953/2/Produto_Educacional_Apostila_de_Fisica.pdf' }
+            { titulo: 'Mecânica e Cinemática', url: '../conteudos/1med/1º Ano - Física - Mecânica e Cinemática (Premium).pdf' }
           ],
           'Biologia': [
-            { titulo: 'Citologia e Genética Básica', url: 'https://educapes.capes.gov.br/bitstream/capes/174064/4/PPT_Biologia%20Modular.pdf' }
+            { titulo: 'Citologia e Genética Básica', url: '../conteudos/1med/1º Ano - Biologia - Citologia e Genética Básica (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'Idade Moderna', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2020-06/historia_em_1_ano_apostila.pdf' }
+            { titulo: 'Idade Moderna', url: '../conteudos/1med/1º Ano - História - Idade Moderna (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Geopolítica Mundial', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2020-06/geografia_em_1_ano_apostila.pdf' }
+            { titulo: 'Geopolítica Mundial', url: '../conteudos/1med/1º Ano - Geografia - Geopolítica Mundial (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Future Tense', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_ingles.pdf' }
+            { titulo: 'Future Tense', url: '../conteudos/1med/1º Ano - Inglês - Future Tense (Premium).pdf' }
           ]
         }
       },
       '2º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Literatura Brasileira Colonial', url: 'https://educapes.capes.gov.br/bitstream/capes/560994/2/Apostila%20Literatura%20-%20Produto%20Educacional.pdf' }
+            { titulo: 'Literatura Brasileira Colonial', url: '../conteudos/2med/2º Ano - Português - Literatura Brasileira Colonial (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Trigonometria', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Química': [
-            { titulo: 'Química Orgânica', url: 'https://educapes.capes.gov.br/bitstream/capes/205370/4/APOSTILA_QUIMICA_GERAL_E_INORGANICA.pdf' }
+            { titulo: 'Química Orgânica', url: '../conteudos/2med/2º Ano - Química - Química Organica (Premium).pdf' }
           ],
           'Física': [
-            { titulo: 'Termodinâmica e Ondas', url: 'https://educapes.capes.gov.br/bitstream/capes/178953/2/Produto_Educacional_Apostila_de_Fisica.pdf' }
+            { titulo: 'Termodinâmica e Ondas', url: '../conteudos/2med/2º Ano - Física - Termodinâmica e Ondas (Premium).pdf' }
           ],
           'Biologia': [
-            { titulo: 'Ecologia e Evolução', url: 'https://educapes.capes.gov.br/bitstream/capes/174064/4/PPT_Biologia%20Modular.pdf' }
+            { titulo: 'Ecologia e Evolução', url: '../conteudos/2med/2º Ano - Biologia - Ecologia e Evolução (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'Iluminismo e Revoluções', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2020-06/historia_em_2_ano_apostila.pdf' }
+            { titulo: 'Iluminismo e Revoluções', url: '../conteudos/2med/2º Ano - História - Iluminismo e Revoluções (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Sustentabilidade Global', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2020-06/geografia_em_2_ano_apostila.pdf' }
+            { titulo: 'Sustentabilidade Global', url: '../conteudos/2med/2º Ano - Geografia - Sustentabilidade Global (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Conditional Structures', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_ingles.pdf' }
+            { titulo: 'Conditional Structures', url: '../conteudos/2med/2º Ano - Inglês - Conditional Structures (Premium).pdf' }
           ]
         }
       },
       '3º ano': {
         disciplinas: {
           'Português': [
-            { titulo: 'Literatura Moderna e ENEM', url: 'https://educapes.capes.gov.br/bitstream/capes/560994/2/Apostila%20Literatura%20-%20Produto%20Educacional.pdf' }
+            { titulo: 'Literatura Moderna e ENEM', url: '../conteudos/3med/3º Ano - Português - Literatura Moderna e ENEM (Premium).pdf' }
           ],
           'Matemática': [
             { titulo: 'Geometria Analítica e ENEM', url: 'https://educapes.capes.gov.br/bitstream/capes/431195/2/Produto%20Educacional%20-%20Apostila%20de%20Matem%C3%A1tica%20I.pdf' }
           ],
           'Química': [
-            { titulo: 'Química para o ENEM', url: 'https://educapes.capes.gov.br/bitstream/capes/205370/4/APOSTILA_QUIMICA_GERAL_E_INORGANICA.pdf' }
+            { titulo: 'Química para o ENEM', url: '../conteudos/3med/3º Ano - Química - Química para o ENEM (Premium).pdf' }
           ],
           'Física': [
-            { titulo: 'Eletromagnetismo', url: 'https://educapes.capes.gov.br/bitstream/capes/178953/2/Produto_Educacional_Apostila_de_Fisica.pdf' }
+            { titulo: 'Eletromagnetismo e ENEM', url: '../conteudos/3med/3º Ano - Física - Eletromagnetismo e ENEM (Premium).pdf' }
           ],
           'Biologia': [
-            { titulo: 'Biologia Molecular e Genética', url: 'https://educapes.capes.gov.br/bitstream/capes/174064/4/PPT_Biologia%20Modular.pdf' }
+            { titulo: 'Biologia Molecular e Genética', url: '../conteudos/3med/3º Ano - Biologia - Biologia Molecular e Genética (Premium).pdf' }
           ],
           'História': [
-            { titulo: 'História Contemporânea', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2020-06/historia_em_3_ano_apostila.pdf' }
+            { titulo: 'História Contemporânea', url: '../conteudos/3med/3º Ano - História - História Contemporânea (Premium).pdf' }
           ],
           'Geografia': [
-            { titulo: 'Brasil no Século XXI', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2020-06/geografia_em_3_ano_apostila.pdf' }
+            { titulo: 'Brasil no Século XXI', url: '../conteudos/3med/3º Ano - Geografia - Brasil no Século XXI (Premium).pdf' }
           ],
           'Inglês': [
-            { titulo: 'Advanced Reading & ENEM', url: 'https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/documento/2021-02/educa_juntos_atividades_9ano_ingles.pdf' }
+            { titulo: 'Advanced Reading e ENEM', url: '../conteudos/3med/3º Ano - Inglês - Advanced Reading e ENEM (Premium).pdf' }
           ]
         }
       }

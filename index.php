@@ -120,7 +120,7 @@ require("./pages/modal-redefinir-senha.php");
                         <div class="stat-label">Gratuito e Livre</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">8</div>
+                        <div class="stat-number">+7</div>
                         <div class="stat-label">Cursos</div>
                     </div>
                     <div class="stat-item">

@@ -93,21 +93,12 @@
         </div>
 
         <div class="course-card">
-          <img src="..//img/curso_nutricao.jpg" alt="Imagem de curso de TI">
+          <img src="../img/curso_nutricao.jpg" alt="Imagem de curso de Nutrição">
           <h3>Nutrição</h3>
           <p>Saúde e bem-estar</p>
           <span>Duração | 1,5 anos</span>
           <a href="matricula.php?curso=nutricao" class="btn">Saiba mais</a>
         </div>
-
-        <div class="course-card">
-          <img src="..//img/curso_psicologia.jpg" alt="Imagem de curso de TI">
-          <h3>Psicologia</h3>
-          <p>comportamento humano e processos mentais</p>
-          <span>Duração | 2,5 anos</span>
-          <a href="matricula.php?curso=psicologia" class="btn">Saiba mais</a>
-        </div>
-
       </div>
     </div>
   </main>
