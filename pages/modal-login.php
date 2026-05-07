@@ -1,4 +1,24 @@
 <!-- POPUP DE LOGIN -->
+<style>
+/* Ajustes específicos apenas para o Modal de Login no Mobile */
+@media (max-width: 480px) {
+    #login-modal .modal-content {
+        width: 95% !important;
+        height: auto !important; /* Remove altura fixa que corta o conteúdo */
+        margin: 10% auto !important;
+        padding-bottom: 30px !important;
+    }
+    #login-modal .btn-login {
+        width: 80% !important; /* Botão mais largo no mobile */
+    }
+    #login-modal .caixa-texto {
+        width: 90% !important; /* Inputs mais largos no mobile */
+    }
+    #login-modal h1 {
+        padding: 20px 0 !important;
+    }
+}
+</style>
   <div id="login-modal" class="modal">
         <div class="modal-content">
             <div class="header-login">
@@ -32,24 +52,11 @@
     <p>Fazer login com:</p>
     <div class="social-icons">
         
-        <a href="/teste">
-            <div class="social-icon">
-                <img src="./img/apple.svg" alt="">
-            </div>
-        </a>
-        
-        <a href="/Perifaedu/Perifaedu/config/google_login.php">
+        <a href="<?= BASE_URL ?>config/google_login.php">
             <div class="social-icon">
                 <img src="./img/google.svg" alt="">
             </div>
         </a>
-
-        <a href="/teste">
-            <div class="social-icon">
-                <img src="./img/Microsoft.svg" alt="">
-            </div>
-        </a>
-
     </div>
 </div>
 
@@ -110,7 +117,7 @@ document.getElementById("erro-login").innerText="";
 btn.disabled = true;
 btn.innerText = "Entrando...";
 
-fetch("/perifaedu/PerifaEdu/pages/login.php",{
+fetch(window.baseUrl + "pages/login.php",{
 method:"POST",
 body:formData,
 credentials: "include"

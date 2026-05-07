@@ -5,11 +5,10 @@ session_start();
 session_unset(); // limpa sessão antiga
 session_regenerate_id(true); // gera nova sessão segura
 
-require __DIR__ . '/conexao.php';
+require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/config_env.php';
 
-require __DIR__ . '/config_env.php';
-
-$redirectUri = "http://localhost/PerifaEdu/PerifaEdu/config/google_callback.php";
+$redirectUri = $full_url . "config/google_callback.php";
 
 /* ============================= */
 /* 1️⃣ Verificar retorno do Google */

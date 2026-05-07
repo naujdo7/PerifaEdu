@@ -4,7 +4,7 @@ session_start();
 require __DIR__ . '/../config/conexao.php';
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: /PerifaEdu/PerifaEdu/index.php");
+    header("Location: " . BASE_URL . "index.php");
     exit;
 }
 
@@ -57,6 +57,6 @@ if (isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] == 0) {
     /* 5️⃣ Atualizar sessão */
     $_SESSION['fotoPerfil'] = $caminho;
 
-    header("Location: /PerifaEdu/PerifaEdu/index.php");
+    header("Location: " . BASE_URL . "index.php");
     exit;
 }

@@ -30,5 +30,5 @@ $stmt->execute();
 $_SESSION['fotoPerfil'] = 'img/perfil.png';
 
 // 🔥 REDIRECIONA PRA INDEX
-header("Location: /PerifaEdu/PerifaEdu/index.php");
+header("Location: " . BASE_URL . "index.php");
 exit();

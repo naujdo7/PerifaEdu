@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../config/conexao.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -6,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $nomeUsuario  = $_SESSION['usuario_nome']  ?? null;
 $emailUsuario = $_SESSION['usuario_email'] ?? null;
 $fotoSession  = $_SESSION['fotoPerfil']    ?? 'img/perfil.png';
-$base         = '/PerifaEdu/PerifaEdu/';
+$base         = defined('BASE_URL') ? BASE_URL : '/';
 $foto         = $base . $fotoSession . '?v=' . time();
 ?>
 
@@ -25,7 +26,7 @@ $foto         = $base . $fotoSession . '?v=' . time();
 
     <!-- Menu Desktop -->
     <nav class="desktop-menu">
-        <a href="/Perifaedu/Perifaedu" class="active">INÍCIO</a>
+        <a href="./index.php" class="active">INÍCIO</a>
         <a href="./pages/apostilas.php"       class="menu-restrito">APOSTILAS</a>
         <a href="./pages/cursos_tecnicos.php" class="menu-restrito">CURSOS</a>
         <a href="./pages/competencias.php"    class="menu-restrito">COMPETÊNCIAS</a>
@@ -83,6 +84,7 @@ $foto         = $base . $fotoSession . '?v=' . time();
 <!-- Sincroniza localStorage com sessão PHP real -->
 <script>
 (function(){
+    window.baseUrl = '<?= BASE_URL ?>';
     var logadoPHP = <?= ($nomeUsuario ? 'true' : 'false') ?>;
     if (logadoPHP) {
         localStorage.setItem('perifaEduLogado', 'true');
@@ -117,8 +119,8 @@ $foto         = $base . $fotoSession . '?v=' . time();
     /* ── Logout (desktop + mobile) ── */
     function fazerLogout() {
         localStorage.removeItem('perifaEduLogado');
-        fetch('/PerifaEdu/PerifaEdu/pages/logout.php', { method: 'POST' })
-            .finally(() => window.location.href = '/PerifaEdu/PerifaEdu/index.php');
+        fetch(baseUrl + 'pages/logout.php', { method: 'POST' })
+            .finally(() => window.location.href = baseUrl + 'index.php');
     }
 
     if (logout) logout.addEventListener('click', function (e) { e.preventDefault(); fazerLogout(); });

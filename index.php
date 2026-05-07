@@ -1,5 +1,7 @@
 <?php
 ini_set('session.cookie_path', '/');
+require_once("./config/conexao.php");
+require_once("./config/config_env.php");
 
 session_start();
 $nomeUsuario = $_SESSION['usuario_nome'] ?? null;
@@ -15,7 +17,7 @@ require("./pages/modal-redefinir-senha.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/PerifaEdu/PerifaEdu/img/PerifaEdu-site.png?v=2">
+    <link rel="icon" href="img/PerifaEdu-site.png?v=2">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/headerfoot.css">
     <link rel="stylesheet" href="css/index.css">
@@ -98,10 +100,10 @@ require("./pages/modal-redefinir-senha.php");
                     </div>
                     <div class="beneficio-card">
                         <div class="beneficio-icon">
-                            <i class="fas fa-certificate"></i>
+                            <i class="fas fa-book"></i>
                         </div>
-                        <h3 class="beneficio-title">Certificados</h3>
-                        <p class="beneficio-desc">Receba certificados reconhecidos ao completar os cursos.</p>
+                        <h3 class="beneficio-title">Apostilas Digitais</h3>
+                        <p class="beneficio-desc">Materiais completos do Ensino Fundamental ao Médio para baixar e estudar offline.</p>
                     </div>
                 </div>
             </section>
@@ -110,20 +112,20 @@ require("./pages/modal-redefinir-senha.php");
             <section class="stats-section">
                 <div class="stats-container">
                     <div class="stat-item">
-                        <div class="stat-number">10K+</div>
-                        <div class="stat-label">Alunos Ativos</div>
+                        <div class="stat-number">+200</div>
+                        <div class="stat-label">Apostilas Disponíveis</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Cursos Disponíveis</div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Gratuito e Livre</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Horas de Aula</div>
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Cursos</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Satisfação</div>
+                        <div class="stat-number">+10k</div>
+                        <div class="stat-label">Estudantes</div>
                     </div>
                 </div>
             </section>
@@ -144,7 +146,7 @@ require("./pages/modal-redefinir-senha.php");
                         </div>
                         <div class="metodologia-item">
                             <div class="metodologia-check">✓</div>
-                            <div class="metodologia-text-item">Videoaulas interativas com exemplos práticos</div>
+                            <div class="metodologia-text-item">Apostilas didáticas organizadas por ano letivo</div>
                         </div>
                         <div class="metodologia-item">
                             <div class="metodologia-check">✓</div>
@@ -152,7 +154,7 @@ require("./pages/modal-redefinir-senha.php");
                         </div>
                         <div class="metodologia-item">
                             <div class="metodologia-check">✓</div>
-                            <div class="metodologia-text-item">Suporte de mentores experientes 24/7</div>
+                            <div class="metodologia-text-item">Conteúdo disponivel para download</div>
                         </div>
                     </div>
                 </div>

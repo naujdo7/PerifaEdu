@@ -287,7 +287,7 @@ email_recuperacao=email;
 btn.disabled=true;
 btn.innerText="Enviando...";
 
-fetch("recuperar/enviar_codigo.php",{
+fetch(window.baseUrl + "recuperar/enviar_codigo.php",{
 
 method:"POST",
 headers:{
@@ -371,7 +371,7 @@ if(sessionStorage.getItem("cadastro_email")){
 tipo = "cadastro";
 }
 
-fetch("recuperar/verificar_codigo.php",{
+fetch(window.baseUrl + "recuperar/verificar_codigo.php",{
 
 method:"POST",
 headers:{
@@ -404,7 +404,7 @@ dados.append("email", sessionStorage.getItem("cadastro_email"));
 dados.append("senha", sessionStorage.getItem("cadastro_senha"));
 dados.append("confirmar_senha", sessionStorage.getItem("cadastro_senha"));
 
-fetch("pages/cadastrar.php",{
+fetch(window.baseUrl + "pages/cadastrar.php",{
 method:"POST",
 body:dados
 })
@@ -478,7 +478,7 @@ if(sessionStorage.getItem("cadastro_email")){
 dados.append("tipo","cadastro");
 }
 
-fetch("recuperar/enviar_codigo.php",{
+fetch(window.baseUrl + "recuperar/enviar_codigo.php",{
 
 method:"POST",
 body:dados
@@ -525,7 +525,7 @@ return;
 
 }
 
-fetch("recuperar/atualizar_senha.php",{
+fetch(window.baseUrl + "recuperar/atualizar_senha.php",{
 
 method:"POST",
 headers:{

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../config/conexao.php'; ?>
 <!-- CHAT WIDGET - PerifaEdu -->
 <div id="chat-fab" onclick="toggleChat()" title="Ajuda">
     <svg id="chat-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -9,7 +10,7 @@
     <div id="chat-panel-header">
         <div id="chat-header-info">
             <div id="chat-avatar">
-                <img src="/PerifaEdu/PerifaEdu/img/perifaedu-logo.png" alt="PerifaEdu" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                <img src="<?= BASE_URL ?>img/perifaedu-logo.png" alt="PerifaEdu" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
             </div>
             <div>
                 <p id="chat-header-name">PerifaEdu</p>
@@ -285,7 +286,7 @@
         appendMessage(msg, 'user');
         showTyping();
 
-        fetch('/PerifaEdu/PerifaEdu/pages/chat.php', {
+        fetch(window.baseUrl + 'pages/helper_perifa.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'msg=' + encodeURIComponent(msg)

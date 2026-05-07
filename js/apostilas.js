@@ -500,7 +500,7 @@ function downloadPDF(url, titulo) {
 // ── Carrega progresso da API ──
 async function carregarProgressoApostilas() {
   try {
-    const res = await fetch('/PerifaEdu/PerifaEdu/pages/api_progresso.php');
+    const res = await fetch(window.baseUrl + 'pages/api_progresso.php');
     if (!res.ok) return; // usuário não logado — sem problema
     const data = await res.json();
     if (data.sucesso && Array.isArray(data.concluidas)) {
@@ -526,7 +526,7 @@ async function toggleConcluidoApostila(apostilaId, nomeDisciplina) {
 
   try {
     const body = new URLSearchParams({ acao, apostila_id: apostilaId });
-    const res = await fetch('/PerifaEdu/PerifaEdu/pages/api_progresso.php', { method: 'POST', body });
+    const res = await fetch(window.baseUrl + 'pages/api_progresso.php', { method: 'POST', body });
     const data = await res.json();
 
     if (data.sucesso) {
@@ -546,15 +546,15 @@ async function toggleConcluidoApostila(apostilaId, nomeDisciplina) {
     } else {
       // Não logado ou erro — restaura estado anterior
       btn.innerHTML = jaConcluida
-        ? '<i class="fas fa-check-circle"></i> Concluído ✔'
-        : '<i class="far fa-circle"></i> Marcar como concluído';
+        ? '<i class="fas fa-check-circle"></i> Concluído'
+        : '<i class="far fa-circle"></i> Concluído';
       mostrarToastApostilas('Faça login para salvar seu progresso.', true);
     }
   } catch (e) {
     // Erro de rede — restaura
     btn.innerHTML = jaConcluida
-      ? '<i class="fas fa-check-circle"></i> Concluído ✔'
-      : '<i class="far fa-circle"></i> Marcar como concluído';
+      ? '<i class="fas fa-check-circle"></i> Concluído'
+      : '<i class="far fa-circle"></i> Concluído';
   } finally {
     btn.dataset.loading = '0';
   }

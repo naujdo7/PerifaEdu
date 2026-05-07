@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . '/../config/conexao.php';
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: /PerifaEdu/PerifaEdu/index.php");
+    header("Location: " . BASE_URL . "index.php");
     exit();
 }
 
@@ -25,8 +25,8 @@ $usuario = $result->fetch_assoc();
 $stmt->close();
 
 $foto = !empty($usuario['fotoPerfil'])
-    ? "/PerifaEdu/PerifaEdu/" . $usuario['fotoPerfil']
-    : "/PerifaEdu/PerifaEdu/img/perfil.png";
+    ? BASE_URL . $usuario['fotoPerfil']
+    : BASE_URL . "img/perfil.png";
 
 $email = $usuario['email'] ?? ($_SESSION['usuario_email'] ?? '');
 
@@ -54,7 +54,7 @@ $erro = $_GET['erro'] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil — PerifaEdu</title>
     <meta name="description" content="Gerencie seu perfil, acompanhe seus cursos matriculados e visualize seu progresso nas apostilas na plataforma PerifaEdu.">
-    <link rel="icon" href="/PerifaEdu/PerifaEdu/img/PerifaEdu-site.png" type="image/png">
+    <link rel="icon" href="<?= BASE_URL ?>img/PerifaEdu-site.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -1897,7 +1897,7 @@ function toggleSerie(header) {
 ════════════════════════════════════════ */
 async function carregarProgresso() {
     try {
-        const res  = await fetch('/PerifaEdu/PerifaEdu/pages/api_progresso.php');
+        const res  = await fetch(window.baseUrl + 'pages/api_progresso.php');
         const data = await res.json();
         if (data.sucesso && Array.isArray(data.concluidas)) {
             apostilasConcluidas = new Set(data.concluidas);
@@ -1923,7 +1923,7 @@ async function toggleConcluido(apostilaId, nivel, anoNome) {
 
     try {
         const body = new URLSearchParams({ acao, apostila_id: apostilaId });
-        const res = await fetch('/PerifaEdu/PerifaEdu/pages/api_progresso.php', {
+        const res = await fetch(window.baseUrl + 'pages/api_progresso.php', {
             method: 'POST', body
         });
         const data = await res.json();
@@ -2074,7 +2074,7 @@ function msEnviarEmail() {
     msgEl.className = 'msg-modal';
     msgEl.innerText = 'Enviando...';
 
-    fetch('/PerifaEdu/PerifaEdu/recuperar/enviar_codigo.php', {
+    fetch(window.baseUrl + 'recuperar/enviar_codigo.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'email=' + encodeURIComponent(email)
@@ -2101,7 +2101,7 @@ function msVerificarCodigo() {
     const msgEl = document.getElementById('ms-msg-codigo');
     msgEl.className = 'msg-modal'; msgEl.innerText = 'Verificando...';
 
-    fetch('/PerifaEdu/PerifaEdu/recuperar/verificar_codigo.php', {
+    fetch(window.baseUrl + 'recuperar/verificar_codigo.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'codigo=' + codigo + '&email=' + encodeURIComponent(msEmailUsuario) + '&tipo=recuperar'
@@ -2127,7 +2127,7 @@ function msConfirmarSenha() {
 
     if (senha !== confirmar) { erroEl.innerText = '❌ As senhas não coincidem.'; return; }
 
-    fetch('/PerifaEdu/PerifaEdu/recuperar/atualizar_senha.php', {
+    fetch(window.baseUrl + 'recuperar/atualizar_senha.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'senha=' + encodeURIComponent(senha) + '&confirmar=' + encodeURIComponent(confirmar) + '&email=' + encodeURIComponent(msEmailUsuario)

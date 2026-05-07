@@ -6,13 +6,13 @@
             </div>
             <div class="footer-section">
                 <h3>Links Rápidos</h3>
-                <a href="./pages/como-funciona.html">Como Funciona</a><br>
-                <a href="./pages/sobre.html">Sobre Nós</a><br>
-                <a href="./pages/competencias.html">Competências</a>
+                <a href="./pages/como-funciona.php">Como Funciona</a><br>
+                <a href="./pages/sobre.php">Sobre Nós</a><br>
+                <a href="./pages/competencias.php">Competências</a>
             </div>
             <div class="footer-section">
                 <h3>Legal</h3>
-                <a href="./pages/politica-de-privacidade.html" target="_blank">Política de Privacidade</a><br>
+                <a href="./pages/politica-de-privacidade.php" target="_blank">Política de Privacidade</a><br>
                 <a href="./pages/termos.html" target="_blank">Termos de Uso</a>
             </div>
             <div class="footer-section">

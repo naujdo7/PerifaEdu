@@ -27,7 +27,7 @@ function enviar() {
     chat.scrollTop = chat.scrollHeight;
 
     // 🔥 Envio para o PHP
-    fetch("/PerifaEdu/PerifaEdu/pages/chat.php", {
+    fetch(window.baseUrl + "pages/chat.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ msg: texto })

@@ -40,9 +40,9 @@ function closeAllModals() {
 // =========================================================
 function fazerLogout() {
     localStorage.removeItem('perifaEduLogado');
-    fetch('/PerifaEdu/PerifaEdu/pages/logout.php', { method: 'POST' })
+    fetch(window.baseUrl + 'pages/logout.php', { method: 'POST' })
         .finally(function () {
-            window.location.href = '/PerifaEdu/PerifaEdu/index.php';
+            window.location.href = window.baseUrl + 'index.php';
         });
 }
 
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (loginModal) {
                     openLogin();
                 } else {
-                    window.location.href = '/PerifaEdu/PerifaEdu/index.php?abrirLogin=true';
+                    window.location.href = window.baseUrl + 'index.php?abrirLogin=true';
                 }
             });
         }
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         menuPerfil.style.display === 'flex' ? 'none' : 'flex';
                 } else {
                     if (!window.location.pathname.includes('index.php')) {
-                        window.location.href = '/PerifaEdu/PerifaEdu/index.php?abrirLogin=true';
+                        window.location.href = window.baseUrl + 'index.php?abrirLogin=true';
                     } else {
                         openLogin();
                     }
